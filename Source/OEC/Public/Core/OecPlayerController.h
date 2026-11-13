@@ -15,6 +15,8 @@ class OEC_API AOecPlayerController : public APlayerController
 	GENERATED_BODY()
 	
 public:
+	AOecPlayerController();
+
 	UFUNCTION(BlueprintCallable, Category = "OEC|UI")
 	void SetUIInputMode(bool InIsUIOnly);
 
