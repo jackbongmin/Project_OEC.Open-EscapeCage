@@ -27,6 +27,15 @@ public:
 	virtual void Interact_Implementation(AActor* InInteractor) override;
 
 protected:
+	virtual void BeginPlay() override;
+
+	// 메인 문 전용: 페이즈 1 전구가 다 켜져 페이즈 2로 넘어가면 자동으로 열림
+	UFUNCTION()
+	void OnPhaseChanged();
+
+	bool IsPhase2() const;
+
+protected:
     UPROPERTY(EditAnywhere, Category = "OEC|Door")
     EDoorType DoorType;
 

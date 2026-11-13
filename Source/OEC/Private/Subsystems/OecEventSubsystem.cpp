@@ -23,7 +23,18 @@ void UOecEventSubsystem::ProcessQuestionResult(FName InQuestionID, FGameplayTag 
 
 	if (InTag == FGameplayTag::RequestGameplayTag(FName("Event.Stack.Add")))
 	{
-		ModifyStacks((int32)InValue);
+		UOecStageManagerSubsystem* stageManager = GetGameInstance()->GetSubsystem<UOecStageManagerSubsystem>();
+
+		if (stageManager && stageManager->GetCurrentPhase() == EOecGamePhase::Phase1_MainRoom)
+		{
+			// 페이즈 1: 전구 스택 (소모되지 않음, 다 차면 페이즈 2로 전환)
+			stageManager->AddStack((int32)InValue);
+		}
+		else
+		{
+			// 페이즈 2: 문 열쇠 스택 (닫힌 방 문을 열 때 소모)
+			ModifyStacks((int32)InValue);
+		}
 	}
 
 }
