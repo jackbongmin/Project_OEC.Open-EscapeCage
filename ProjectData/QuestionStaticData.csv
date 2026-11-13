@@ -1,0 +1,6 @@
+﻿---,QuestionType,QuestionText,RedBtnText,BlueBtnText,RedBtnEventTag,RedBtnPayloadValue,RedBtnPayloadString,BlueBtnEventTag,BlueBtnPayloadValue,BlueBtnPayloadString
+NewRow,"Story","테스트_스토리1","빨강_스토리","파랑_스토리","(TagName="""")","0.000000","None","(TagName="""")","0.000000","None"
+NewRow_0,"Bonus","테스트_보너스","빨강_보너스","파랑_보너스","(TagName="""")","0.000000","None","(TagName="""")","0.000000","None"
+NewRow_1,"Penalty","테스트_패널티","빨강_패널티","파랑_패널티","(TagName="""")","0.000000","None","(TagName="""")","0.000000","None"
+NewRow_2,"Balance","테스트_밸런스","빨강_밸런스","파랑_밸런스","(TagName="""")","0.000000","None","(TagName="""")","0.000000","None"
+NewRow_3,"Meaningless","테스트_무의미","빨강_무의미","파랑_무의미","(TagName="""")","0.000000","None","(TagName="""")","0.000000","None"

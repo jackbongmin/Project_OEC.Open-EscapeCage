@@ -1,0 +1,167 @@
+[
+	{
+		"Name": "Q_Test_01",
+		"QuestionID": "Q_Test_01",
+		"QuestionType": "Balance",
+		"QuestionText": "둘 중에 고르시오",
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_N" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_SR" } ] }
+			]
+		}
+	},
+	{
+		"Name": "Q_Test_02",
+		"QuestionID": "Q_Test_02",
+		"QuestionType": "Bonus",
+		"QuestionText": "둘 중에 고르시오",
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerStackChance" }, "Value": 0.01, "Param": "None" } ] }
+			]
+		}
+	},
+	{
+		"Name": "Q_Test_03",
+		"QuestionID": "Q_Test_03",
+		"QuestionType": "Penalty",
+		"QuestionText": "둘 중에 고르시오",
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -20, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Random" } ] }
+			]
+		}
+	},
+	{
+		"Name": "Q_Test_04",
+		"QuestionID": "Q_Test_04",
+		"QuestionType": "Penalty",
+		"QuestionText": "둘 중에 고르시오",
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -30, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 7, "Effects": [ { "EffectTag": { "TagName": "Effect.Death" }, "Value": 0, "Param": "None" } ] },
+				{ "Weight": 93, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		}
+	},
+	{
+		"Name": "Q_Test_05",
+		"QuestionID": "Q_Test_05",
+		"QuestionType": "Balance",
+		"QuestionText": "둘 중에 고르시오",
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -30, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "그냥 넘어간다",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		}
+	},
+	{
+		"Name": "Q_Test_06",
+		"QuestionID": "Q_Test_06",
+		"QuestionType": "Penalty",
+		"QuestionText": "둘 중에 고르시오",
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_N" } ] }
+			]
+		}
+	},
+	{
+		"Name": "Q_Test_07",
+		"QuestionID": "Q_Test_07",
+		"QuestionType": "Meaningless",
+		"QuestionText": "더 좋아하는 건?",
+		"RedChoice": { "DisplayText": "고양이", "Outcomes": [] },
+		"BlueChoice": { "DisplayText": "강아지", "Outcomes": [] }
+	},
+	{
+		"Name": "Q_Test_08",
+		"QuestionID": "Q_Test_08",
+		"QuestionType": "Meaningless",
+		"QuestionText": "나는 하와이안 피자를 좋아한다",
+		"RedChoice": { "DisplayText": "예", "Outcomes": [] },
+		"BlueChoice": { "DisplayText": "아니오", "Outcomes": [] }
+	},
+	{
+		"Name": "Q_Test_09",
+		"QuestionID": "Q_Test_09",
+		"QuestionType": "Bonus",
+		"QuestionText": "둘 중에 고르시오",
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal30" } ] }
+			]
+		}
+	},
+	{
+		"Name": "Q_Test_10",
+		"QuestionID": "Q_Test_10",
+		"QuestionType": "Balance",
+		"QuestionText": "둘 중에 고르시오",
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [
+					{ "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" },
+					{ "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -10, "Param": "None" }
+				] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Pistol" } ] }
+			]
+		}
+	}
+]

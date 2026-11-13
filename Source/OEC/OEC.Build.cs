@@ -8,32 +8,21 @@ public class OEC : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { 
-			"Core", 
-			"CoreUObject", 
-			"Engine", 
-			"InputCore",
-			
-			// 입력 시스템
-			"EnhancedInput",
-
-			// GAS 필수 모듈
-			"GameplayAbilities",
-			"GameplayTags",
-			"GameplayTasks",
-
-			// UI 시스템
-			"UMG",
-
-			// AI 시스템
-			"AIModule",
-			"NavigationSystem",
+		PublicDependencyModuleNames.AddRange(new string[] {
+            "Core", "CoreUObject", "Engine",
+            "InputCore", "EnhancedInput",
+            "AIModule",
+            "NavigationSystem",
+            "GameplayTasks", "GameplayTags", "GameplayAbilities",
+            "Slate", "SlateCore", "UMG",
+            "Niagara", "NiagaraCore",
+            "VectorVM",
+            "MediaAssets",
+            "AssetRegistry", "RenderCore"
         });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {
-			// UMG를 쓰기위한 필수 UI코어 모듈
-			"Slate",
-			"SlateCore",
+
         });
 
 		// Uncomment if you are using Slate UI
