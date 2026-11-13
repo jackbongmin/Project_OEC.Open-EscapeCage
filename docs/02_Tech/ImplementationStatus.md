@@ -37,10 +37,21 @@
 
 ## 2. 알려진 버그와 기술 부채
 
-1. **스택이 두 개다**
-   - `UOecStageManagerSubsystem::CurrentStack` (페이즈 전환 판정)
-   - `UOecEventSubsystem::PlayerStacks` (버튼, 문이 사용, 초기값 3)
-   - 버튼으로 스택을 쌓아도 `AddStack`이 호출되지 않아 페이즈 2로 넘어가지 않는다. → 하나로 통일.
+1. **페이즈 1 스택이 끊겨 있다** (2026-11-14 확인)
+   - `UOecStageManagerSubsystem::CurrentStack`: 페이즈 1 전구용 (최대 5, 다 차면 페이즈 2로 전환).
+   - `UOecEventSubsystem::PlayerStacks`: 페이즈 2 문 열쇠용 (문을 열 때 소모, 초기값 3은 테스트용).
+   - 히스토리
+     - `0724de8` (04-06): 이벤트 서브시스템이 `StageManager->AddStack()`을 호출 → 페이즈 1 스택이 연결돼 있었다.
+     - `03650d6` (04-06): 그 호출이 삭제됨.
+     - `6d78dde` (04-08): 페이즈 2 문을 만들면서 `PlayerStacks` 추가.
+   - 현재: `AddStack`, `ChangePhase`, `OnStackChanged`, `OnPhaseChanged`, `GetCurrentPhase`를 C++과 블루프린트 어디에서도 호출하지 않는다. 버튼으로 얻은 스택은 전부 `PlayerStacks`로만 들어가서 **페이즈 전환이 일어나지 않는다.**
+   - 블루프린트 추정: `BP_PhaseDoor1/2`, `BP_RandomRoom`은 `OecDoorBase` 기본값(스택 1 필요, 소모)을 그대로 쓰는 것으로 보인다 (에셋에 `RequiredStacks` 변경 기록이 없음). 에디터에서 확인 필요.
+   - → 두 스택을 나눈 의도는 유지하되, 질문 결과가 현재 페이즈에 맞는 스택으로 가도록 다시 연결한다.
+   - **수정 (2026-11-14)**
+     - `OecEventSubsystem::ProcessQuestionResult`: `Event.Stack.Add` 결과가 페이즈 1이면 `StageManager->AddStack`(전구), 페이즈 2면 `ModifyStacks`(열쇠)로 들어간다.
+     - `OecDoorBase`: `DoorType == MainDoor`인 문은 열쇠 스택을 쓰지 않고, 페이즈 2 전환(`OnPhaseChanged`) 때 자동으로 열린다. 페이즈 1에 상호작용하면 잠김 로그만 출력한다.
+     - **에디터 작업 필요**: 메인 방 문(`BP_PhaseDoor1`로 추정)의 `DoorType`을 `MainDoor`로 설정해야 동작한다.
+     - 남은 것: 열쇠 스택 초기값 3(테스트용), 전구 UI(`OnStackChanged` 바인딩)는 M2에서 처리.
 2. **체력 상한 하드코딩**: `OecAttributeSetBase.cpp:25`에서 `Clamp(Health, 0, 100)`. MaxHealth가 100보다 큰 몬스터는 체력이 깎여 시작한다. → `GetMaxHealth()`로 클램프.
 3. **AttackPower 의미 불일치**: MMC는 퍼센트 보너스, 몬스터 공격은 고정 피해로 사용 ([DesignReview 2.13](../01_Design/DesignReview.md)).
 4. **플레이어 체력 시작값 50**: `OecPlayerCharacter.cpp:67`. 회복 아이템 테스트용으로 보임 → 정식 값으로 복구.
@@ -50,7 +61,7 @@
 8. **데이터 테이블 하드 레퍼런스**: `FItemStaticData`의 `UTexture2D*`, `UAnimMontage*`, `FMonsterStaticData`의 몽타주가 하드 레퍼런스라, 데이터 테이블을 로드하는 순간 모든 아이콘과 몽타주가 메모리에 올라간다.
 9. **로그 과다**: `LogTemp` + 이모지 로그가 발사·피격마다 출력된다. 전용 로그 카테고리로 분리 필요.
 10. **`OEC_TestClass`**: 사용하지 않는 테스트 클래스.
-11. **Git LFS 미사용**: `.uasset`/`.umap`을 일반 git으로 관리 중. `.git` 폴더가 이미 1.3GB.
+11. **저장소 용량**: `.uasset`/`.umap`을 일반 git으로 관리 중이고 `.git` 폴더가 1.3GB. Git LFS는 쓰지 않기로 결정했다 ([OptimizationBacklog](OptimizationBacklog.md)).
 
 ## 3. 블루프린트 쪽 확인이 필요한 것
 `.uasset`은 바이너리라 코드 분석으로 확인하지 못했다. 에디터에서 직접 확인 필요.

@@ -8,6 +8,10 @@
 - 기본 작업 브랜치는 `develop`, 메인 브랜치는 `main`.
 - 커밋 메시지 형식: `<태그> 한국어 설명` (예: `<feat> Monster Attack, Die 구현`).
 
+## 코드 스타일 (필수)
+- C++ 코드를 작성·수정할 때는 사용자의 기존 작성 양식을 따른다. 규칙은 [docs/00_Rules/CodingConvention.md](docs/00_Rules/CodingConvention.md).
+- 핵심: 탭 들여쓰기(기존 파일은 그 파일 방식 유지), 매개변수 `In` 접두사, 지역 변수 lowerCamelCase, 델리게이트 콜백 `On...`, 한국어 주석·로그.
+
 ## 문서
 - 기획·설계 문서는 모두 `docs/` 폴더에서 관리한다. 목차는 [docs/README.md](docs/README.md).
 

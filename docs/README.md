@@ -5,8 +5,10 @@
 | 폴더 | 문서 | 내용 |
 |---|---|---|
 | 00_Rules | [GitConvention.md](00_Rules/GitConvention.md) | 커밋·브랜치 규칙, **Claude 기여자 표기 금지** |
+| 00_Rules | [CodingConvention.md](00_Rules/CodingConvention.md) | C++ 코드 작성 양식 |
 | 01_Design | [GDD.md](01_Design/GDD.md) | 게임 기획서 (노션 초기 기획 + 보완안) |
 | 01_Design | [DesignReview.md](01_Design/DesignReview.md) | 초기 기획의 부족한 점과 개선 제안 |
+| 02_Tech | [Roadmap.md](02_Tech/Roadmap.md) | 개발 순서 (마일스톤 M0~M5) |
 | 02_Tech | [ImplementationStatus.md](02_Tech/ImplementationStatus.md) | 기획 대비 현재 구현 상태, 알려진 버그 |
 | 02_Tech | [OptimizationBacklog.md](02_Tech/OptimizationBacklog.md) | 최적화·개발 효율용 추가 기능 목록 |
 | 02_Tech | [UnrealWorkflow.md](02_Tech/UnrealWorkflow.md) | Claude와 언리얼 에디터 연동 방법 |
