@@ -10,6 +10,12 @@ AOecItemPickupBase::AOecItemPickupBase()
 	Quantity = 1;
 }
 
+void AOecItemPickupBase::SetItemData(FName InItemCode, int32 InQuantity)
+{
+	ItemCode = InItemCode;
+	Quantity = FMath::Max(InQuantity, 1);
+}
+
 void AOecItemPickupBase::Interact_Implementation(AActor* InInteractor)
 {
 	Super::Interact_Implementation(InInteractor);

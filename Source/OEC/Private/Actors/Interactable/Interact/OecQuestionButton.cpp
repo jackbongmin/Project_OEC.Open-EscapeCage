@@ -2,14 +2,14 @@
 
 
 #include "Actors/Interactable/Interact/OecQuestionButton.h"
-#include "Subsystems/OecEventSubsystem.h"
+#include "Choice/OecChoiceSubsystem.h"
 
 void AOecQuestionButton::Interact_Implementation(AActor* InInteractor)
 {
     Super::Interact_Implementation(InInteractor);
 
     PlayButtonPressFeedback();
-    TriggerButtonEvent();
+    TriggerButtonEvent(InInteractor);
 
     if (OnButtonClicked.IsBound())
     {
@@ -17,14 +17,12 @@ void AOecQuestionButton::Interact_Implementation(AActor* InInteractor)
     }
 }
 
-void AOecQuestionButton::SetButtonEventData(FName InQuestionID, FGameplayTag InTag, float InPayloadValue, FName InPayloadString)
+void AOecQuestionButton::SetChoiceData(FName InQuestionID, const FOecChoiceData& InChoiceData)
 {
     QuestionID = InQuestionID;
-    EventTag = InTag;
-    PayloadValue = InPayloadValue;
-    PayloadString = InPayloadString;
+    ChoiceData = InChoiceData;
 
-    UE_LOG(LogTemp, Log, TEXT("버튼 데이터 갱신 완료: %s"), *EventTag.ToString());
+    UE_LOG(LogTemp, Log, TEXT("[%s] 선택지 갱신 완료 (결과 %d개)"), *GetName(), ChoiceData.Outcomes.Num());
 }
 
 void AOecQuestionButton::PlayButtonPressFeedback()
@@ -32,16 +30,16 @@ void AOecQuestionButton::PlayButtonPressFeedback()
     UE_LOG(LogTemp, Log, TEXT("버튼 눌림"));
 }
 
-void AOecQuestionButton::TriggerButtonEvent()
+void AOecQuestionButton::TriggerButtonEvent(AActor* InInteractor)
 {
     if (!bIsTerminalButton)
     {
-        UE_LOG(LogTemp, Log, TEXT("일반 상호작용 버튼입니다. 스택 로직을 무시합니다."));
+        UE_LOG(LogTemp, Log, TEXT("일반 상호작용 버튼입니다. 선택지 로직을 무시합니다."));
         return;
     }
 
-    if (UOecEventSubsystem* eventSubsystem = GetGameInstance()->GetSubsystem<UOecEventSubsystem>())
+    if (UOecChoiceSubsystem* choiceSubsystem = GetGameInstance()->GetSubsystem<UOecChoiceSubsystem>())
     {
-        eventSubsystem->ProcessQuestionResult(QuestionID, EventTag, PayloadValue, PayloadString);
+        choiceSubsystem->SubmitChoice(QuestionID, ChoiceData, InInteractor);
     }
 }

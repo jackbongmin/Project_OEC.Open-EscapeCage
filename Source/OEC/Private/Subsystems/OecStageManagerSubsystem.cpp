@@ -3,6 +3,7 @@
 
 #include "Subsystems/OecStageManagerSubsystem.h"
 #include "Subsystems/OecGameDataSubsystem.h"
+#include "Settings/OecGameDataSettings.h"
 #include "Engine/LevelStreamingDynamic.h"
 #include "Algo/RandomShuffle.h"
 
@@ -11,7 +12,7 @@ void UOecStageManagerSubsystem::Initialize(FSubsystemCollectionBase& InCollectio
 	Super::Initialize(InCollection);
 
 	CurrentStack = 0;
-	MaxStack = 5;
+	MaxStack = GetDefault<UOecGameDataSettings>()->Phase1MaxStack;
 	CurrentPhase = EOecGamePhase::Phase1_MainRoom;
 }
 

@@ -17,6 +17,8 @@ class OEC_API UOecPlayerAttributeSet : public UOecAttributeSetBase
 public:
     UOecPlayerAttributeSet();
 
+    virtual void PostGameplayEffectExecute(const struct FGameplayEffectModCallbackData& Data) override;
+
 public:
     UPROPERTY(BlueprintReadOnly, Category = "OEC|Attributes")
     FGameplayAttributeData Sanity;

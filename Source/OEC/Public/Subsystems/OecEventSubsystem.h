@@ -4,24 +4,25 @@
 
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
-#include "GameplayTagContainer.h"
-#include "Data/OecEnumType.h"
-#include "Data/OecDataStruct.h"
 #include "OecEventSubsystem.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnKeyStacksChangedDelegate, int32, InCurrentStacks);
+
 /**
- * 
+ * 질문 진행 상태 서브시스템
+ * - 이미 나온 질문 관리 (중복 출제 방지)
+ * - 페이즈 2 문 열쇠 스택
+ * 선택지 결과 처리는 UOecChoiceSubsystem이 담당한다.
  */
 UCLASS()
 class OEC_API UOecEventSubsystem : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
-	
+
 public:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 
-	UFUNCTION(BlueprintCallable, Category = "OEC|Event")
-	void ProcessQuestionResult(FName InQuestionID, FGameplayTag InTag, float InValue, FName InString);
+	void MarkQuestionUsed(FName InQuestionID);
 
 	bool IsQuestionUsed(FName InQuestionID) const;
 
@@ -33,21 +34,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "OEC|Stack")
 	void ModifyStacks(int32 InAmount);
 
-private:
-	UPROPERTY()
-	TArray<FChoiceRecord> ChoiceHistory;
+public:
+	UPROPERTY(BlueprintAssignable, Category = "OEC|Events")
+	FOnKeyStacksChangedDelegate OnKeyStacksChanged;
 
+private:
+	// 페이즈 2 문 열쇠 스택 (초기값 3은 테스트용)
 	UPROPERTY()
 	int32 PlayerStacks = 3;
 
-	void RecordChoice(FGameplayTag InTag, float InValue);
-
-private:
 	UPROPERTY()
 	TArray<FName> UsedQuestionIDs;
-
-private:
-	void HandleStatEffect(FGameplayTag InTag, float InValue);
-	void HandleSpawnMonster(FName InMonsterID);
-	void HandleGiveItem(FName InItemID);
 };

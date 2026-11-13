@@ -64,3 +64,10 @@ const FSanityStaticData* UOecGameDataSubsystem::GetSanityData(FName SanityID) co
 	return CachedSanityData.Find(SanityID);
 }
 
+TArray<FName> UOecGameDataSubsystem::GetAllMonsterCodes() const
+{
+	TArray<FName> monsterCodes;
+	CachedMonsterData.GetKeys(monsterCodes);
+	return monsterCodes;
+}
+

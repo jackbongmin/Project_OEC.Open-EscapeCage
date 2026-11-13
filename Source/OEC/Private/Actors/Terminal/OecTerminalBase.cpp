@@ -9,6 +9,7 @@
 #include "Data/OecDataStruct.h"
 
 #include "Subsystems/OecEventSubsystem.h"
+#include "Choice/OecChoiceSubsystem.h"
 
 // Sets default values
 AOecTerminalBase::AOecTerminalBase()
@@ -132,9 +133,14 @@ void AOecTerminalBase::InitializeTerminal()
         UE_LOG(LogTemp, Log, TEXT("뽑힌 타입: %d | 단말기 화면: %s"), (int32)selectedType, *finalQuestion->QuestionText);
         UE_LOG(LogTemp, Log, TEXT("===================================="));
 
+        // 버튼 문구는 선택지 데이터에서 생성 (DisplayText가 비어 있으면 효과로 자동 생성)
+        UOecChoiceSubsystem* choiceSubsystem = GetGameInstance()->GetSubsystem<UOecChoiceSubsystem>();
+        const FString redText = choiceSubsystem ? choiceSubsystem->BuildChoiceText(finalQuestion->RedChoice) : finalQuestion->RedChoice.DisplayText;
+        const FString blueText = choiceSubsystem ? choiceSubsystem->BuildChoiceText(finalQuestion->BlueChoice) : finalQuestion->BlueChoice.DisplayText;
+
         if (UOecTerminalWidget* terminalUI = Cast<UOecTerminalWidget>(ScreenWidget->GetUserWidgetObject()))
         {
-            terminalUI->UpdateTerminalUI(finalQuestion->QuestionText, finalQuestion->RedBtnText, finalQuestion->BlueBtnText);
+            terminalUI->UpdateTerminalUI(finalQuestion->QuestionText, redText, blueText);
             UE_LOG(LogTemp, Log, TEXT("UI 업데이트 성공"));
         }
         else
@@ -144,14 +150,12 @@ void AOecTerminalBase::InitializeTerminal()
 
         if (RedButton)
         {
-            // 여기서 방금 뽑은 finalQuestion의 정보를 4개 다 넘겨줌!
-            RedButton->SetButtonEventData(finalQuestion->QuestionID, finalQuestion->RedBtnEventTag, finalQuestion->RedBtnPayloadValue, finalQuestion->RedBtnPayloadString);
+            RedButton->SetChoiceData(finalQuestion->QuestionID, finalQuestion->RedChoice);
         }
 
         if (BlueButton)
         {
-            // 파란 버튼도 마찬가지!
-            BlueButton->SetButtonEventData(finalQuestion->QuestionID, finalQuestion->BlueBtnEventTag, finalQuestion->BlueBtnPayloadValue, finalQuestion->BlueBtnPayloadString);
+            BlueButton->SetChoiceData(finalQuestion->QuestionID, finalQuestion->BlueChoice);
         }
     }
 }

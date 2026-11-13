@@ -34,6 +34,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "OEC|Stage")
 	int GetCurrentStack() const { return CurrentStack; }
 
+	UFUNCTION(BlueprintCallable, Category = "OEC|Stage")
+	int32 GetMaxStack() const { return MaxStack; }
+
 	// 복도에 배치할 방 8개를 랜덤으로 섞어서 생성하는 함수
 	UFUNCTION(BlueprintCallable, Category = "OEC|Stage")
 	void GeneratePhase2Rooms(int32 InCorridorLevel, const TArray<FTransform>& InDoorTransforms);

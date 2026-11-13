@@ -8,7 +8,10 @@
 #include "BehaviorTree/BehaviorTree.h"
 #include "GameplayTagsClasses.h"
 #include "Data/OecEnumType.h"
+#include "Data/OecChoiceTypes.h"
 #include "OecDataStruct.generated.h"
+
+class AOecItemPickupBase;
 
 
 /*
@@ -32,33 +35,13 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (MultiLine = "true"))
     FString QuestionText;
 
+    // 빨간 버튼 선택지 (문구 + 결과 + 효과)
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    FString RedBtnText;
+    FOecChoiceData RedChoice;
 
+    // 파란 버튼 선택지
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    FString BlueBtnText;
-
-    // --- 빨간 버튼 결과 ---
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    FGameplayTag RedBtnEventTag;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    float RedBtnPayloadValue;
-
-    // 아이템 코드나 몬스터 ID를 넘겨줄 때 사용
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    FName RedBtnPayloadString;
-
-    // --- 파란 버튼 결과 ---
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    FGameplayTag BlueBtnEventTag;
-
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    float BlueBtnPayloadValue;
-
-    // 아이템 코드나 몬스터 ID를 넘겨줄 때 사용
-    UPROPERTY(EditAnywhere, BlueprintReadWrite)
-    FName BlueBtnPayloadString;
+    FOecChoiceData BlueChoice;
 };
 
 /*
@@ -115,6 +98,10 @@ struct FItemStaticData : public FTableRowBase
     // 무기면 장착할 액터, 소모품이면 월드 효과용 액터
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Base")
     TSoftClassPtr<AActor> ItemActorClass;
+
+    // 월드에 떨어질 때 쓰는 픽업 액터 (비우면 프로젝트 설정의 기본 픽업 사용)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Base")
+    TSoftClassPtr<AOecItemPickupBase> PickupActorClass;
 
 
     /* ==========================================
@@ -271,19 +258,4 @@ public:
     int32 Quantity = 0; // 몇 개인가?
 };
 
-/*
-===========================================================================
-선택기록 데이터
-===========================================================================
-*/
-USTRUCT(BlueprintType)
-struct FChoiceRecord
-{
-    GENERATED_BODY()
-
-    UPROPERTY()
-    FGameplayTag SelectedTag; // 어떤 결과를 선택했나?
-
-    UPROPERTY()
-    float Value; // 수치는 얼마였나?
-};
+// 선택 기록은 Data/OecChoiceTypes.h의 FOecChoiceRecord 사용

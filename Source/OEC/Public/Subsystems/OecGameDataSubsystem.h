@@ -26,6 +26,9 @@ public:
 	const FMonsterStaticData* GetMonsterData(FName MonsterID) const;
 	const FSanityStaticData* GetSanityData(FName SanityID) const;
 
+	// 등록된 몬스터 코드 전체 (무작위 소환용)
+	TArray<FName> GetAllMonsterCodes() const;
+
 private:
 	void CacheAllData();
 

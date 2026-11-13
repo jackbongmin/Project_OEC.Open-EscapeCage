@@ -19,6 +19,10 @@ public:
 
 	virtual void Interact_Implementation(AActor* InInteractor) override;
 
+	// 런타임에 스폰한 픽업의 아이템 지정 (선택지 효과 등)
+	UFUNCTION(BlueprintCallable, Category = "OEC|Item")
+	void SetItemData(FName InItemCode, int32 InQuantity);
+
 protected:
 	UPROPERTY(EditAnywhere, Category = "OEC|Item")
 	FName ItemCode;

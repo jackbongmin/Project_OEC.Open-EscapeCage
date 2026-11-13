@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Data/OecEnumType.h"
 #include "OecTerminalBase.generated.h"
 
 class UStaticMeshComponent;

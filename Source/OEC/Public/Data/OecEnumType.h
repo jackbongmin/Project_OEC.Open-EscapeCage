@@ -59,6 +59,13 @@ enum class EDoorType : uint8
 };
 
 UENUM(BlueprintType)
+enum class EOecSpawnPointType : uint8
+{
+    Monster     UMETA(DisplayName = "몬스터 스폰구"),
+    Item        UMETA(DisplayName = "아이템 투하구")
+};
+
+UENUM(BlueprintType)
 enum class EOecWeaponState : uint8
 {
     None        UMETA(DisplayName = "맨손"),
