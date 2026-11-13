@@ -22,7 +22,8 @@ void UOecAttributeSetBase::PostGameplayEffectExecute(const FGameplayEffectModCal
 
 	if (Data.EvaluatedData.Attribute == GetHealthAttribute())
 	{
-		SetHealth(FMath::Clamp(GetHealth(), 0.0f, 100.0f));
+		// 최대 체력 기준으로 클램프 (몬스터마다 MaxHealth가 다름)
+		SetHealth(FMath::Clamp(GetHealth(), 0.0f, GetMaxHealth()));
 
 		if (GEngine)
 		{

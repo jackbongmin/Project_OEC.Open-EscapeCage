@@ -2,6 +2,7 @@
 
 
 #include "Actors/Characters/Player/OecPlayerCharacter.h"
+#include "GAS/OecGameplayTags.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/OecInteractionComponent.h"
@@ -64,8 +65,7 @@ void AOecPlayerCharacter::BeginPlay()
     {
         PlayerAttributeSet = const_cast<UOecPlayerAttributeSet*>(asc->GetSet<UOecPlayerAttributeSet>());
 
-        asc->SetNumericAttributeBase(UOecPlayerAttributeSet::GetHealthAttribute(), 50.0f);
-        asc->AddLooseGameplayTag(FGameplayTag::RequestGameplayTag(FName("Character.Player")));
+        asc->AddLooseGameplayTag(OecGameplayTags::Character_Player);
         if (HasAuthority())
         {
             for (TSubclassOf<UOecGameplayAbility>& AbilityClass : DefaultAbilities)
