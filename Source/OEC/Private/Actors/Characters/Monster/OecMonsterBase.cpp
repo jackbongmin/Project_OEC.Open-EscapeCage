@@ -2,6 +2,7 @@
 
 
 #include "Actors/Characters/Monster/OecMonsterBase.h"
+#include "GAS/OecGameplayTags.h"
 #include "AbilitySystemComponent.h"
 #include "GAS/Attributeset/OecAttributeSetBase.h"
 
@@ -86,7 +87,7 @@ void AOecMonsterBase::BeginPlay()
 	
 		AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(UOecAttributeSetBase::GetHealthAttribute()).AddUObject(this, &AOecMonsterBase::OnHealthChanged);
 
-		AbilitySystemComponent->AddLooseGameplayTag(FGameplayTag::RequestGameplayTag(FName("Character.Monster")));
+		AbilitySystemComponent->AddLooseGameplayTag(OecGameplayTags::Character_Monster);
 		
 		UOecGameDataSubsystem* dataSub = GetGameInstance()->GetSubsystem<UOecGameDataSubsystem>();
 		if (dataSub && MonsterCode != NAME_None)

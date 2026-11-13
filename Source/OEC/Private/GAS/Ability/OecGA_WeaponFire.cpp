@@ -2,6 +2,7 @@
 
 
 #include "GAS/Ability/OecGA_WeaponFire.h"
+#include "GAS/OecGameplayTags.h"
 #include "Actors/Item/Weapon/OecRangedWeapon.h"
 #include "Actors/Characters/Player/OecPlayerCharacter.h"
 #include "AbilitySystemComponent.h"
@@ -92,7 +93,7 @@ void UOecGA_WeaponFire::ActivateAbility(const FGameplayAbilitySpecHandle InHandl
 				UAbilitySystemComponent* targetASC = targetInterface->GetAbilitySystemComponent();
 				UAbilitySystemComponent* sourceASC = InActorInfo->AbilitySystemComponent.Get();
 
-				FGameplayTag monsterTag = FGameplayTag::RequestGameplayTag(FName("Character.Monster"));
+				FGameplayTag monsterTag = OecGameplayTags::Character_Monster;
 
 				UE_LOG(LogTemp, Warning, TEXT("🎯 2. 타겟 ASC 확인 완료! GE 주문서 굽기 시작..."));
 
@@ -103,7 +104,7 @@ void UOecGA_WeaponFire::ActivateAbility(const FGameplayAbilitySpecHandle InHandl
 
 					if (specHandle.IsValid())
 					{
-						specHandle.Data.Get()->SetSetByCallerMagnitude(FGameplayTag::RequestGameplayTag(FName("Data.Damage")), -weapon->GetBaseDamage());
+						specHandle.Data.Get()->SetSetByCallerMagnitude(OecGameplayTags::Data_Damage, -weapon->GetBaseDamage());
 						sourceASC->ApplyGameplayEffectSpecToTarget(*specHandle.Data.Get(), targetASC);
 
 						UE_LOG(LogTemp, Warning, TEXT("🎯 몬스터 타격 성공! 데미지 전송됨."));

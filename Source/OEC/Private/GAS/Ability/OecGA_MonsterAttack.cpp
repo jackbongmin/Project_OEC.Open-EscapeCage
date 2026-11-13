@@ -2,6 +2,7 @@
 
 
 #include "GAS/Ability/OecGA_MonsterAttack.h"
+#include "GAS/OecGameplayTags.h"
 #include "Abilities/Tasks/AbilityTask_PlayMontageAndWait.h"
 #include "Abilities/Tasks/AbilityTask_WaitGameplayEvent.h"
 #include "GAS/Attributeset/OecAttributeSetBase.h"
@@ -41,7 +42,7 @@ void UOecGA_MonsterAttack::ActivateAbility(const FGameplayAbilitySpecHandle InHa
 				montageTask->OnCancelled.AddDynamic(this, &UOecGA_MonsterAttack::OnMontageCompleted);
 				montageTask->ReadyForActivation();
 
-				FGameplayTag eventTag = FGameplayTag::RequestGameplayTag(FName("Event.Monster.Attack"));
+				FGameplayTag eventTag = OecGameplayTags::Event_Monster_Attack;
 				UAbilityTask_WaitGameplayEvent* eventTask = UAbilityTask_WaitGameplayEvent::WaitGameplayEvent(this, eventTag);
 				eventTask->EventReceived.AddDynamic(this, &UOecGA_MonsterAttack::OnEventReceived);
 				eventTask->ReadyForActivation();
@@ -104,7 +105,7 @@ void UOecGA_MonsterAttack::OnEventReceived(FGameplayEventData InPayload)
 
 				if (specHandle.IsValid())
 				{
-					specHandle.Data.Get()->SetSetByCallerMagnitude(FGameplayTag::RequestGameplayTag(FName("Data.Damage")), -attackPower);
+					specHandle.Data.Get()->SetSetByCallerMagnitude(OecGameplayTags::Data_Damage, -attackPower);
 					asc->ApplyGameplayEffectSpecToTarget(*specHandle.Data.Get(), targetAsc);
 
 					UE_LOG(LogTemp, Warning, TEXT("💥 %s 펀치 적중! (사거리: %f, 피해량: %f)"), *monsterData->MonsterName, monsterData->AttackRange, attackPower);

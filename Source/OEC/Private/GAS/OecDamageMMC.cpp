@@ -2,6 +2,7 @@
 
 
 #include "GAS/OecDamageMMC.h"
+#include "GAS/OecGameplayTags.h"
 #include "GAS/Attributeset/OecAttributeSetBase.h"
 #include "AbilitySystemComponent.h"
 
@@ -29,7 +30,7 @@ float UOecDamageMMC::CalculateBaseMagnitude_Implementation(const FGameplayEffect
 
 	currentAttackPower = FMath::Max<float>(currentAttackPower, 0.0f);
 
-	float weaponBaseDamage = InSpec.GetSetByCallerMagnitude(FGameplayTag::RequestGameplayTag(FName("Data.Damage")), false, 0.0f);
+	float weaponBaseDamage = InSpec.GetSetByCallerMagnitude(OecGameplayTags::Data_Damage, false, 0.0f);
 
 	float finalDamage = weaponBaseDamage * (1.0f + (currentAttackPower / 100.0f));
 
