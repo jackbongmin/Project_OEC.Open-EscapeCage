@@ -31,6 +31,7 @@ namespace OecGameplayTags
 		게임플레이 이벤트
 	========================================== */
 	OEC_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Event_Monster_Attack);
+	OEC_API UE_DECLARE_GAMEPLAY_TAG_EXTERN(Event_Weapon_MeleeHit);
 
 	/* ==========================================
 		선택지 효과 (질문 버튼 결과)

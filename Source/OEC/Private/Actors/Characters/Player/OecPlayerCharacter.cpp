@@ -420,9 +420,13 @@ void AOecPlayerCharacter::SetWeaponState(EOecWeaponState InNewState, FName InIte
     if (CurrentWeaponActor)
     {
         UE_LOG(LogTemp, Warning, TEXT("[SetWeaponState] 1-1. 기존 무기 파괴함"));
+        CurrentWeaponActor->StopAttack();
         CurrentWeaponActor->Destroy();
         CurrentWeaponActor = nullptr;
     }
+
+    // 기존 무기의 발사·장전 어빌리티 회수 (안 하면 같은 입력에 이전 무기 어빌리티가 같이 반응함)
+    ClearWeaponAbilities();
     // 맨손이면 여기서 종료
     if (CurrentWeaponState == EOecWeaponState::None || InItemCode == NAME_None)
     {
@@ -470,7 +474,8 @@ void AOecPlayerCharacter::SetWeaponState(EOecWeaponState InNewState, FName InIte
     {
         UE_LOG(LogTemp, Warning, TEXT("[SetWeaponState] 8. 스폰 성공! 데이터 주입 및 장착 진행"));
         spawnedWeapon->InitWeaponData(*itemData);
-        spawnedWeapon->Equip(this, TEXT("HandGrip_R"));
+        // 소켓은 무기마다 지정 (EquipSocketName)
+        spawnedWeapon->Equip(this, NAME_None);
         CurrentWeaponActor = spawnedWeapon;
 
         if (APlayerController* pc = Cast<APlayerController>(GetController()))
@@ -495,7 +500,7 @@ void AOecPlayerCharacter::SetWeaponState(EOecWeaponState InNewState, FName InIte
             {
                 FGameplayAbilitySpec spec(itemData->WeaponAbilityClass, 1, static_cast<int32>(EOecAbilityInputID::Fire), spawnedWeapon);
 
-                asc->GiveAbility(spec);
+                WeaponAbilityHandles.Add(asc->GiveAbility(spec));
                 UE_LOG(LogTemp, Warning, TEXT("[SetWeaponState] 무기 전용 발사 스킬(GA) 부여 완료!"));
             }
             else
@@ -505,7 +510,7 @@ void AOecPlayerCharacter::SetWeaponState(EOecWeaponState InNewState, FName InIte
             if (itemData->ReloadAbilityClass)
             {
                 FGameplayAbilitySpec reloadSpec(itemData->ReloadAbilityClass, 1, static_cast<int32>(EOecAbilityInputID::Reload), spawnedWeapon);
-                asc->GiveAbility(reloadSpec);
+                WeaponAbilityHandles.Add(asc->GiveAbility(reloadSpec));
                 UE_LOG(LogTemp, Warning, TEXT("[SetWeaponState] 무기 전용 장전 스킬(GA) 부여 완료!"));
             }
         }
@@ -514,6 +519,26 @@ void AOecPlayerCharacter::SetWeaponState(EOecWeaponState InNewState, FName InIte
     {
         UE_LOG(LogTemp, Error, TEXT("[SetWeaponState] 9. SpawnActor 자체가 실패함!"));
     }
+}
+
+void AOecPlayerCharacter::ClearWeaponAbilities()
+{
+    UAbilitySystemComponent* asc = GetAbilitySystemComponent();
+    if (!asc)
+    {
+        WeaponAbilityHandles.Reset();
+        return;
+    }
+
+    for (const FGameplayAbilitySpecHandle& handle : WeaponAbilityHandles)
+    {
+        if (handle.IsValid())
+        {
+            asc->ClearAbility(handle);
+        }
+    }
+
+    WeaponAbilityHandles.Reset();
 }
 
 void AOecPlayerCharacter::OnAimStarted()

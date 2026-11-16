@@ -53,9 +53,25 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, Category = "OEC|Weapon|Sockets")
 	FName LeftGripSocketName = TEXT("Grip");
 
+	// 장착할 때 붙을 플레이어 메시 소켓 (총은 HandGrip_R, 근접 무기는 전용 소켓을 만들어 지정 가능)
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "OEC|Weapon|Sockets")
+	FName EquipSocketName = TEXT("HandGrip_R");
+
+public:
+	UFUNCTION(BlueprintPure, Category = "OEC|Weapon")
+	FName GetEquipSocketName() const { return EquipSocketName; }
+
 public:
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "OEC|Weapon")
 	FTransform GetLeftGripTransform() const;
 
 	float GetBaseDamage() const { return BaseDamage; }
+
+	// 왼손을 무기 Grip 소켓에 붙일지 (총 = 양손, 한손 검 = 끔). 애님 인스턴스가 IK 알파로 사용
+	UFUNCTION(BlueprintPure, Category = "OEC|Weapon")
+	bool UsesLeftHandIK() const { return bUseLeftHandIK; }
+
+protected:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "OEC|Weapon|Sockets")
+	bool bUseLeftHandIK = true;
 };

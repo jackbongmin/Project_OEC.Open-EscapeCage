@@ -4,6 +4,7 @@
 #include "Anim/OecAnimInstance.h"
 #include "Actors/Characters/Player/OecPlayerCharacter.h"
 #include "Actors/Characters/OecCharacterBase.h"
+#include "Actors/Item/Weapon/OecWeaponBase.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 
@@ -45,6 +46,10 @@ void UOecAnimInstance::NativeUpdateAnimation(float InDeltaSeconds)
 		FRotator DeltaRot = AimRot - ActorRot;
 		DeltaRot.Normalize();
 		AimPitch = DeltaRot.Pitch;
-	
+
+		// 양손 무기만 왼손을 Grip에 붙임 (맨손·한손 검은 0)
+		const AOecWeaponBase* weapon = OwnerCharacter->GetCurrentWeapon();
+		const float targetIKAlpha = (weapon && weapon->UsesLeftHandIK()) ? 1.0f : 0.0f;
+		LeftHandIKAlpha = FMath::FInterpTo(LeftHandIKAlpha, targetIKAlpha, InDeltaSeconds, LeftHandIKBlendSpeed);
 	}
 }

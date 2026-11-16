@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Actors/Characters/OecCharacterBase.h"
 #include "Data/OecEnumType.h"
+#include "GameplayAbilitySpecHandle.h"
 #include "OecPlayerCharacter.generated.h"
 
 /**
@@ -124,6 +125,12 @@ public:
 
     UFUNCTION(BlueprintCallable, Category = "OEC|Weapon")
 	AOecWeaponBase* GetCurrentWeapon() const { return CurrentWeaponActor; }
+
+protected:
+    // 현재 무기가 부여한 어빌리티 (무기를 바꾸면 회수)
+    TArray<FGameplayAbilitySpecHandle> WeaponAbilityHandles;
+
+    void ClearWeaponAbilities();
 
 protected:
     UPROPERTY()

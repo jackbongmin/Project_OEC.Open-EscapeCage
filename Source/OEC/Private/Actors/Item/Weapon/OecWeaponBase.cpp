@@ -30,7 +30,16 @@ void AOecWeaponBase::Equip(AOecPlayerCharacter* InOwnerCharacter, FName InSocket
 		return;
 	}
 	OwnerCharacter = InOwnerCharacter;
-	AttachToComponent(OwnerCharacter->GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, InSocketName);
+
+	// 소켓 이름을 안 넘기면 무기에 지정된 장착 소켓 사용
+	const FName socketName = InSocketName.IsNone() ? EquipSocketName : InSocketName;
+	if (!OwnerCharacter->GetMesh()->DoesSocketExist(socketName))
+	{
+		UE_LOG(LogTemp, Error, TEXT("[%s] 플레이어 메시(%s)에 소켓 [%s]이 없습니다. 메시 원점에 붙습니다"),
+			*GetName(), *GetNameSafe(OwnerCharacter->GetMesh()->GetSkeletalMeshAsset()), *socketName.ToString());
+	}
+
+	AttachToComponent(OwnerCharacter->GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, socketName);
 }
 
 void AOecWeaponBase::Unequip()

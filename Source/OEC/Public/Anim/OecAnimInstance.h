@@ -42,6 +42,13 @@ protected:
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Anim")
 	float AimPitch;
-	
+
+	// 왼손 Grip IK 세기 (0~1). Two Bone IK 노드의 Alpha에 연결. 무기를 바꾸면 부드럽게 전환
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Anim")
+	float LeftHandIKAlpha = 0.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Anim")
+	float LeftHandIKBlendSpeed = 10.0f;
+
 
 };
