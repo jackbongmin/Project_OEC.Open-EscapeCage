@@ -37,6 +37,16 @@ void UOecGameDataSubsystem::CacheAllData()
 	CacheDataTable<FMonsterStaticData>(settings->MonsterDataTable, CachedMonsterData, TEXT("MonsterData"));
 	CacheDataTable<FSanityStaticData>(settings->SanityDataTable, CachedSanityData, TEXT("SanityData"));
 
+	// 아이템은 행 이름으로 찾으므로, 행 이름과 ItemCode 칸이 다르면 경고 (예: 행 이름 NewRow, ItemCode Weapon_FireAxe)
+	for (const TPair<FName, FItemStaticData>& itemPair : CachedItemData)
+	{
+		if (itemPair.Value.ItemCode != itemPair.Key)
+		{
+			UE_LOG(LogTemp, Error, TEXT("[ItemData] 행 이름 [%s]과 ItemCode [%s]가 다릅니다. 아이템은 행 이름으로 찾으니 행 이름을 ItemCode와 같게 바꾸세요"),
+				*itemPair.Key.ToString(), *itemPair.Value.ItemCode.ToString());
+		}
+	}
+
 }
 
 const FQuestionStaticData* UOecGameDataSubsystem::GetQuestionData(FName QuestionID) const

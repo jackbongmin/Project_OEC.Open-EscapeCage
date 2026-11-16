@@ -3,6 +3,7 @@
 
 #include "Actors/Interactable/Item/OecItemPickupBase.h"
 #include "Subsystems/OecInventorySubsystem.h"
+#include "Subsystems/OecGameDataSubsystem.h"
 
 AOecItemPickupBase::AOecItemPickupBase()
 {
@@ -28,6 +29,14 @@ void AOecItemPickupBase::Interact_Implementation(AActor* InInteractor)
 
 	UOecInventorySubsystem* invenSub = GetGameInstance()->GetSubsystem<UOecInventorySubsystem>();
 	if (!invenSub) return;
+
+	// 데이터 테이블에 없는 코드면 인벤토리 가득 참과 구분해서 알림
+	const UOecGameDataSubsystem* dataSub = GetGameInstance()->GetSubsystem<UOecGameDataSubsystem>();
+	if (!dataSub || !dataSub->GetItemData(ItemCode))
+	{
+		UE_LOG(LogTemp, Error, TEXT("[%s] 아이템 데이터 테이블에 [%s] 행이 없습니다. 행 이름(Row Name)이 아이템 코드와 같은지 확인하세요"), *GetName(), *ItemCode.ToString());
+		return;
+	}
 
 	bool bSuccess = invenSub->TryAddItem(ItemCode, Quantity);
 
