@@ -11,6 +11,7 @@
 | 01_Design | [DesignReview.md](01_Design/DesignReview.md) | 초기 기획의 부족한 점과 개선 제안 |
 | 02_Tech | [Roadmap.md](02_Tech/Roadmap.md) | 개발 순서 (마일스톤 M0~M5) |
 | 02_Tech | [ChoiceSystem.md](02_Tech/ChoiceSystem.md) | 선택지 효과 시스템 설계, 치트 커맨드, 에디터 연결 가이드 (M1) |
+| 02_Tech | [InteractionAndMelee.md](02_Tech/InteractionAndMelee.md) | 상호작용(E키) 범위 콜리전 + 시선 선택, 근접 무기 구조와 에디터 연결 |
 | 02_Tech | [ImplementationStatus.md](02_Tech/ImplementationStatus.md) | 기획 대비 현재 구현 상태, 알려진 버그 |
 | 02_Tech | [OptimizationBacklog.md](02_Tech/OptimizationBacklog.md) | 최적화·개발 효율용 추가 기능 목록 |
 | 02_Tech | [UnrealWorkflow.md](02_Tech/UnrealWorkflow.md) | Claude와 언리얼 에디터 연동 방법 |

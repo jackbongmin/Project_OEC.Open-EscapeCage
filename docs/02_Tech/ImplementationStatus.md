@@ -1,6 +1,6 @@
 # 구현 현황 (기획 대비)
 
-기준: `develop` 브랜치, 마지막 커밋 `1c8d27d <feat> Monster Attack, Die 구현` (2026-04-13)
+기준: `develop` 브랜치, 2026-11-16 (전구 점등 액터, 몬스터 사망 시 시야 정리까지)
 코드 규모: C++ 약 6,000줄 (`Source/OEC`)
 
 상태 표기: ✅ 완료 · ⚠️ 일부 · ❌ 미구현
@@ -10,13 +10,13 @@
 | GDD 항목 | 상태 | 관련 코드 | 비고 |
 |---|---|---|---|
 | 1인칭 이동, 달리기, 점프, 스태미나 | ✅ | `OecPlayerCharacter` | |
-| E 상호작용 | ✅ | `OecInteractionComponent`, `OecInteractableBase` | |
+| E 상호작용 | ✅ (에디터 확인 대기) | `OecInteractionComponent`, `OecInteractRangeComponent`, `OecInteractableBase` | 범위 콜리전으로 후보, 시선 각도로 선택. 후보가 있을 때만 Tick ([InteractionAndMelee.md](InteractionAndMelee.md)) |
 | 단말기 질문 표시 (가중치 랜덤, 중복 방지) | ✅ | `OecTerminalBase`, `OecTerminalWidget` | |
 | 빨강/파랑 물리 버튼 | ✅ | `OecQuestionButton` | |
 | 질문 결과 → 실제 효과 | ✅ | `Choice/OecChoiceSubsystem`, `Choice/Effects/*` | 효과 10종, 확률 결과, 지속 효과, 문구 자동 생성. 에디터 동작 확인 완료. [ChoiceSystem.md](ChoiceSystem.md) |
 | 천장 스폰구·투하구 | ✅ | `Actors/Room/OecChoiceSpawnPoint`, `OecSpawnPointSubsystem` | |
 | 환경 효과 (방 어두워짐) | ✅ (에디터 확인 대기) | `Actors/Room/OecRoomEnvironmentActor` | 지정한 조명 밝기를 배율로 낮췄다가 복구 (C++) |
-| 페이즈 1 전구 점등 | ❌ | | 다음 작업 ([Roadmap](Roadmap.md)) |
+| 페이즈 1 전구 점등 | ✅ | `Actors/Room/OecStackIndicator`, `OecStackBulb`, `Interfaces/OecStackDisplayInterface` | `OnStackChanged` 구독, 전구별 `StackOrder`(1~5)로 자동 정렬, 바뀐 칸만 켜고 끔. 꺼짐/켜짐 머티리얼 교체 + 포인트 라이트 |
 | 치트 커맨드 | ✅ | `Core/OecCheatManager` | |
 | 스택(전구) | ⚠️ | `OecEventSubsystem`, `OecStageManagerSubsystem` | **두 곳에 따로 존재** (아래 버그 1) |
 | 페이즈 전환 | ⚠️ | `OecStageManagerSubsystem::ChangePhase` | 델리게이트만 있고 실제 연출·문 개방 연결 없음 (블루프린트 미확인) |
@@ -25,12 +25,12 @@
 | 에어락 → 복도 2 이동 | ❌ | | GDD 5.4 신규 |
 | 미니맵에서 방 선택 | ❌ | | |
 | 원거리 무기 (권총, 라이플 N/R/SR) | ✅ | `OecRangedWeapon`, `OecGA_WeaponFire`, `OecGA_WeaponReload` | 반동, 줌, VFX 포함 |
-| 근접 무기 | ❌ | `OecMeleeWeapon` | 함수 껍데기만 있음 |
+| 근접 무기 | ✅ (에디터 연결 대기) | `OecMeleeWeapon`, `OecGA_MeleeAttack` | 몽타주 노티파이 순간 카메라 앞 구체 스윕, 벽 너머 제외. 무기 교체 시 이전 무기 어빌리티 회수 ([InteractionAndMelee.md](InteractionAndMelee.md)) |
 | 샷건 | ❌ | | |
 | 인벤토리 20칸, 퀵슬롯 5칸 | ✅ | `OecInventorySubsystem`, `OecQuickSlotSubsystem` | 아이템 설명창 TODO |
 | 소모품 사용 (체력 회복) | ✅ | `OecGA_UseItem` | 정신력·이속 아이템 없음 |
 | 몬스터 AI (시야, BT, 공격, 사망) | ✅ | `OecAIController`, `OecMonsterBase`, `OecGA_MonsterAttack` | 골렘 N/R/SR |
-| 풀링 | ✅ | `OecPoolingSubsystem` | 몬스터에 적용 |
+| 풀링 | ✅ | `OecPoolingSubsystem` | 몬스터에 적용. 사망·반납 시 AI 시야·BT·어빌리티·이동 정지, 중복 반납 방지 ([TS-003](../03_Troubleshooting/TS-003_몬스터_사망_후_시야_유지.md)) |
 | 정신력 수치와 UI 바 | ⚠️ | `OecPlayerAttributeSet`, `OecStatPanelWidget` | 시작값 80, MaxSanity 100, 0~Max 클램프 추가 (M1). 답변·피격 감소와 단계 효과는 M2 |
 | 정신력 5단계 효과 | ❌ | `FSanityStaticData` | 구조체만 존재 |
 | AnswerCount | ❌ | | TODO |
@@ -61,7 +61,7 @@
 3. **AttackPower 의미 불일치**: MMC는 퍼센트 보너스, 몬스터 공격은 고정 피해로 사용 ([DesignReview 2.13](../01_Design/DesignReview.md)).
 4. ~~**플레이어 체력 시작값 50**~~ → **해결 (2026-11-14)**: 덮어쓰기 코드 제거, 기본값 100 사용.
 5. **`MonsterBase::BeginPlay`의 중복 초기화**: 체력 100 설정 후 데이터로 다시 덮어쓰고, else 분기에서 또 100 설정.
-6. **Tick 남용**: 단말기는 Tick이 필요 없는데 켜져 있다. AI 컨트롤러는 매 프레임 디버그 원뿔을 그린다.
+6. **Tick 남용**: 단말기는 Tick이 필요 없는데 켜져 있다. AI 컨트롤러 디버그 원뿔은 `bDrawSightDebug`로 끌 수 있게 했고, 죽은 몬스터는 Tick이 꺼진다 (2026-11-16). 출시 전 기본값을 false로 바꾼다.
 7. ~~**게임플레이 태그 문자열 조회**~~ → **해결 (2026-11-14)**: `OecGameplayTags` 네임스페이스의 네이티브 태그로 교체 (8곳). `DefaultGameplayTags.ini`의 태그 10개도 네이티브로 이전.
 8. **데이터 테이블 하드 레퍼런스**: `FItemStaticData`의 `UTexture2D*`, `UAnimMontage*`, `FMonsterStaticData`의 몽타주가 하드 레퍼런스라, 데이터 테이블을 로드하는 순간 모든 아이콘과 몽타주가 메모리에 올라간다.
 9. **로그 과다**: `LogTemp` + 이모지 로그가 발사·피격마다 출력된다. 전용 로그 카테고리로 분리 필요.

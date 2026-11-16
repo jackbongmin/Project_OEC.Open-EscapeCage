@@ -2,11 +2,25 @@
 
 원칙: **기능을 먼저 완성하고, 질문지는 마지막에 한 번에 작성한다.** 그 전까지는 테스트용 질문 몇 개로 돌린다.
 
-## ▶ 다음 작업 (2026-11-14 기준)
-1. **에디터 다시 빌드 후 방 어두워짐 확인**: `OecRoomEnvironmentActor`의 Darken Lights에 방 조명 지정 → `OecRunEffect Effect.Env.Darken 2`로 확인 ([ChoiceSystem.md 6.4](ChoiceSystem.md))
-2. **전구 점등 액터 (M2 첫 작업)**: `StageManager::OnStackChanged`를 구독해 스택 수만큼 전구를 켜는 C++ 액터. 맵에서 전구 5개를 순서대로 지정만 하면 되게 만든다.
-   - 시작 전 확인할 것: 메인 화면 옆 전구가 **라이트 / 스태틱 메시 / UI 위젯** 중 무엇인지
-3. 데이터 구조체 초기화 에러 15건 정리 ([ImplementationStatus 버그 12](ImplementationStatus.md))
+## ▶ 다음 작업 (2026-11-16 기준)
+1. **에디터에서 방 어두워짐 확인**: `OecRoomEnvironmentActor`의 Darken Lights에 방 조명 지정 → `OecRunEffect Effect.Env.Darken 2`로 확인 ([ChoiceSystem.md 6.4](ChoiceSystem.md))
+2. **상호작용 개편 확인**: 범위 콜리전 + 시선 선택 ([InteractionAndMelee.md 1.3](InteractionAndMelee.md))
+3. **근접 무기 에디터 연결**: 검 블루프린트, GA, 데이터 테이블 행, 몽타주 노티파이 ([InteractionAndMelee.md 2.3](InteractionAndMelee.md))
+4. **몬스터 사망 시 시야 꺼짐 확인**: `OecSpawnMonster Golem_N 1` → 사살 → 원뿔이 바로 사라지는지, 7초 뒤 반납 후 다시 소환했을 때 원뿔·추적이 정상인지 ([TS-003](../03_Troubleshooting/TS-003_몬스터_사망_후_시야_유지.md))
+5. 데이터 구조체 초기화 에러 15건 정리 ([ImplementationStatus 버그 12](ImplementationStatus.md))
+
+### M2 전구 에디터 연결
+구조: `AOecStackIndicator`(스택 구독, 몇 칸 켤지 결정) → `IOecStackDisplayInterface` → `AOecStackBulb`(머티리얼 교체 + 포인트 라이트).
+1. 콘텐츠 브라우저에서 `OecStackBulb`를 부모로 블루프린트 `BP_StackBulb` 생성 → `BulbMesh`의 스태틱 메시 (Static Mesh)에 `SM_Lamp_0X` 지정.
+2. `BP_StackBulb` 디테일 (Details) 패널 `OEC|Stack|Material`
+   - `Unlit Material`(꺼짐): `MI_Atlas_Grey`
+   - `Lit Material`(켜짐): `MI_Atlas_Grey_E_01`
+   - 위치: `Low_Poly_Sci-Fi_Corridor/Materials/Alternate/Grey/`
+   - `Material Slot Index`: 바꿀 슬롯 번호 (기본 0, `-1`이면 모든 슬롯)
+3. 메인 방에 `BP_StackBulb` 5개 배치 → 각 전구의 `Stack Order`에 **1~5** 지정. 뷰포트에 번호가 떠서 배치 순서를 바로 볼 수 있다 (미지정은 빨간 "순번 미지정", 게임에서는 안 보임).
+   - 밝기·반경·색은 각 인스턴스의 `BulbLight`에서 조절. `Preview Lit In Editor`를 켜면 에디터에서 켜진 모습을 볼 수 있다.
+4. `OecStackIndicator` 1개 배치. 기본값(`Auto Collect Displays` 켜짐)이면 맵의 전구를 `Stack Order` 순으로 자동으로 모으므로 따로 지정할 것이 없다. 순번 누락·중복은 출력 로그 (Output Log)에 경고로 나온다.
+5. 확인: `OecAddStack 1`을 반복 → 한 칸씩 켜지고, 5개째에 페이즈 2 전환·메인 문 개방. 소리·깜빡임은 `BP_StackBulb`의 `BP_OnLitChanged`(In Play Effect가 true일 때)에서 추가.
 
 ---
 
@@ -32,7 +46,10 @@
 - [ ] 방 어두워짐 C++ 버전 에디터 확인 (다음 작업 1)
 
 ## M2. 페이즈 1 완성 → 첫 플레이 테스트
-- [ ] 전구 5개 점등 액터와 스택 연동 (다음 작업 2)
+- [x] 전구 점등 액터와 스택 연동 C++ (`AOecStackIndicator`, `AOecStackBulb`, `IOecStackDisplayInterface`)
+- [x] 전구 에디터 배치와 동작 확인 (사용자 확인, 2026-11-16)
+- [x] 상호작용 개편 C++: 범위 콜리전 후보 + 시선 선택 ([InteractionAndMelee.md](InteractionAndMelee.md)) — 에디터 확인 대기
+- [x] 몬스터 사망·풀 반납 시 AI 시야·BT 정지, 풀링 연결 정리 ([TS-003](../03_Troubleshooting/TS-003_몬스터_사망_후_시야_유지.md)) — 에디터 확인 대기
 - [ ] 스택 보정 (N번 연속 실패 시 스택 선택지 보장)
 - [ ] 5개 점등 → 메인 방 문 개방 → "축하합니다, 탈출입니다" → 복도 공개 → 조롱 문구 연출
 - [ ] 정신력 감소 (답변 -2, 피격 30당 -5)
@@ -48,7 +65,8 @@
 ## M4. 엔딩과 연출
 - [ ] 노말·진·사망·붕괴 엔딩
 - [ ] WARDEN 대사, 글리치·픽셀 포스트 프로세스
-- [ ] 근접 무기
+- [x] 근접 무기 C++ (`AOecMeleeWeapon`, `UOecGA_MeleeAttack`, 카메라 스윕 판정) — 에디터 연결 대기 ([InteractionAndMelee.md](InteractionAndMelee.md))
+- [ ] 근접 콤보, 막기
 
 ## M5. 질문지 일괄 작성 + 밸런싱
 - [ ] 무의미(밈) 질문, 스토리 질문 작성
