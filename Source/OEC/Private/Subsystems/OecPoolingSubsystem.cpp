@@ -11,12 +11,11 @@ AActor* UOecPoolingSubsystem::SpawnPooledActor(TSubclassOf<AActor> InClassToSpaw
 	}
 
 	AActor* PooledActor = nullptr;
-	TArray<AActor*>* PoolStack = ActorPool.Find(InClassToSpawn);
-	if (PoolStack && PoolStack->Num() > 0)
+	if (FOecActorPoolList* PoolList = ActorPool.Find(InClassToSpawn))
 	{
-		while (PoolStack->Num() > 0)
+		while (PoolList->Actors.Num() > 0)
 		{
-			PooledActor = PoolStack->Pop();
+			PooledActor = PoolList->Actors.Pop();
 			if (IsValid(PooledActor))
 			{
 				break;
@@ -34,14 +33,15 @@ AActor* UOecPoolingSubsystem::SpawnPooledActor(TSubclassOf<AActor> InClassToSpaw
 
 	if (PooledActor)
 	{
-		PooledActor->SetActorTransform(InSpawnTransform);
+		// 숨겨둔 위치에서 순간이동 (물리 속도가 이어지지 않게)
+		PooledActor->SetActorTransform(InSpawnTransform, false, nullptr, ETeleportType::TeleportPhysics);
+
+		ActiveActors.Add(PooledActor);
 
 		if (PooledActor->Implements<UOecPoolableInterface>())
 		{
 			IOecPoolableInterface::Execute_OnPoolActivate(PooledActor);
 		}
-
-		ActiveActors.Add(PooledActor);
 	}
 
 	return PooledActor;
@@ -54,16 +54,9 @@ void UOecPoolingSubsystem::ReturnToPool(AActor* InActorToReturn)
 		return;
 	}
 
+	// 맵에 직접 배치한 액터는 ActiveActors에 없지만, 반납되면 그대로 풀에 넣어 재사용한다
 	ActiveActors.Remove(InActorToReturn);
-
-	if (InActorToReturn->Implements<UOecPoolableInterface>())
-	{
-		IOecPoolableInterface::Execute_OnPoolDeactivate(InActorToReturn);
-	}
-
-	UClass* ActorClass = InActorToReturn->GetClass();
-	TArray<AActor*>& PoolStack = ActorPool.FindOrAdd(ActorClass);
-	PoolStack.Add(InActorToReturn);
+	DeactivateAndStore(InActorToReturn);
 }
 
 void UOecPoolingSubsystem::InitializePool(TSubclassOf<AActor> InClassToInit, int32 InCount)
@@ -84,7 +77,7 @@ void UOecPoolingSubsystem::InitializePool(TSubclassOf<AActor> InClassToInit, int
 
 void UOecPoolingSubsystem::ReturnAllActiveActors()
 {
-	TArray<AActor*> ActorsToReturn = ActiveActors.Array();
+	TArray<TObjectPtr<AActor>> ActorsToReturn = ActiveActors.Array();
 
 	ActiveActors.Empty();
 
@@ -92,12 +85,7 @@ void UOecPoolingSubsystem::ReturnAllActiveActors()
 	{
 		if (IsValid(Actor))
 		{
-			if (Actor->Implements<UOecPoolableInterface>())
-			{
-				IOecPoolableInterface::Execute_OnPoolDeactivate(Actor);
-			}
-			UClass* ActorClass = Actor->GetClass();
-			ActorPool.FindOrAdd(ActorClass).Push(Actor);
+			DeactivateAndStore(Actor);
 		}
 	}
 }
@@ -108,8 +96,7 @@ void UOecPoolingSubsystem::ClearAllPools()
 
 	for (auto& PoolPair : ActorPool)
 	{
-		TArray<AActor*>& PoolStack = PoolPair.Value;
-		for (AActor* PooledActor : PoolStack)
+		for (AActor* PooledActor : PoolPair.Value.Actors)
 		{
 			if (IsValid(PooledActor))
 			{
@@ -120,4 +107,23 @@ void UOecPoolingSubsystem::ClearAllPools()
 
 	ActorPool.Empty();
 	ActiveActors.Empty();
+}
+
+void UOecPoolingSubsystem::DeactivateAndStore(AActor* InActor)
+{
+	FOecActorPoolList& PoolList = ActorPool.FindOrAdd(InActor->GetClass());
+
+	// 같은 액터를 두 번 반납하면 나중에 한 액터가 두 곳에 동시에 소환됨
+	if (PoolList.Actors.Contains(InActor))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[Pooling] 이미 풀에 있는 액터를 다시 반납했습니다: %s"), *InActor->GetName());
+		return;
+	}
+
+	if (InActor->Implements<UOecPoolableInterface>())
+	{
+		IOecPoolableInterface::Execute_OnPoolDeactivate(InActor);
+	}
+
+	PoolList.Actors.Add(InActor);
 }

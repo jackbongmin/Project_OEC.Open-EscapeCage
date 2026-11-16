@@ -16,8 +16,7 @@
 #include "GAS/Ability/OecGameplayAbility.h"
 
 #include "Subsystems/OecPoolingSubsystem.h"
-#include "AIController.h"
-#include "BrainComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 AOecMonsterBase::AOecMonsterBase()
 {
@@ -39,6 +38,8 @@ AOecMonsterBase::AOecMonsterBase()
 
 void AOecMonsterBase::OnPoolActivate_Implementation()
 {
+	GetWorldTimerManager().ClearTimer(DeathTimerHandle);
+
 	SetActorHiddenInGame(false);
 	SetActorEnableCollision(true);
 	SetActorTickEnabled(true);
@@ -48,12 +49,13 @@ void AOecMonsterBase::OnPoolActivate_Implementation()
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 
-	if (AAIController* aiController = Cast<AAIController>(GetController()))
+	// 사망 몽타주가 남아 있으면 정리
+	StopAnimMontage();
+
+	if (UCharacterMovementComponent* movement = GetCharacterMovement())
 	{
-		if (UBrainComponent* brain = aiController->GetBrainComponent())
-		{
-			brain->RestartLogic();
-		}
+		movement->SetComponentTickEnabled(true);
+		movement->SetMovementMode(MOVE_Walking);
 	}
 
 	if (AbilitySystemComponent)
@@ -62,14 +64,34 @@ void AOecMonsterBase::OnPoolActivate_Implementation()
 		AbilitySystemComponent->SetNumericAttributeBase(UOecAttributeSetBase::GetHealthAttribute(), maxHealth);
 	}
 
+	// AI 컨트롤러가 구독해서 시야와 BT를 다시 켬
+	SetMonsterActive(true);
+
 	UE_LOG(LogTemp, Log, TEXT("✨ 몬스터 부활! (풀링 활성화)"));
 }
 
 void AOecMonsterBase::OnPoolDeactivate_Implementation()
 {
+	// 살아 있는 채로 반납될 수도 있음 (ReturnAllActiveActors)
+	SetMonsterActive(false);
+
+	GetWorldTimerManager().ClearTimer(DeathTimerHandle);
+
+	if (AbilitySystemComponent)
+	{
+		AbilitySystemComponent->CancelAllAbilities();
+	}
+
 	SetActorHiddenInGame(true);
 	SetActorEnableCollision(false);
 	SetActorTickEnabled(false);
+
+	if (UCharacterMovementComponent* movement = GetCharacterMovement())
+	{
+		movement->StopMovementImmediately();
+		movement->DisableMovement();
+		movement->SetComponentTickEnabled(false);
+	}
 
 	StopAnimMontage();
 }
@@ -137,13 +159,21 @@ void AOecMonsterBase::Die()
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
-	if (AAIController* aiController = Cast<AAIController>(GetController()))
+	// 진행 중인 공격 등 어빌리티 중단
+	if (AbilitySystemComponent)
 	{
-		if (UBrainComponent* brain = aiController->GetBrainComponent())
-		{
-			brain->StopLogic("Monster Died");
-		}
+		AbilitySystemComponent->CancelAllAbilities();
 	}
+
+	if (UCharacterMovementComponent* movement = GetCharacterMovement())
+	{
+		movement->StopMovementImmediately();
+		movement->DisableMovement();
+	}
+
+	// AI 컨트롤러가 구독해서 시야·BT·디버그 시야 표시를 끔
+	SetMonsterActive(false);
+	OnMonsterDied.Broadcast(this);
 
 	UOecGameDataSubsystem* dataSub = GetGameInstance()->GetSubsystem<UOecGameDataSubsystem>();
 	if (dataSub)
@@ -169,4 +199,12 @@ void AOecMonsterBase::ReturnToPoolTimer()
 		poolSub->ReturnToPool(this);
 		UE_LOG(LogTemp, Log, TEXT("♻️ 몬스터 시체 풀링 반납 완료."));
 	}
+}
+
+void AOecMonsterBase::SetMonsterActive(bool bInActive)
+{
+	if (bIsMonsterActive == bInActive) return;
+
+	bIsMonsterActive = bInActive;
+	OnMonsterActiveChanged.Broadcast(this, bInActive);
 }
