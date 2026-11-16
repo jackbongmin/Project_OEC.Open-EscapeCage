@@ -25,6 +25,7 @@ public:
     void SetDoorLocked(bool bInLocked);
 
 	virtual void Interact_Implementation(AActor* InInteractor) override;
+	virtual bool CanInteract_Implementation(AActor* InInteractor) const override;
 
 protected:
 	virtual void BeginPlay() override;

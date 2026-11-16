@@ -9,6 +9,7 @@
 
 class UGameplayEffect;
 class AOecItemPickupBase;
+class UUserWidget;
 
 /**
  * 프로젝트 설정 > Game > OEC Game Data Settings
@@ -60,5 +61,12 @@ public:
     // 아이템 데이터에 픽업 액터가 없을 때 쓰는 기본 픽업
     UPROPERTY(Config, EditAnywhere, Category = "Choice")
     TSoftClassPtr<AOecItemPickupBase> DefaultPickupClass;
+
+    /* ==========================================
+           상호작용
+        ========================================== */
+    // 상호작용 대상의 "E" 표시 위젯 기본값 (블루프린트에서 위젯 클래스를 비워두면 이걸 사용)
+    UPROPERTY(Config, EditAnywhere, Category = "Interaction")
+    TSoftClassPtr<UUserWidget> DefaultInteractPromptWidget;
 
 };

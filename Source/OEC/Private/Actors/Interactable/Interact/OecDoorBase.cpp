@@ -59,6 +59,12 @@ void AOecDoorBase::SetDoorLocked(bool bInLocked)
     }
 }
 
+bool AOecDoorBase::CanInteract_Implementation(AActor* InInteractor) const
+{
+    // 열린 문은 E 대상에서 빠짐 (잠긴 문은 잠김 안내를 위해 대상으로 둠)
+    return !bIsOpen && Super::CanInteract_Implementation(InInteractor);
+}
+
 void AOecDoorBase::Interact_Implementation(AActor* InInteractor)
 {
     Super::Interact_Implementation(InInteractor);
