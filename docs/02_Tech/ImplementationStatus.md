@@ -12,6 +12,7 @@
 | 1인칭 이동, 달리기, 점프, 스태미나 | ✅ | `OecPlayerCharacter` | |
 | E 상호작용 | ✅ (에디터 확인 대기) | `OecInteractionComponent`, `OecInteractRangeComponent`, `OecInteractableBase` | 범위 콜리전으로 후보, 시선 각도로 선택. 후보가 있을 때만 Tick ([InteractionAndMelee.md](InteractionAndMelee.md)) |
 | 단말기 질문 표시 (가중치 랜덤, 중복 방지) | ✅ | `OecTerminalBase`, `OecTerminalWidget` | |
+| 질문 출제 규칙 (비활성, 페이즈 제한, 튜토리얼 순서, 연쇄, 스택 보정, 연속 제한) | 🔧 | `Question/OecQuestionSubsystem`, `Question/Filters/*`, `Question/Selectors/*` | 빌드 확인, 에디터 플레이 미확인 (2026-11-17). [QuestionSystem.md](QuestionSystem.md) |
 | 빨강/파랑 물리 버튼 | ✅ | `OecQuestionButton` | |
 | 질문 결과 → 실제 효과 | ✅ | `Choice/OecChoiceSubsystem`, `Choice/Effects/*` | 효과 10종, 확률 결과, 지속 효과, 문구 자동 생성. 에디터 동작 확인 완료. [ChoiceSystem.md](ChoiceSystem.md) |
 | 천장 스폰구·투하구 | ✅ | `Actors/Room/OecChoiceSpawnPoint`, `OecSpawnPointSubsystem` | |

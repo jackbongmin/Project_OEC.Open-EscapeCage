@@ -15,6 +15,7 @@
 | `Subsystems/` | 전역 상태와 시스템 (게임 인스턴스 / 월드) | `UOecInventorySubsystem` |
 | `GAS/` | 어빌리티, 이펙트, 어트리뷰트, 태그 | `UOecGA_WeaponFire`, `OecGameplayTags` |
 | `Choice/` | 선택지 효과 시스템 (서브시스템 + `Effects/` 실행기) | `UOecChoiceSubsystem`, `UOecChoiceEffect_Stack` |
+| `Question/` | 질문 출제 시스템 (서브시스템 + `Filters/` 필터 + `Selectors/` 선택기) | `UOecQuestionSubsystem`, `UOecQuestionFilter_Phase` |
 | `Actors/` | 월드에 배치되는 액터 (기능별 하위 폴더) | `Actors/Interactable/`, `Actors/Item/Weapon/`, `Actors/Room/` |
 | `Components/` | 액터에 붙이는 재사용 기능 | `UOecInteractionComponent` |
 | `Interfaces/` | 클래스 간 계약 | `IOecInteractableInterface`, `IOecPoolableInterface` |
