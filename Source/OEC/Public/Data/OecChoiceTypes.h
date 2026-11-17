@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
+#include "Data/OecEnumType.h"
 #include "OecChoiceTypes.generated.h"
 
 class AActor;
@@ -72,6 +73,10 @@ public:
 	// 비어 있으면 아무 효과 없는 선택지 (무의미 질문)
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<FOecChoiceOutcome> Outcomes;
+
+	// 스토리 성향 (스토리 질문과 떡밥 질문에서만 지정)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	EOecStoryTag StoryTag = EOecStoryTag::None;
 };
 
 /** 선택 기록 (엔딩 판정, 통계용) */
@@ -90,6 +95,13 @@ public:
 	// 뽑힌 결과 번호 (결과가 없는 선택지면 INDEX_NONE)
 	UPROPERTY(BlueprintReadOnly)
 	int32 OutcomeIndex = INDEX_NONE;
+
+	// 어느 버튼으로 답했는지
+	UPROPERTY(BlueprintReadOnly)
+	EOecChoiceButton Button = EOecChoiceButton::None;
+
+	UPROPERTY(BlueprintReadOnly)
+	EOecStoryTag StoryTag = EOecStoryTag::None;
 };
 
 /** 답변 횟수 단위로 유지되는 효과 (지속 효과, 환경 효과) */

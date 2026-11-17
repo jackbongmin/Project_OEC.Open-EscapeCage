@@ -44,8 +44,16 @@ protected:
     UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "OEC|Data")
     UDataTable* QuestionDataTable;
 
+    // 타입별 출제 가중치 (페이즈 1, 그리고 아래 페이즈 2 가중치를 비워 뒀을 때)
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "OEC|Data")
     TMap<EQuestionType, float> QuestionTypeWeights;
+
+    // 페이즈 2 가중치. 비워 두면 위 가중치를 그대로 쓴다
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "OEC|Data")
+    TMap<EQuestionType, float> Phase2QuestionTypeWeights;
+
+    // 현재 페이즈에 맞는 가중치
+    const TMap<EQuestionType, float>& GetCurrentTypeWeights() const;
 
 public:	
 	virtual void Tick(float DeltaTime) override;

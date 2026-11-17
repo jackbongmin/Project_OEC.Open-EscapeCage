@@ -32,7 +32,7 @@ public:
 
 	// 버튼 선택 처리 (질문 사용 처리 → 지속 효과 진행 → 결과 뽑기 → 효과 실행 → 기록)
 	UFUNCTION(BlueprintCallable, Category = "OEC|Choice")
-	void SubmitChoice(FName InQuestionID, const FOecChoiceData& InChoice, AActor* InInstigator);
+	void SubmitChoice(FName InQuestionID, const FOecChoiceData& InChoice, AActor* InInstigator, EOecChoiceButton InButton = EOecChoiceButton::None);
 
 	// 효과 하나를 바로 실행 (치트, 지속 효과에서 사용)
 	UFUNCTION(BlueprintCallable, Category = "OEC|Choice")

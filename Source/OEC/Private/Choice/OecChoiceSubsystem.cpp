@@ -69,7 +69,7 @@ FOecChoiceEffectContext UOecChoiceSubsystem::MakeContext(AActor* InInstigator)
 	return context;
 }
 
-void UOecChoiceSubsystem::SubmitChoice(FName InQuestionID, const FOecChoiceData& InChoice, AActor* InInstigator)
+void UOecChoiceSubsystem::SubmitChoice(FName InQuestionID, const FOecChoiceData& InChoice, AActor* InInstigator, EOecChoiceButton InButton)
 {
 	if (UOecEventSubsystem* eventSubsystem = GetGameInstance()->GetSubsystem<UOecEventSubsystem>())
 	{
@@ -95,6 +95,8 @@ void UOecChoiceSubsystem::SubmitChoice(FName InQuestionID, const FOecChoiceData&
 	record.QuestionID = InQuestionID;
 	record.ChoiceText = BuildChoiceText(InChoice);
 	record.OutcomeIndex = outcomeIndex;
+	record.Button = InButton;
+	record.StoryTag = InChoice.StoryTag;
 	ChoiceHistory.Add(record);
 
 	UE_LOG(LogTemp, Log, TEXT("질문 [%s] 선택: %s → 결과 %d (누적 선택 %d회)"), *InQuestionID.ToString(), *record.ChoiceText, outcomeIndex, ChoiceHistory.Num());

@@ -17,10 +17,11 @@ void AOecQuestionButton::Interact_Implementation(AActor* InInteractor)
     }
 }
 
-void AOecQuestionButton::SetChoiceData(FName InQuestionID, const FOecChoiceData& InChoiceData)
+void AOecQuestionButton::SetChoiceData(FName InQuestionID, const FOecChoiceData& InChoiceData, EOecChoiceButton InButtonSide)
 {
     QuestionID = InQuestionID;
     ChoiceData = InChoiceData;
+    ButtonSide = InButtonSide;
 
     UE_LOG(LogTemp, Log, TEXT("[%s] 선택지 갱신 완료 (결과 %d개)"), *GetName(), ChoiceData.Outcomes.Num());
 }
@@ -40,6 +41,6 @@ void AOecQuestionButton::TriggerButtonEvent(AActor* InInteractor)
 
     if (UOecChoiceSubsystem* choiceSubsystem = GetGameInstance()->GetSubsystem<UOecChoiceSubsystem>())
     {
-        choiceSubsystem->SubmitChoice(QuestionID, ChoiceData, InInteractor);
+        choiceSubsystem->SubmitChoice(QuestionID, ChoiceData, InInteractor, ButtonSide);
     }
 }

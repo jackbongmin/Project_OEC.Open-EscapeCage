@@ -19,6 +19,7 @@ class UOecChoiceSubsystem;
  *   OecGiveItem Heal30
  *   OecRunEffect Effect.Passive.AnswerStackChance 0.5
  *   OecShowState
+ *   OecStartNewRun
  */
 UCLASS()
 class OEC_API UOecCheatManager : public UCheatManager
@@ -51,9 +52,13 @@ public:
 	UFUNCTION(Exec)
 	void OecRunEffect(const FString& InEffectTagName, float InValue = 0.0f, FName InParam = NAME_None);
 
-	// 페이즈, 스택, 정신력, 지속 효과 상태를 로그로 출력
+	// 페이즈, 스택, 정신력, 지속 효과, 질문 출제 상태를 로그로 출력
 	UFUNCTION(Exec)
 	void OecShowState();
+
+	// 새 회차 시작 (튜토리얼·스토리 질문이 다시 나오고 회차 수가 1 오름)
+	UFUNCTION(Exec)
+	void OecStartNewRun();
 
 private:
 	void RunEffect(const FGameplayTag& InEffectTag, float InValue, FName InParam);

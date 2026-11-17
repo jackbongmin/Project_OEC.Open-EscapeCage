@@ -3,6 +3,7 @@
 
 #include "Core/OecCheatManager.h"
 #include "Choice/OecChoiceSubsystem.h"
+#include "Question/OecQuestionSubsystem.h"
 #include "Subsystems/OecStageManagerSubsystem.h"
 #include "Subsystems/OecEventSubsystem.h"
 #include "GAS/OecGameplayTags.h"
@@ -95,6 +96,22 @@ void UOecCheatManager::OecShowState()
 		{
 			UE_LOG(LogTemp, Warning, TEXT("[State]   - %s (값 %g, 남은 답변 %d)"), *modifier.EffectTag.ToString(), modifier.Value, modifier.RemainingAnswers);
 		}
+	}
+
+	if (const UOecQuestionSubsystem* questionSubsystem = gameInstance->GetSubsystem<UOecQuestionSubsystem>())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[State] %d회차 | 스택 없이 연속 답변 %d회 | 스토리 인정 %d / 부정 %d / 회피 %d"),
+			questionSubsystem->GetRunCount(), questionSubsystem->GetAnswersWithoutStack(),
+			questionSubsystem->GetStoryTagCount(EOecStoryTag::Admit), questionSubsystem->GetStoryTagCount(EOecStoryTag::Deny), questionSubsystem->GetStoryTagCount(EOecStoryTag::Avoid));
+	}
+}
+
+void UOecCheatManager::OecStartNewRun()
+{
+	if (UOecQuestionSubsystem* questionSubsystem = GetWorld()->GetGameInstance()->GetSubsystem<UOecQuestionSubsystem>())
+	{
+		questionSubsystem->StartNewRun();
+		UE_LOG(LogTemp, Warning, TEXT("[Cheat] %d회차 시작"), questionSubsystem->GetRunCount());
 	}
 }
 

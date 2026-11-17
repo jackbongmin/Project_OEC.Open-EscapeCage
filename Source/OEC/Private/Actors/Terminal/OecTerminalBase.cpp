@@ -8,7 +8,8 @@
 #include "UI/Ingame/OecTerminalWidget.h"
 #include "Data/OecDataStruct.h"
 
-#include "Subsystems/OecEventSubsystem.h"
+#include "Question/OecQuestionSubsystem.h"
+#include "Subsystems/OecStageManagerSubsystem.h"
 #include "Choice/OecChoiceSubsystem.h"
 
 // Sets default values
@@ -51,86 +52,17 @@ void AOecTerminalBase::InitializeTerminal()
         return;
     }
 
-    UOecEventSubsystem* eventSubsystem = GetGameInstance()->GetSubsystem<UOecEventSubsystem>();
-    if (!eventSubsystem) return;
+    // 어떤 질문을 낼지는 질문 서브시스템이 정한다 (필터와 선택기 규칙)
+    UOecQuestionSubsystem* questionSubsystem = GetGameInstance()->GetSubsystem<UOecQuestionSubsystem>();
+    if (!questionSubsystem) return;
 
-    // 타입별로 질문을 받을 준비
-    TMap<EQuestionType, TArray<FQuestionStaticData*>> categorizedQuestions;
-
-    // 데이터 테이블의 모든 행 데이터를 가져오기
-    TArray<FQuestionStaticData*> allRows;
-    QuestionDataTable->GetAllRows(TEXT("TerminalInit"), allRows);
-
-    if (allRows.Num() == 0) return;
-
-    TArray<FQuestionStaticData*> filteredRows;
-    for (FQuestionStaticData* row : allRows)
-    {
-        // 널 포인터 체크 & 서브시스템에 아직 안 쓴 질문인지 ID로 확인!
-        if (row && !eventSubsystem->IsQuestionUsed(row->QuestionID))
-        {
-            filteredRows.Add(row);
-        }
-    }
-
-    // 만약 모든 질문을 다 써버렸다면?
-    if (filteredRows.Num() == 0)
-    {
-        eventSubsystem->ResetUsedQuestions();
-        filteredRows = allRows; // 다시 전체 리스트로 복구
-    }
-
-    // 이제 filteredRows 안에서 타입별 분류 및 확률 계산 진행!
-    for (FQuestionStaticData* row : filteredRows)
-    {
-        categorizedQuestions.FindOrAdd(row->QuestionType).Add(row);
-    }
-
-    // 전체 확률 총합 구하기
-    float totalWeight = 0.0f;
-    for (const auto& pair : categorizedQuestions)
-    {
-        if (QuestionTypeWeights.Contains(pair.Key) && pair.Value.Num() > 0)
-        {
-            totalWeight += QuestionTypeWeights[pair.Key];
-        }
-    }
-
-    if (totalWeight <= 0.0f)
-    {
-        UE_LOG(LogTemp, Error, TEXT("단말기 확률 세팅이 안 되어 있거나 데이터가 없습니다!"));
-        return;
-    }
-
-    // 주사위 굴리기
-    float randomRoll = FMath::FRandRange(0.0f, totalWeight);
-    EQuestionType selectedType = EQuestionType::Balance;
-    float accumulatedWeight = 0.0f;
-
-    // 어떤 타입에 당첨되었는지 검사
-    for (const auto& pair : categorizedQuestions)
-    {
-        if (QuestionTypeWeights.Contains(pair.Key) && pair.Value.Num() > 0)
-        {
-            accumulatedWeight += QuestionTypeWeights[pair.Key];
-            if (randomRoll <= accumulatedWeight)
-            {
-                selectedType = pair.Key;
-                break;
-            }
-        }
-    }
-
-    // 당첨된 타입의 바구니 안에서 진짜 질문 1개 랜덤으로 뽑기
-    TArray<FQuestionStaticData*>& availableQuestions = categorizedQuestions[selectedType];
-    int32 randomIndex = FMath::RandRange(0, availableQuestions.Num() - 1);
-    FQuestionStaticData* finalQuestion = availableQuestions[randomIndex];
+    const FQuestionStaticData* finalQuestion = questionSubsystem->PickQuestion(QuestionDataTable, GetCurrentTypeWeights());
 
     // 단말기 로그 출력 및 버튼에 데이터 덮어씌우기
     if (finalQuestion)
     {
         UE_LOG(LogTemp, Log, TEXT("===================================="));
-        UE_LOG(LogTemp, Log, TEXT("뽑힌 타입: %d | 단말기 화면: %s"), (int32)selectedType, *finalQuestion->QuestionText);
+        UE_LOG(LogTemp, Log, TEXT("뽑힌 타입: %d | 단말기 화면: %s"), (int32)finalQuestion->QuestionType, *finalQuestion->QuestionText);
         UE_LOG(LogTemp, Log, TEXT("===================================="));
 
         // 버튼 문구는 선택지 데이터에서 생성 (DisplayText가 비어 있으면 효과로 자동 생성)
@@ -150,16 +82,24 @@ void AOecTerminalBase::InitializeTerminal()
 
         if (RedButton)
         {
-            RedButton->SetChoiceData(finalQuestion->QuestionID, finalQuestion->RedChoice);
+            RedButton->SetChoiceData(finalQuestion->QuestionID, finalQuestion->RedChoice, EOecChoiceButton::Red);
         }
 
         if (BlueButton)
         {
-            BlueButton->SetChoiceData(finalQuestion->QuestionID, finalQuestion->BlueChoice);
+            BlueButton->SetChoiceData(finalQuestion->QuestionID, finalQuestion->BlueChoice, EOecChoiceButton::Blue);
         }
     }
 }
 
+
+const TMap<EQuestionType, float>& AOecTerminalBase::GetCurrentTypeWeights() const
+{
+    const UOecStageManagerSubsystem* stageManager = GetGameInstance()->GetSubsystem<UOecStageManagerSubsystem>();
+    const bool bIsPhase2 = stageManager && stageManager->GetCurrentPhase() == EOecGamePhase::Phase2_Corridor;
+
+    return (bIsPhase2 && Phase2QuestionTypeWeights.Num() > 0) ? Phase2QuestionTypeWeights : QuestionTypeWeights;
+}
 
 // Called every frame
 void AOecTerminalBase::Tick(float DeltaTime)

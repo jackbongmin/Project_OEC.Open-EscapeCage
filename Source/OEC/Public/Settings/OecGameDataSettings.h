@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Engine/DeveloperSettings.h"
 #include "Engine/DataTable.h"
+#include "Data/OecEnumType.h"
 #include "OecGameDataSettings.generated.h"
 
 class UGameplayEffect;
@@ -21,6 +22,8 @@ class OEC_API UOecGameDataSettings : public UDeveloperSettings
 	GENERATED_BODY()
 	
 public:
+    UOecGameDataSettings();
+
     UPROPERTY(Config, EditAnywhere, Category = "DataTables")
     TSoftObjectPtr<UDataTable> QuestionDataTable;
 
@@ -42,6 +45,26 @@ public:
     // 페이즈 1 전구 개수 (다 켜지면 페이즈 2로 전환)
     UPROPERTY(Config, EditAnywhere, Category = "Stage", meta = (ClampMin = "1"))
     int32 Phase1MaxStack = 5;
+
+    /* ==========================================
+           질문 출제 규칙
+        ========================================== */
+
+    // 이 횟수만큼 연속으로 스택을 못 얻으면 다음 질문에 확정 스택 선택지를 보장 (0 = 끔)
+    UPROPERTY(Config, EditAnywhere, Category = "Question", meta = (ClampMin = "0"))
+    int32 StackPityAnswerCount = 5;
+
+    // 같은 타입이 연속으로 나올 수 있는 최대 횟수 (0 = 제한 없음)
+    UPROPERTY(Config, EditAnywhere, Category = "Question", meta = (ClampMin = "0"))
+    int32 DefaultQuestionTypeStreakLimit = 2;
+
+    // 타입별 연속 제한 (여기에 없는 타입은 위 기본값 사용)
+    UPROPERTY(Config, EditAnywhere, Category = "Question")
+    TMap<EQuestionType, int32> QuestionTypeStreakLimits;
+
+    // 회차마다 다시 출제되는 타입 (그 외 타입은 풀이 소진될 때까지 재출제하지 않음)
+    UPROPERTY(Config, EditAnywhere, Category = "Question")
+    TArray<EQuestionType> RunScopedQuestionTypes;
 
     /* ==========================================
            선택지 효과

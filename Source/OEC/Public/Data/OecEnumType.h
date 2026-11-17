@@ -11,7 +11,30 @@ enum class EQuestionType : uint8
     Bonus       UMETA(DisplayName = "보너스"),
     Penalty     UMETA(DisplayName = "패널티"),
     Balance     UMETA(DisplayName = "밸런스"),
-    Meaningless UMETA(DisplayName = "무의미")
+    Meaningless UMETA(DisplayName = "무의미"),
+    // 아래 3개는 기존 값의 순서를 바꾸지 않도록 뒤에 추가 (QuestionGuideline.md 2.2)
+    Gamble      UMETA(DisplayName = "도박"),
+    Event       UMETA(DisplayName = "이벤트"),
+    Tutorial    UMETA(DisplayName = "튜토리얼")
+};
+
+// 단말기의 어느 버튼으로 답했는지 (연쇄 질문의 선행 조건에 사용)
+UENUM(BlueprintType)
+enum class EOecChoiceButton : uint8
+{
+    None        UMETA(DisplayName = "없음"),
+    Red         UMETA(DisplayName = "빨강"),
+    Blue        UMETA(DisplayName = "파랑")
+};
+
+// 스토리 선택지의 성향 (엔딩 판정에 사용)
+UENUM(BlueprintType)
+enum class EOecStoryTag : uint8
+{
+    None        UMETA(DisplayName = "없음"),
+    Admit       UMETA(DisplayName = "인정"),
+    Deny        UMETA(DisplayName = "부정"),
+    Avoid       UMETA(DisplayName = "회피")
 };
 
 UENUM(BlueprintType)

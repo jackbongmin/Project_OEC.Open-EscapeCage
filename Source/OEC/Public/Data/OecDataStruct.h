@@ -19,6 +19,20 @@ class AOecItemPickupBase;
 질문 데이터
 ===========================================================================
 */
+/** 연쇄 질문의 선행 조건 1개 (이 질문에 이 버튼으로 답했어야 함) */
+USTRUCT(BlueprintType)
+struct FOecQuestionPrerequisite
+{
+    GENERATED_BODY()
+
+public:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FName QuestionID;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    EOecChoiceButton Button = EOecChoiceButton::None;
+};
+
 USTRUCT(BlueprintType)
 struct FQuestionStaticData : public FTableRowBase
 {
@@ -42,6 +56,34 @@ public:
     // 파란 버튼 선택지
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     FOecChoiceData BlueChoice;
+
+    /* ==========================================
+           출제 조건 (QuestionGuideline.md 9장)
+        ========================================== */
+
+    // 꺼 두면 출제되지 않음 (아직 없는 콘텐츠를 쓰는 질문)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Condition")
+    bool bEnabled = true;
+
+    // 출제 가능한 페이즈 번호 (1, 2). 비어 있으면 모든 페이즈
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Condition")
+    TArray<int32> AllowedPhases;
+
+    // 선행 조건. 여러 개면 하나만 맞아도 됨. 비어 있으면 조건 없음
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Condition")
+    TArray<FOecQuestionPrerequisite> RequiredChoices;
+
+    // 이 회차부터 출제 (0 = 제한 없음)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Condition", meta = (ClampMin = "0"))
+    int32 MinRunCount = 0;
+
+    // 0보다 크면 무작위 출제보다 먼저, 작은 번호부터 순서대로 출제 (튜토리얼)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Condition", meta = (ClampMin = "0"))
+    int32 FixedOrder = 0;
+
+    // 검수용 메모 (두 선택지의 점수 계산). 게임에서는 쓰지 않음
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Condition")
+    FString BalanceNote;
 };
 
 /*
