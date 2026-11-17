@@ -1,0 +1,2519 @@
+[
+	{
+		"Name": "Q_TU_001",
+		"QuestionID": "Q_TU_001",
+		"QuestionType": "Tutorial",
+		"QuestionText": "버튼을 눌러 응답하십시오. 어느 쪽이든 상관없습니다.",
+		"AllowedPhases": [1],
+		"FixedOrder": 1,
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "예",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "예",
+			"Outcomes": []
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue 0 (효과 없음)"
+	},
+	{
+		"Name": "Q_TU_002",
+		"QuestionID": "Q_TU_002",
+		"QuestionType": "Tutorial",
+		"QuestionText": "선물을 드리죠.",
+		"AllowedPhases": [1],
+		"FixedOrder": 2,
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Weapon_FireAxe" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_N" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Pistol" } ] }
+			]
+		},
+		"BalanceNote": "Red +5 (소방 도끼 1 +5) / Blue +7 (권총 N 1 +3, 권총 탄약 2 +4)"
+	},
+	{
+		"Name": "Q_TU_003",
+		"QuestionID": "Q_TU_003",
+		"QuestionType": "Tutorial",
+		"QuestionText": "그 무기, 써보고 싶지 않습니까?",
+		"AllowedPhases": [1],
+		"FixedOrder": 3,
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Walker" }, { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Walker" }, { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BalanceNote": "Red +8 (걷는 좀비 1 -2, 스택 +10) / Blue +8 (걷는 좀비 2 -4, 스택 +10, 응급 붕대 1 +2)"
+	},
+	{
+		"Name": "Q_BN_001",
+		"QuestionID": "Q_BN_001",
+		"QuestionType": "Bonus",
+		"QuestionText": "오늘은 기분이 좋군요. 고르십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Pistol" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BalanceNote": "Red +5 (회복 주사 1 +5) / Blue +6 (권총 탄약 2 +4, 응급 붕대 1 +2)"
+	},
+	{
+		"Name": "Q_BN_002",
+		"QuestionID": "Q_BN_002",
+		"QuestionType": "Bonus",
+		"QuestionText": "의심하지 마십시오. 이번엔 정말 선물입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_SR" } ] }
+			]
+		},
+		"BalanceNote": "Red +7 (라이플 R 1 +7) / Blue +9 (권총 SR 1 +9)"
+	},
+	{
+		"Name": "Q_BN_003",
+		"QuestionID": "Q_BN_003",
+		"QuestionType": "Bonus",
+		"QuestionText": "감사 인사는 생략하셔도 됩니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_SR" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_L" } ] }
+			]
+		},
+		"BalanceNote": "Red +10 (라이플 SR 1 +10) / Blue +9 (의료 키트 1 +9)"
+	},
+	{
+		"Name": "Q_BN_004",
+		"QuestionID": "Q_BN_004",
+		"QuestionType": "Bonus",
+		"QuestionText": "협조에 감사드립니다. 작은 성의입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": 10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 20, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +4 (정신력 +10 +4) / Blue +4 (체력 +20 +4)"
+	},
+	{
+		"Name": "Q_BN_005",
+		"QuestionID": "Q_BN_005",
+		"QuestionType": "Bonus",
+		"QuestionText": "필요한 쪽을 고르십시오. 곧 쓰게 될 겁니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Rifle" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Weapon_FireAxe" } ] }
+			]
+		},
+		"BalanceNote": "Red +6 (라이플 탄약 2 +6) / Blue +5 (소방 도끼 1 +5)"
+	},
+	{
+		"Name": "Q_BN_006",
+		"QuestionID": "Q_BN_006",
+		"QuestionType": "Bonus",
+		"QuestionText": "착한 피험자에게 주는 선물입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_SR" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +10 (라이플 SR 1 +10) / Blue +10 (스택 +10)"
+	},
+	{
+		"Name": "Q_BN_007",
+		"QuestionID": "Q_BN_007",
+		"QuestionType": "Bonus",
+		"QuestionText": "가끔은 저도 너그러워집니다. 고르시죠.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_L" } ] }
+			]
+		},
+		"BalanceNote": "Red +10 (스택 +10) / Blue +9 (의료 키트 1 +9)"
+	},
+	{
+		"Name": "Q_BN_008",
+		"QuestionID": "Q_BN_008",
+		"QuestionType": "Bonus",
+		"QuestionText": "기록상 오늘은 당신이 운 좋은 날입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +5 (회복 주사 1 +5) / Blue +5 (50%×(스택 +10) + 50%×(없음 0))"
+	},
+	{
+		"Name": "Q_BN_009",
+		"QuestionID": "Q_BN_009",
+		"QuestionType": "Bonus",
+		"QuestionText": "둘 다 드릴 수는 없습니다. 규정이라서요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_R" } ] }
+			]
+		},
+		"BalanceNote": "Red +6 (60%×(스택 +10) + 40%×(없음 0)) / Blue +6 (권총 R 1 +6)"
+	},
+	{
+		"Name": "Q_BN_010",
+		"QuestionID": "Q_BN_010",
+		"QuestionType": "Bonus",
+		"QuestionText": "축하합니다. 아직 살아 계시니 드립니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Pistol" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "EV_Reroll" } ] }
+			]
+		},
+		"BalanceNote": "Red +4 (권총 탄약 2 +4) / Blue +5 (질문 변경권 1 +5)"
+	},
+	{
+		"Name": "Q_BN_011",
+		"QuestionID": "Q_BN_011",
+		"QuestionType": "Bonus",
+		"QuestionText": "보상 시간입니다. 하나만 가져가십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerSanity" }, "Value": 1, "Param": "10" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BalanceNote": "Red +4 (답변마다 정신력 +1(10회) +4) / Blue +5 (이동 속도 증가 +3, 응급 붕대 1 +2)"
+	},
+	{
+		"Name": "Q_BN_012",
+		"QuestionID": "Q_BN_012",
+		"QuestionType": "Bonus",
+		"QuestionText": "실험체 복지 차원의 지급입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Rifle" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "EV_Silencer" } ] }
+			]
+		},
+		"BalanceNote": "Red +5 (라이플 탄약 1 +3, 응급 붕대 1 +2) / Blue +4 (소음 차단기 1 +4)"
+	},
+	{
+		"Name": "Q_BN_013",
+		"QuestionID": "Q_BN_013",
+		"QuestionType": "Bonus",
+		"QuestionText": "오늘은 기분이 좋군요. 고르십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerStackChance" }, "Value": 0.01, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BalanceNote": "Red +2 (답변마다 1% 스택 +2) / Blue +2 (응급 붕대 1 +2)"
+	},
+	{
+		"Name": "Q_BN_014",
+		"QuestionID": "Q_BN_014",
+		"QuestionType": "Bonus",
+		"QuestionText": "의심하지 마십시오. 이번엔 정말 선물입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": 15, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +6 (권총 R 1 +6) / Blue +6 (정신력 +15 +6)"
+	},
+	{
+		"Name": "Q_BN_015",
+		"QuestionID": "Q_BN_015",
+		"QuestionType": "Bonus",
+		"QuestionText": "감사 인사는 생략하셔도 됩니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Weapon_Heavy" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" } ] }
+			]
+		},
+		"BalanceNote": "Red +8 (최상급 근접 1 +8) / Blue +7 (라이플 R 1 +7)"
+	},
+	{
+		"Name": "Q_BN_016",
+		"QuestionID": "Q_BN_016",
+		"QuestionType": "Bonus",
+		"QuestionText": "협조에 감사드립니다. 작은 성의입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Jump" } ] }
+			]
+		},
+		"BalanceNote": "Red +2 (응급 붕대 1 +2) / Blue +2 (점프력 증가 +2)"
+	},
+	{
+		"Name": "Q_BN_017",
+		"QuestionID": "Q_BN_017",
+		"QuestionType": "Bonus",
+		"QuestionText": "필요한 쪽을 고르십시오. 곧 쓰게 될 겁니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 30, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Rifle" } ] }
+			]
+		},
+		"BalanceNote": "Red +6 (체력 +30 +6) / Blue +6 (라이플 탄약 2 +6)"
+	},
+	{
+		"Name": "Q_BN_018",
+		"QuestionID": "Q_BN_018",
+		"QuestionType": "Bonus",
+		"QuestionText": "착한 피험자에게 주는 선물입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_N" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Rifle" } ] }
+			]
+		},
+		"BalanceNote": "Red +7 (회복 주사 1 +5, 응급 붕대 1 +2) / Blue +7 (라이플 N 1 +4, 라이플 탄약 1 +3)"
+	},
+	{
+		"Name": "Q_BN_019",
+		"QuestionID": "Q_BN_019",
+		"QuestionType": "Bonus",
+		"QuestionText": "가끔은 저도 너그러워집니다. 고르시죠.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerHealth" }, "Value": 2, "Param": "10" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": 10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +4 (답변마다 체력 +2(10회) +4) / Blue +4 (정신력 +10 +4)"
+	},
+	{
+		"Name": "Q_BN_020",
+		"QuestionID": "Q_BN_020",
+		"QuestionType": "Bonus",
+		"QuestionText": "기록상 오늘은 당신이 운 좋은 날입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "EV_Insurance" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "EV_Peek" } ] }
+			]
+		},
+		"BalanceNote": "Red +7 (라이플 R 1 +7) / Blue +8 (보험 증서 1 +4, WARDEN의 메모 1 +4)"
+	},
+	{
+		"Name": "Q_BN_021",
+		"QuestionID": "Q_BN_021",
+		"QuestionType": "Bonus",
+		"QuestionText": "둘 다 드릴 수는 없습니다. 규정이라서요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_AttackSpeed" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Pistol" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (공격 속도 증가 +3) / Blue +4 (권총 탄약 2 +4)"
+	},
+	{
+		"Name": "Q_BN_022",
+		"QuestionID": "Q_BN_022",
+		"QuestionType": "Bonus",
+		"QuestionText": "축하합니다. 아직 살아 계시니 드립니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_N" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_R" } ] }
+			]
+		},
+		"BalanceNote": "Red +6 (라이플 N 1 +4, 응급 붕대 1 +2) / Blue +6 (권총 R 1 +6)"
+	},
+	{
+		"Name": "Q_BN_023",
+		"QuestionID": "Q_BN_023",
+		"QuestionType": "Bonus",
+		"QuestionText": "보상 시간입니다. 하나만 가져가십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerStackChance" }, "Value": 0.02, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" } ] }
+			]
+		},
+		"BalanceNote": "Red +4 (답변마다 2% 스택 +4) / Blue +5 (회복 주사 1 +5)"
+	},
+	{
+		"Name": "Q_BN_024",
+		"QuestionID": "Q_BN_024",
+		"QuestionType": "Bonus",
+		"QuestionText": "실험체 복지 차원의 지급입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Weapon_Heavy" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_SR" } ] }
+			]
+		},
+		"BalanceNote": "Red +10 (최상급 근접 1 +8, 응급 붕대 1 +2) / Blue +10 (라이플 SR 1 +10)"
+	},
+	{
+		"Name": "Q_PN_001",
+		"QuestionID": "Q_PN_001",
+		"QuestionType": "Penalty",
+		"QuestionText": "고통에도 종류가 있습니다.",
+		"AllowedPhases": [2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -30, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 7, "Effects": [ { "EffectTag": { "TagName": "Effect.Death" }, "Value": 0, "Param": "None" } ] },
+				{ "Weight": 93, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -9 (체력 -30 -9) / Blue -10.5 (7%×(즉사 -150) + 93%×(없음 0))"
+	},
+	{
+		"Name": "Q_PN_002",
+		"QuestionID": "Q_PN_002",
+		"QuestionType": "Penalty",
+		"QuestionText": "거절은 선택지에 없습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Random" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -20, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -4 (무작위 몬스터 1 -4) / Blue -6 (체력 -20 -6)"
+	},
+	{
+		"Name": "Q_PN_003",
+		"QuestionID": "Q_PN_003",
+		"QuestionType": "Penalty",
+		"QuestionText": "이것도 실험의 일부입니다. 고르십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+			]
+		},
+		"BalanceNote": "Red -3 (어두워짐 -3) / Blue -3 (골렘 N 1 -3)"
+	},
+	{
+		"Name": "Q_PN_004",
+		"QuestionID": "Q_PN_004",
+		"QuestionType": "Penalty",
+		"QuestionText": "둘 다 싫으시겠지만, 하나는 고르셔야 합니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -15, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -5 (골렘 R 1 -5) / Blue -6 (정신력 -15 -6)"
+	},
+	{
+		"Name": "Q_PN_005",
+		"QuestionID": "Q_PN_005",
+		"QuestionType": "Penalty",
+		"QuestionText": "공평하게, 나쁜 것 두 개를 준비했습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerSanity" }, "Value": -1, "Param": "10" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -15, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -4 (답변마다 정신력 -1(10회) -4) / Blue -4.5 (체력 -15 -4.5)"
+	},
+	{
+		"Name": "Q_PN_006",
+		"QuestionID": "Q_PN_006",
+		"QuestionType": "Penalty",
+		"QuestionText": "어느 쪽이 덜 아플지는 당신이 더 잘 알겠죠.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -25, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 5, "Effects": [ { "EffectTag": { "TagName": "Effect.Death" }, "Value": 0, "Param": "None" } ] },
+				{ "Weight": 95, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -7.5 (체력 -25 -7.5) / Blue -7.5 (5%×(즉사 -150) + 95%×(없음 0))"
+	},
+	{
+		"Name": "Q_PN_007",
+		"QuestionID": "Q_PN_007",
+		"QuestionType": "Penalty",
+		"QuestionText": "무엇을 내놓으시겠습니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_N" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -20, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -6 (골렘 N 2 -6) / Blue -6 (체력 -20 -6)"
+	},
+	{
+		"Name": "Q_PN_008",
+		"QuestionID": "Q_PN_008",
+		"QuestionType": "Penalty",
+		"QuestionText": "잃는 것에도 취향이 있더군요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -15, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 3, "Param": "Zombie_Walker" } ] }
+			]
+		},
+		"BalanceNote": "Red -6 (정신력 -15 -6) / Blue -6 (걷는 좀비 3 -6)"
+	},
+	{
+		"Name": "Q_PN_009",
+		"QuestionID": "Q_PN_009",
+		"QuestionType": "Penalty",
+		"QuestionText": "저는 어느 쪽이든 즐겁게 지켜보겠습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Runner" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -6 (달리는 좀비 2 -6) / Blue -6 (어두워짐 -3, 체력 -10 -3)"
+	},
+	{
+		"Name": "Q_PN_010",
+		"QuestionID": "Q_PN_010",
+		"QuestionType": "Penalty",
+		"QuestionText": "아픈 건 잠깐입니다. 아마도요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Slow" } ] }
+			]
+		},
+		"BalanceNote": "Red -3 (골렘 N 1 -3) / Blue -3 (이동 속도 감소 -3)"
+	},
+	{
+		"Name": "Q_PN_011",
+		"QuestionID": "Q_PN_011",
+		"QuestionType": "Penalty",
+		"QuestionText": "벌의 시간입니다. 선택권은 드리죠.",
+		"AllowedPhases": [2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_SR" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -30, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -8 (골렘 SR 1 -8) / Blue -9 (체력 -30 -9)"
+	},
+	{
+		"Name": "Q_PN_012",
+		"QuestionID": "Q_PN_012",
+		"QuestionType": "Penalty",
+		"QuestionText": "익숙한 쪽을 고르십시오. 처음도 아니잖습니까.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -20, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Robot_Rogue" } ] }
+			]
+		},
+		"BalanceNote": "Red -8 (정신력 -20 -8) / Blue -6 (괴물 로봇 1 -6)"
+	},
+	{
+		"Name": "Q_PN_013",
+		"QuestionID": "Q_PN_013",
+		"QuestionType": "Penalty",
+		"QuestionText": "고통에도 종류가 있습니다.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Alien_Stalker" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -20, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -6 (외계 생명체 1 -6) / Blue -6 (체력 -20 -6)"
+	},
+	{
+		"Name": "Q_PN_014",
+		"QuestionID": "Q_PN_014",
+		"QuestionType": "Penalty",
+		"QuestionText": "거절은 선택지에 없습니다.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 6, "Effects": [ { "EffectTag": { "TagName": "Effect.Death" }, "Value": 0, "Param": "None" } ] },
+				{ "Weight": 94, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Iron_Armor" } ] }
+			]
+		},
+		"BalanceNote": "Red -9 (6%×(즉사 -150) + 94%×(없음 0)) / Blue -9 (철갑 괴물 1 -9)"
+	},
+	{
+		"Name": "Q_PN_015",
+		"QuestionID": "Q_PN_015",
+		"QuestionType": "Penalty",
+		"QuestionText": "이것도 실험의 일부입니다. 고르십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Slow" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerSanity" }, "Value": -1, "Param": "10" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -6 (이동 속도 감소 -3, 골렘 N 1 -3) / Blue -6 (답변마다 정신력 -1(10회) -4, 정신력 -5 -2)"
+	},
+	{
+		"Name": "Q_PN_016",
+		"QuestionID": "Q_PN_016",
+		"QuestionType": "Penalty",
+		"QuestionText": "둘 다 싫으시겠지만, 하나는 고르셔야 합니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerHealth" }, "Value": -2, "Param": "10" } ] }
+			]
+		},
+		"BalanceNote": "Red -5 (어두워짐 -3, 정신력 -5 -2) / Blue -6 (답변마다 체력 -2(10회) -6)"
+	},
+	{
+		"Name": "Q_PN_017",
+		"QuestionID": "Q_PN_017",
+		"QuestionType": "Penalty",
+		"QuestionText": "공평하게, 나쁜 것 두 개를 준비했습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 3, "Effects": [ { "EffectTag": { "TagName": "Effect.Death" }, "Value": 0, "Param": "None" } ] },
+				{ "Weight": 97, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Random" } ] }
+			]
+		},
+		"BalanceNote": "Red -4.5 (3%×(즉사 -150) + 97%×(없음 0)) / Blue -4 (무작위 몬스터 1 -4)"
+	},
+	{
+		"Name": "Q_PN_018",
+		"QuestionID": "Q_PN_018",
+		"QuestionType": "Penalty",
+		"QuestionText": "어느 쪽이 덜 아플지는 당신이 더 잘 알겠죠.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -30, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_R" } ] }
+			]
+		},
+		"BalanceNote": "Red -9 (체력 -30 -9) / Blue -10 (골렘 R 2 -10)"
+	},
+	{
+		"Name": "Q_PN_019",
+		"QuestionID": "Q_PN_019",
+		"QuestionType": "Penalty",
+		"QuestionText": "무엇을 내놓으시겠습니까?",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -25, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_SR" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Walker" } ] }
+			]
+		},
+		"BalanceNote": "Red -10 (정신력 -25 -10) / Blue -10 (골렘 SR 1 -8, 걷는 좀비 1 -2)"
+	},
+	{
+		"Name": "Q_PN_020",
+		"QuestionID": "Q_PN_020",
+		"QuestionType": "Penalty",
+		"QuestionText": "잃는 것에도 취향이 있더군요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -15, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -40, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -6 (정신력 -15 -6) / Blue -6 (50%×(체력 -40 -12) + 50%×(없음 0))"
+	},
+	{
+		"Name": "Q_PN_021",
+		"QuestionID": "Q_PN_021",
+		"QuestionType": "Penalty",
+		"QuestionText": "저는 어느 쪽이든 즐겁게 지켜보겠습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -40, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (스택 +10, 체력 -40 -12) / Blue -4 (정신력 -10 -4)"
+	},
+	{
+		"Name": "Q_PN_022",
+		"QuestionID": "Q_PN_022",
+		"QuestionType": "Penalty",
+		"QuestionText": "아픈 건 잠깐입니다. 아마도요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_R" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -3 (체력 -10 -3) / Blue -2 (스택 +10, 골렘 R 2 -10, 정신력 -5 -2)"
+	},
+	{
+		"Name": "Q_PN_023",
+		"QuestionID": "Q_PN_023",
+		"QuestionType": "Penalty",
+		"QuestionText": "벌의 시간입니다. 선택권은 드리죠.",
+		"AllowedPhases": [2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_SR" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -1 (스택 +10, 골렘 SR 1 -8, 체력 -10 -3) / Blue -3 (어두워짐 -3)"
+	},
+	{
+		"Name": "Q_PN_024",
+		"QuestionID": "Q_PN_024",
+		"QuestionType": "Penalty",
+		"QuestionText": "익숙한 쪽을 고르십시오. 처음도 아니잖습니까.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -30, "Param": "None" } ] },
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -30, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -4 (정신력 -10 -4) / Blue -3 (60%×(스택 +10, 체력 -30 -9) + 40%×(체력 -30 -9))"
+	},
+	{
+		"Name": "Q_PN_025",
+		"QuestionID": "Q_PN_025",
+		"QuestionType": "Penalty",
+		"QuestionText": "고통에도 종류가 있습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -30, "Param": "None" } ] },
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -30, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -20, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -6 (60%×(스택 +10, 정신력 -30 -12) + 40%×(정신력 -30 -12)) / Blue -6 (체력 -20 -6)"
+	},
+	{
+		"Name": "Q_PN_026",
+		"QuestionID": "Q_PN_026",
+		"QuestionType": "Penalty",
+		"QuestionText": "거절은 선택지에 없습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Brute" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Brute" } ] }
+			]
+		},
+		"BalanceNote": "Red -5 (어두워짐 -3, 정신력 -5 -2) / Blue -5 (50%×(스택 +10, 거대 좀비 2 -10) + 50%×(거대 좀비 2 -10))"
+	},
+	{
+		"Name": "Q_PN_027",
+		"QuestionID": "Q_PN_027",
+		"QuestionType": "Penalty",
+		"QuestionText": "이것도 실험의 일부입니다. 고르십시오.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 70, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Iron_Armor" } ] },
+				{ "Weight": 30, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Iron_Armor" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (70%×(스택 +10, 철갑 괴물 1 -9) + 30%×(철갑 괴물 1 -9)) / Blue -3 (체력 -10 -3)"
+	},
+	{
+		"Name": "Q_PN_028",
+		"QuestionID": "Q_PN_028",
+		"QuestionType": "Penalty",
+		"QuestionText": "둘 다 싫으시겠지만, 하나는 고르셔야 합니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_N" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -30, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -30, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -6 (골렘 N 2 -6) / Blue -6 (50%×(스택 +10, 체력 -30 -9) + 50%×(체력 -30 -9, 정신력 -10 -4))"
+	},
+	{
+		"Name": "Q_TR_001",
+		"QuestionID": "Q_TR_001",
+		"QuestionType": "Balance",
+		"QuestionText": "공짜는 없습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_L" }, { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +5 (스택 +10, 골렘 R 1 -5) / Blue +6 (의료 키트 1 +9, 어두워짐 -3)"
+	},
+	{
+		"Name": "Q_TR_002",
+		"QuestionID": "Q_TR_002",
+		"QuestionType": "Balance",
+		"QuestionText": "어느 쪽 계산서가 마음에 드십니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -20, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (라이플 R 1 +7, 정신력 -10 -4) / Blue +4 (스택 +10, 체력 -20 -6)"
+	},
+	{
+		"Name": "Q_TR_003",
+		"QuestionID": "Q_TR_003",
+		"QuestionType": "Balance",
+		"QuestionText": "필요한 만큼 가져가고, 그만큼 내십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -15, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+			]
+		},
+		"BalanceNote": "Red +4 (스택 +10, 정신력 -15 -6) / Blue +2 (회복 주사 1 +5, 골렘 N 1 -3)"
+	},
+	{
+		"Name": "Q_TR_004",
+		"QuestionID": "Q_TR_004",
+		"QuestionType": "Balance",
+		"QuestionText": "값은 이미 매겨 두었습니다. 고르기만 하십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_SR" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -15, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_N" } ] }
+			]
+		},
+		"BalanceNote": "Red +4.5 (권총 SR 1 +9, 체력 -15 -4.5) / Blue +4 (스택 +10, 골렘 N 2 -6)"
+	},
+	{
+		"Name": "Q_TR_005",
+		"QuestionID": "Q_TR_005",
+		"QuestionType": "Balance",
+		"QuestionText": "두 가지 거래가 있습니다. 환불은 없습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" } ] },
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Rifle" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Walker" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (60%×(스택 +10, 어두워짐 -3) + 40%×(어두워짐 -3)) / Blue +4 (라이플 탄약 2 +6, 걷는 좀비 1 -2)"
+	},
+	{
+		"Name": "Q_TR_006",
+		"QuestionID": "Q_TR_006",
+		"QuestionType": "Balance",
+		"QuestionText": "무언가를 얻으려면 무언가를 내놓아야죠.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 30, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 70, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 30, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Brute" } ] }
+			]
+		},
+		"BalanceNote": "Red +4 (체력 +30 +6, 정신력 -5 -2) / Blue +5.5 (70%×(스택 +10) + 30%×(거대 좀비 1 -5))"
+	},
+	{
+		"Name": "Q_TR_007",
+		"QuestionID": "Q_TR_007",
+		"QuestionType": "Balance",
+		"QuestionText": "저는 공정한 거래를 좋아합니다. 대체로는요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Random" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Weapon_FireAxe" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +1 (50%×(스택 +10) + 50%×(무작위 몬스터 2 -8)) / Blue +3 (소방 도끼 1 +5, 정신력 -5 -2)"
+	},
+	{
+		"Name": "Q_TR_008",
+		"QuestionID": "Q_TR_008",
+		"QuestionType": "Balance",
+		"QuestionText": "저울은 제가 맞춰 두었습니다. 믿으시죠?",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_L" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Robot_Rogue" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_SR" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (의료 키트 1 +9, 괴물 로봇 1 -6) / Blue +2 (스택 +10, 골렘 SR 1 -8)"
+	},
+	{
+		"Name": "Q_TR_009",
+		"QuestionID": "Q_TR_009",
+		"QuestionType": "Balance",
+		"QuestionText": "얻는 것만 보지 마십시오. 대가도 읽으시고요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 97, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 3, "Effects": [ { "EffectTag": { "TagName": "Effect.Death" }, "Value": 0, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_SR" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -20, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +5.2 (97%×(스택 +10) + 3%×(즉사 -150)) / Blue +4 (라이플 SR 1 +10, 체력 -20 -6)"
+	},
+	{
+		"Name": "Q_TR_010",
+		"QuestionID": "Q_TR_010",
+		"QuestionType": "Balance",
+		"QuestionText": "손해 없는 선택을 찾으십니까? 없습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -25, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (회복 주사 1 +5, 정신력 -5 -2) / Blue +3 (60%×(스택 +10) + 40%×(체력 -25 -7.5))"
+	},
+	{
+		"Name": "Q_TR_011",
+		"QuestionID": "Q_TR_011",
+		"QuestionType": "Balance",
+		"QuestionText": "거래를 제안합니다. 조건은 적힌 그대로입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Pistol" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +2.5 (50%×(스택 +10) + 50%×(골렘 R 1 -5)) / Blue +1 (권총 탄약 2 +4, 체력 -10 -3)"
+	},
+	{
+		"Name": "Q_TR_012",
+		"QuestionID": "Q_TR_012",
+		"QuestionType": "Balance",
+		"QuestionText": "원하는 게 있으면 지불하십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_R" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 70, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 30, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -20, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (권총 R 1 +6, 골렘 N 1 -3) / Blue +4.6 (70%×(스택 +10) + 30%×(정신력 -20 -8))"
+	},
+	{
+		"Name": "Q_TR_013",
+		"QuestionID": "Q_TR_013",
+		"QuestionType": "Balance",
+		"QuestionText": "공짜는 없습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Runner" } ] },
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Runner" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "EV_Reroll" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +1.8 (60%×(스택 +10, 달리는 좀비 1 -3) + 40%×(달리는 좀비 2 -6)) / Blue +2 (질문 변경권 1 +5, 체력 -10 -3)"
+	},
+	{
+		"Name": "Q_TR_014",
+		"QuestionID": "Q_TR_014",
+		"QuestionType": "Balance",
+		"QuestionText": "어느 쪽 계산서가 마음에 드십니까?",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Weapon_Heavy" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Alien_Stalker" } ] }
+			]
+		},
+		"BalanceNote": "Red +4 (최상급 근접 1 +8, 정신력 -10 -4) / Blue +4 (스택 +10, 외계 생명체 1 -6)"
+	},
+	{
+		"Name": "Q_TR_015",
+		"QuestionID": "Q_TR_015",
+		"QuestionType": "Balance",
+		"QuestionText": "필요한 만큼 가져가고, 그만큼 내십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 3, "Param": "Zombie_Walker" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 20, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +2 (50%×(스택 +10) + 50%×(걷는 좀비 3 -6)) / Blue +1 (체력 +20 +4, 어두워짐 -3)"
+	},
+	{
+		"Name": "Q_TR_016",
+		"QuestionID": "Q_TR_016",
+		"QuestionType": "Balance",
+		"QuestionText": "값은 이미 매겨 두었습니다. 고르기만 하십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "EV_Insurance" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Crawler" } ] }
+			]
+		},
+		"BalanceNote": "Red +1 (보험 증서 1 +4, 체력 -10 -3) / Blue +1.5 (50%×(스택 +10, 정신력 -5 -2) + 50%×(정신력 -5 -2, 기어오는 좀비 1 -3))"
+	},
+	{
+		"Name": "Q_TR_017",
+		"QuestionID": "Q_TR_017",
+		"QuestionType": "Balance",
+		"QuestionText": "두 가지 거래가 있습니다. 환불은 없습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_L" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +4 (의료 키트 1 +9, 골렘 R 1 -5) / Blue +4 (라이플 R 1 +7, 체력 -10 -3)"
+	},
+	{
+		"Name": "Q_TR_018",
+		"QuestionID": "Q_TR_018",
+		"QuestionType": "Balance",
+		"QuestionText": "무언가를 얻으려면 무언가를 내놓아야죠.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 30, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_SR" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (체력 +30 +6, 골렘 N 1 -3) / Blue +5 (권총 SR 1 +9, 정신력 -10 -4)"
+	},
+	{
+		"Name": "Q_TR_019",
+		"QuestionID": "Q_TR_019",
+		"QuestionType": "Balance",
+		"QuestionText": "저는 공정한 거래를 좋아합니다. 대체로는요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Walker" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Rifle" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (회복 주사 1 +5, 걷는 좀비 1 -2) / Blue +4 (라이플 탄약 2 +6, 정신력 -5 -2)"
+	},
+	{
+		"Name": "Q_TR_020",
+		"QuestionID": "Q_TR_020",
+		"QuestionType": "Balance",
+		"QuestionText": "저울은 제가 맞춰 두었습니다. 믿으시죠?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 20, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": 15, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -20, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (체력 +20 +4, 정신력 -10 -4) / Blue 0 (정신력 +15 +6, 체력 -20 -6)"
+	},
+	{
+		"Name": "Q_TR_021",
+		"QuestionID": "Q_TR_021",
+		"QuestionType": "Balance",
+		"QuestionText": "얻는 것만 보지 마십시오. 대가도 읽으시고요.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_SR" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_SR" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_L" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Alien_Stalker" } ] }
+			]
+		},
+		"BalanceNote": "Red +2 (라이플 SR 1 +10, 골렘 SR 1 -8) / Blue +3 (의료 키트 1 +9, 외계 생명체 1 -6)"
+	},
+	{
+		"Name": "Q_TR_022",
+		"QuestionID": "Q_TR_022",
+		"QuestionType": "Balance",
+		"QuestionText": "손해 없는 선택을 찾으십니까? 없습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerSanity" }, "Value": 1, "Param": "10" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -15, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerHealth" }, "Value": 2, "Param": "10" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.5 (답변마다 정신력 +1(10회) +4, 체력 -15 -4.5) / Blue 0 (답변마다 체력 +2(10회) +4, 정신력 -10 -4)"
+	},
+	{
+		"Name": "Q_TR_023",
+		"QuestionID": "Q_TR_023",
+		"QuestionType": "Balance",
+		"QuestionText": "거래를 제안합니다. 조건은 적힌 그대로입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Weapon_FireAxe" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Runner" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +2 (소방 도끼 1 +5, 달리는 좀비 1 -3) / Blue +3 (회복 주사 1 +5, 정신력 -5 -2)"
+	},
+	{
+		"Name": "Q_TR_024",
+		"QuestionID": "Q_TR_024",
+		"QuestionType": "Balance",
+		"QuestionText": "원하는 게 있으면 지불하십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_R" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Weapon_Heavy" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Brute" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (권총 R 1 +6, 체력 -10 -3) / Blue +3 (최상급 근접 1 +8, 거대 좀비 1 -5)"
+	},
+	{
+		"Name": "Q_TR_025",
+		"QuestionID": "Q_TR_025",
+		"QuestionType": "Balance",
+		"QuestionText": "공짜는 없습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 40, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": 10, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (체력 +40 +8, 골렘 R 1 -5) / Blue +1 (정신력 +10 +4, 어두워짐 -3)"
+	},
+	{
+		"Name": "Q_TR_026",
+		"QuestionID": "Q_TR_026",
+		"QuestionType": "Balance",
+		"QuestionText": "어느 쪽 계산서가 마음에 드십니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerStackChance" }, "Value": 0.01, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (응급 붕대 1 +2, 정신력 -5 -2) / Blue -1 (답변마다 1% 스택 +2, 체력 -10 -3)"
+	},
+	{
+		"Name": "Q_TR_027",
+		"QuestionID": "Q_TR_027",
+		"QuestionType": "Balance",
+		"QuestionText": "필요한 만큼 가져가고, 그만큼 내십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Random" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_L" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -15, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (라이플 R 1 +7, 무작위 몬스터 1 -4) / Blue +3 (의료 키트 1 +9, 정신력 -15 -6)"
+	},
+	{
+		"Name": "Q_TR_028",
+		"QuestionID": "Q_TR_028",
+		"QuestionType": "Balance",
+		"QuestionText": "값은 이미 매겨 두었습니다. 고르기만 하십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_AttackSpeed" }, { "EffectTag": { "TagName": "Effect.Passive.AnswerSanity" }, "Value": -1, "Param": "10" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+			]
+		},
+		"BalanceNote": "Red -1 (공격 속도 증가 +3, 답변마다 정신력 -1(10회) -4) / Blue -2 (이동 속도 증가 +3, 골렘 R 1 -5)"
+	},
+	{
+		"Name": "Q_TR_029",
+		"QuestionID": "Q_TR_029",
+		"QuestionType": "Balance",
+		"QuestionText": "두 가지 거래가 있습니다. 환불은 없습니다.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_L" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Iron_Armor" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_SR" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_SR" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (의료 키트 1 +9, 철갑 괴물 1 -9) / Blue +1 (권총 SR 1 +9, 골렘 SR 1 -8)"
+	},
+	{
+		"Name": "Q_TR_030",
+		"QuestionID": "Q_TR_030",
+		"QuestionType": "Balance",
+		"QuestionText": "무언가를 얻으려면 무언가를 내놓아야죠.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_R" }, { "EffectTag": { "TagName": "Effect.Passive.AnswerHealth" }, "Value": -2, "Param": "10" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_AttackSpeed" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_N" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (권총 R 1 +6, 답변마다 체력 -2(10회) -6) / Blue -3 (공격 속도 증가 +3, 골렘 N 2 -6)"
+	},
+	{
+		"Name": "Q_TR_031",
+		"QuestionID": "Q_TR_031",
+		"QuestionType": "Balance",
+		"QuestionText": "저는 공정한 거래를 좋아합니다. 대체로는요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": 20, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 3, "Param": "Ammo_Pistol" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (정신력 +20 +8, 골렘 R 1 -5) / Blue +3 (권총 탄약 3 +6, 체력 -10 -3)"
+	},
+	{
+		"Name": "Q_TR_032",
+		"QuestionID": "Q_TR_032",
+		"QuestionType": "Balance",
+		"QuestionText": "저울은 제가 맞춰 두었습니다. 믿으시죠?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerHealth" }, "Value": 2, "Param": "10" }, { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Jump" }, { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Runner" } ] }
+			]
+		},
+		"BalanceNote": "Red +1 (답변마다 체력 +2(10회) +4, 어두워짐 -3) / Blue +2 (점프력 증가 +2, 이동 속도 증가 +3, 달리는 좀비 1 -3)"
+	},
+	{
+		"Name": "Q_GB_001",
+		"QuestionID": "Q_GB_001",
+		"QuestionType": "Gamble",
+		"QuestionText": "운을 시험해 보죠.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "아무것도 하지 않는다",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" } ] },
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Walker" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue +0.8 (40%×(회복 주사 1 +5) + 60%×(걷는 좀비 1 -2))"
+	},
+	{
+		"Name": "Q_GB_002",
+		"QuestionID": "Q_GB_002",
+		"QuestionType": "Gamble",
+		"QuestionText": "겁이 나면 그냥 지나가셔도 됩니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Rifle" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "그냥 지나간다",
+			"Outcomes": []
+		},
+		"BalanceNote": "Red +1.5 (50%×(라이플 탄약 2 +6) + 50%×(골렘 N 1 -3)) / Blue 0 (효과 없음)"
+	},
+	{
+		"Name": "Q_GB_003",
+		"QuestionID": "Q_GB_003",
+		"QuestionType": "Gamble",
+		"QuestionText": "한번 걸어 보시죠. 잃을 게 남아 있다면요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "아무것도 하지 않는다",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 20, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -15, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue -0.25 (50%×(체력 +20 +4) + 50%×(체력 -15 -4.5))"
+	},
+	{
+		"Name": "Q_GB_004",
+		"QuestionID": "Q_GB_004",
+		"QuestionType": "Gamble",
+		"QuestionText": "안전하게 가시겠습니까, 걸어 보시겠습니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 30, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_R" } ] },
+				{ "Weight": 70, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Random" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "걸지 않는다",
+			"Outcomes": []
+		},
+		"BalanceNote": "Red -1 (30%×(권총 R 1 +6) + 70%×(무작위 몬스터 1 -4)) / Blue 0 (효과 없음)"
+	},
+	{
+		"Name": "Q_GB_005",
+		"QuestionID": "Q_GB_005",
+		"QuestionType": "Gamble",
+		"QuestionText": "도박을 좋아하십니까? 저는 구경을 좋아합니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "아무것도 하지 않는다",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerHealth" }, "Value": 2, "Param": "10" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerSanity" }, "Value": -1, "Param": "10" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue 0 (50%×(답변마다 체력 +2(10회) +4) + 50%×(답변마다 정신력 -1(10회) -4))"
+	},
+	{
+		"Name": "Q_GB_006",
+		"QuestionID": "Q_GB_006",
+		"QuestionType": "Gamble",
+		"QuestionText": "당신은 운이 좋은 편입니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Weapon_FireAxe" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "그냥 지나간다",
+			"Outcomes": []
+		},
+		"BalanceNote": "Red 0 (50%×(소방 도끼 1 +5) + 50%×(골렘 R 1 -5)) / Blue 0 (효과 없음)"
+	},
+	{
+		"Name": "Q_GB_007",
+		"QuestionID": "Q_GB_007",
+		"QuestionType": "Gamble",
+		"QuestionText": "숫자를 잘 읽으십시오. 후회는 당신 몫입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "아무것도 하지 않는다",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 70, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] },
+				{ "Weight": 30, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Runner" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue +0.5 (70%×(응급 붕대 1 +2) + 30%×(달리는 좀비 1 -3))"
+	},
+	{
+		"Name": "Q_GB_008",
+		"QuestionID": "Q_GB_008",
+		"QuestionType": "Gamble",
+		"QuestionText": "운이 따를지도 모릅니다. 아닐 수도 있고요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerStackChance" }, "Value": 0.02, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerHealth" }, "Value": -2, "Param": "10" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "사양한다",
+			"Outcomes": []
+		},
+		"BalanceNote": "Red -1 (50%×(답변마다 2% 스택 +4) + 50%×(답변마다 체력 -2(10회) -6)) / Blue 0 (효과 없음)"
+	},
+	{
+		"Name": "Q_GB_009",
+		"QuestionID": "Q_GB_009",
+		"QuestionType": "Gamble",
+		"QuestionText": "주사위는 제가 굴리겠습니다. 고르십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "아무것도 하지 않는다",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Crawler" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue +1 (50%×(회복 주사 1 +5) + 50%×(기어오는 좀비 1 -3))"
+	},
+	{
+		"Name": "Q_GB_010",
+		"QuestionID": "Q_GB_010",
+		"QuestionType": "Gamble",
+		"QuestionText": "확실한 것과 불확실한 것. 취향을 보여 주시죠.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 35, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" } ] },
+				{ "Weight": 65, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "걸지 않는다",
+			"Outcomes": []
+		},
+		"BalanceNote": "Red +0.5 (35%×(라이플 R 1 +7) + 65%×(골렘 N 1 -3)) / Blue 0 (효과 없음)"
+	},
+	{
+		"Name": "Q_GB_011",
+		"QuestionID": "Q_GB_011",
+		"QuestionType": "Gamble",
+		"QuestionText": "확률은 거짓말을 하지 않습니다. 저와 달리.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "아무것도 하지 않는다",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Haste" } ] },
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Slow" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue +0.6 (60%×(이동 속도 증가 +3) + 40%×(이동 속도 감소 -3))"
+	},
+	{
+		"Name": "Q_GB_012",
+		"QuestionID": "Q_GB_012",
+		"QuestionType": "Gamble",
+		"QuestionText": "지난번엔 어느 쪽을 골랐는지 기억하십니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 45, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Pistol" } ] },
+				{ "Weight": 55, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Walker" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "그냥 지나간다",
+			"Outcomes": []
+		},
+		"BalanceNote": "Red +0.7 (45%×(권총 탄약 2 +4) + 55%×(걷는 좀비 1 -2)) / Blue 0 (효과 없음)"
+	},
+	{
+		"Name": "Q_GB_013",
+		"QuestionID": "Q_GB_013",
+		"QuestionType": "Gamble",
+		"QuestionText": "운을 시험해 보죠.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "아무것도 하지 않는다",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 25, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_L" } ] },
+				{ "Weight": 75, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue 0 (25%×(의료 키트 1 +9) + 75%×(체력 -10 -3))"
+	},
+	{
+		"Name": "Q_GB_014",
+		"QuestionID": "Q_GB_014",
+		"QuestionType": "Gamble",
+		"QuestionText": "겁이 나면 그냥 지나가셔도 됩니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 15, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_SR" } ] },
+				{ "Weight": 85, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BalanceNote": "Red -1.05 (15%×(라이플 SR 1 +10) + 85%×(체력 -10 -3)) / Blue +2 (응급 붕대 1 +2)"
+	},
+	{
+		"Name": "Q_GB_015",
+		"QuestionID": "Q_GB_015",
+		"QuestionType": "Gamble",
+		"QuestionText": "한번 걸어 보시죠. 잃을 게 남아 있다면요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Pistol" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 10, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_SR" } ] },
+				{ "Weight": 90, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +2 (권총 탄약 1 +2) / Blue +0.9 (10%×(권총 SR 1 +9) + 90%×(없음 0))"
+	},
+	{
+		"Name": "Q_GB_016",
+		"QuestionID": "Q_GB_016",
+		"QuestionType": "Gamble",
+		"QuestionText": "안전하게 가시겠습니까, 걸어 보시겠습니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 15, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_L" } ] },
+				{ "Weight": 85, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -1.2 (15%×(의료 키트 1 +9) + 85%×(골렘 N 1 -3)) / Blue +2 (체력 +10 +2)"
+	},
+	{
+		"Name": "Q_GB_017",
+		"QuestionID": "Q_GB_017",
+		"QuestionType": "Gamble",
+		"QuestionText": "도박을 좋아하십니까? 저는 구경을 좋아합니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 10, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Weapon_Heavy" } ] },
+				{ "Weight": 90, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Walker" } ] }
+			]
+		},
+		"BalanceNote": "Red +2 (응급 붕대 1 +2) / Blue -1 (10%×(최상급 근접 1 +8) + 90%×(걷는 좀비 1 -2))"
+	},
+	{
+		"Name": "Q_GB_018",
+		"QuestionID": "Q_GB_018",
+		"QuestionType": "Gamble",
+		"QuestionText": "당신은 운이 좋은 편입니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 20, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_SR" } ] },
+				{ "Weight": 80, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": 5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +0.4 (20%×(라이플 SR 1 +10) + 80%×(정신력 -5 -2)) / Blue +2 (정신력 +5 +2)"
+	},
+	{
+		"Name": "Q_GB_019",
+		"QuestionID": "Q_GB_019",
+		"QuestionType": "Gamble",
+		"QuestionText": "숫자를 잘 읽으십시오. 후회는 당신 몫입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Rifle" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 10, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_SR" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Rifle" } ] },
+				{ "Weight": 90, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (라이플 탄약 1 +3) / Blue +1.6 (10%×(라이플 SR 1 +10, 라이플 탄약 2 +6) + 90%×(없음 0))"
+	},
+	{
+		"Name": "Q_GB_020",
+		"QuestionID": "Q_GB_020",
+		"QuestionType": "Gamble",
+		"QuestionText": "운이 따를지도 모릅니다. 아닐 수도 있고요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 12, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Heal_L" } ] },
+				{ "Weight": 88, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.48 (12%×(의료 키트 2 +18) + 88%×(체력 -10 -3)) / Blue +2 (응급 붕대 1 +2)"
+	},
+	{
+		"Name": "Q_GB_021",
+		"QuestionID": "Q_GB_021",
+		"QuestionType": "Gamble",
+		"QuestionText": "주사위는 제가 굴리겠습니다. 고르십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Pistol" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 15, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "EV_Reroll" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "EV_Insurance" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "EV_Peek" } ] },
+				{ "Weight": 85, "Effects": [ { "EffectTag": { "TagName": "Effect.Env.Darken" }, "Value": 3, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +2 (권총 탄약 1 +2) / Blue -0.6 (15%×(질문 변경권 1 +5, 보험 증서 1 +4, WARDEN의 메모 1 +4) + 85%×(어두워짐 -3))"
+	},
+	{
+		"Name": "Q_GB_022",
+		"QuestionID": "Q_GB_022",
+		"QuestionType": "Gamble",
+		"QuestionText": "확실한 것과 불확실한 것. 취향을 보여 주시죠.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -30, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +0.5 (50%×(스택 +10) + 50%×(체력 -30 -9)) / Blue +2 (체력 +10 +2)"
+	},
+	{
+		"Name": "Q_GB_023",
+		"QuestionID": "Q_GB_023",
+		"QuestionType": "Gamble",
+		"QuestionText": "확률은 거짓말을 하지 않습니다. 저와 달리.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "아무것도 하지 않는다",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_R" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue 0 (50%×(스택 +10) + 50%×(골렘 R 2 -10))"
+	},
+	{
+		"Name": "Q_GB_024",
+		"QuestionID": "Q_GB_024",
+		"QuestionType": "Gamble",
+		"QuestionText": "지난번엔 어느 쪽을 골랐는지 기억하십니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -25, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (60%×(스택 +10) + 40%×(체력 -25 -7.5)) / Blue +2 (응급 붕대 1 +2)"
+	},
+	{
+		"Name": "Q_GB_025",
+		"QuestionID": "Q_GB_025",
+		"QuestionType": "Gamble",
+		"QuestionText": "운을 시험해 보죠.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "걸지 않는다",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue +1.6 (40%×(스택 +10) + 60%×(정신력 -10 -4))"
+	},
+	{
+		"Name": "Q_GB_026",
+		"QuestionID": "Q_GB_026",
+		"QuestionType": "Gamble",
+		"QuestionText": "겁이 나면 그냥 지나가셔도 됩니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Brute" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Pistol" } ] }
+			]
+		},
+		"BalanceNote": "Red +2.5 (50%×(스택 +10) + 50%×(거대 좀비 1 -5)) / Blue +2 (권총 탄약 1 +2)"
+	},
+	{
+		"Name": "Q_GB_027",
+		"QuestionID": "Q_GB_027",
+		"QuestionType": "Gamble",
+		"QuestionText": "한번 걸어 보시죠. 잃을 게 남아 있다면요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "아무것도 하지 않는다",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 70, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 30, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -30, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue +3.1 (70%×(스택 +10) + 30%×(체력 -30 -9, 정신력 -10 -4))"
+	},
+	{
+		"Name": "Q_GB_028",
+		"QuestionID": "Q_GB_028",
+		"QuestionType": "Gamble",
+		"QuestionText": "안전하게 가시겠습니까, 걸어 보시겠습니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Random" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": 5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +2.8 (60%×(스택 +10) + 40%×(무작위 몬스터 2 -8)) / Blue +2 (정신력 +5 +2)"
+	},
+	{
+		"Name": "Q_GB_029",
+		"QuestionID": "Q_GB_029",
+		"QuestionType": "Gamble",
+		"QuestionText": "도박을 좋아하십니까? 저는 구경을 좋아합니다.",
+		"AllowedPhases": [2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "그냥 지나간다",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" } ] },
+				{ "Weight": 30, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] },
+				{ "Weight": 20, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_SR" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue +3.4 (50%×(스택 +10) + 30%×(없음 0) + 20%×(골렘 SR 1 -8))"
+	},
+	{
+		"Name": "Q_GB_030",
+		"QuestionID": "Q_GB_030",
+		"QuestionType": "Gamble",
+		"QuestionText": "목숨도 걸 수 있습니까?",
+		"AllowedPhases": [2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 5, "Effects": [ { "EffectTag": { "TagName": "Effect.Death" }, "Value": 0, "Param": "None" } ] },
+				{ "Weight": 95, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -25, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -7.5 (5%×(즉사 -150) + 95%×(없음 0)) / Blue -7.5 (체력 -25 -7.5)"
+	},
+	{
+		"Name": "Q_GB_031",
+		"QuestionID": "Q_GB_031",
+		"QuestionType": "Gamble",
+		"QuestionText": "살아남으면 선물입니다. 살아남으면요.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "아무것도 하지 않는다",
+			"Outcomes": []
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 8, "Effects": [ { "EffectTag": { "TagName": "Effect.Death" }, "Value": 0, "Param": "None" } ] },
+				{ "Weight": 92, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_L" } ] }
+			]
+		},
+		"BalanceNote": "Red 0 (효과 없음) / Blue -3.72 (8%×(즉사 -150) + 92%×(의료 키트 1 +9))"
+	},
+	{
+		"Name": "Q_GB_032",
+		"QuestionID": "Q_GB_032",
+		"QuestionType": "Gamble",
+		"QuestionText": "열 번 중 아홉 번은 웃게 됩니다.",
+		"AllowedPhases": [2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 10, "Effects": [ { "EffectTag": { "TagName": "Effect.Death" }, "Value": 0, "Param": "None" } ] },
+				{ "Weight": 90, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_SR" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -15, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -6 (10%×(즉사 -150) + 90%×(라이플 SR 1 +10)) / Blue -4.5 (체력 -15 -4.5)"
+	}
+]

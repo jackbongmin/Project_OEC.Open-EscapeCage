@@ -1,0 +1,576 @@
+[
+	{
+		"Name": "Q_ST_A1",
+		"QuestionID": "Q_ST_A1",
+		"QuestionType": "Story",
+		"QuestionText": "반드시 한 명을 죽여야 한다면, 누구를 고르겠습니까?",
+		"AllowedPhases": [1],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "어린이",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "어른",
+			"StoryTag": "Avoid",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.8 (Admit, 정신력 -2 -0.8) / Blue -0.8 (Avoid, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_A2a",
+		"QuestionID": "Q_ST_A2a",
+		"QuestionType": "Story",
+		"QuestionText": "망설임이 없군요. 처음이 아니라서입니까?",
+		"AllowedPhases": [1],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_A1", "Button": "Red" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "그렇다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "아니다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (Admit, 정신력 -5 -2) / Blue -0.8 (Deny, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_A2b",
+		"QuestionID": "Q_ST_A2b",
+		"QuestionType": "Story",
+		"QuestionText": "그렇군요. 그럼 그때는 왜 아이를 골랐습니까?",
+		"AllowedPhases": [1],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_A1", "Button": "Blue" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "기억나지 않는다",
+			"StoryTag": "Avoid",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "그건 내가 아니다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.8 (Avoid, 정신력 -2 -0.8) / Blue -2 (Deny, 정신력 -5 -2)"
+	},
+	{
+		"Name": "Q_ST_A3",
+		"QuestionID": "Q_ST_A3",
+		"QuestionType": "Story",
+		"QuestionText": "그 아이의 이름을 기억합니까?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_A2a", "Button": "Red" }, { "QuestionID": "Q_ST_A2a", "Button": "Blue" }, { "QuestionID": "Q_ST_A2b", "Button": "Red" }, { "QuestionID": "Q_ST_A2b", "Button": "Blue" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "기억한다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "모른다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (Admit, 정신력 -5 -2) / Blue -0.8 (Deny, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_B1",
+		"QuestionID": "Q_ST_B1",
+		"QuestionType": "Story",
+		"QuestionText": "비가 그친 오후에는 어디로 갑니까?",
+		"AllowedPhases": [1],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "놀이터 쪽으로",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "곧장 집으로",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.8 (Admit, 정신력 -2 -0.8) / Blue -0.8 (Deny, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_B2a",
+		"QuestionID": "Q_ST_B2a",
+		"QuestionType": "Story",
+		"QuestionText": "그날도 그 길이었죠. 누가 먼저 말을 걸었습니까?",
+		"AllowedPhases": [1],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_B1", "Button": "Red" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "내가 걸었다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "기억나지 않는다",
+			"StoryTag": "Avoid",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (Admit, 정신력 -5 -2) / Blue -0.8 (Avoid, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_B2b",
+		"QuestionID": "Q_ST_B2b",
+		"QuestionType": "Story",
+		"QuestionText": "곧장이라. 그날은 왜 돌아서 갔습니까?",
+		"AllowedPhases": [1],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_B1", "Button": "Blue" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "그냥 걷고 싶었다",
+			"StoryTag": "Avoid",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "그런 적 없다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.8 (Avoid, 정신력 -2 -0.8) / Blue -2 (Deny, 정신력 -5 -2)"
+	},
+	{
+		"Name": "Q_ST_B3",
+		"QuestionID": "Q_ST_B3",
+		"QuestionType": "Story",
+		"QuestionText": "노란 우산은 누구의 것이었습니까?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_B2a", "Button": "Red" }, { "QuestionID": "Q_ST_B2a", "Button": "Blue" }, { "QuestionID": "Q_ST_B2b", "Button": "Red" }, { "QuestionID": "Q_ST_B2b", "Button": "Blue" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "그 아이의 것",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 15, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "모르는 우산이다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +1 (Admit, 정신력 -5 -2, 체력 +15 +3) / Blue -0.8 (Deny, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_C1",
+		"QuestionID": "Q_ST_C1",
+		"QuestionType": "Story",
+		"QuestionText": "죄를 지은 자는 반드시 벌을 받아야 합니까?",
+		"AllowedPhases": [2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "그렇다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "경우에 따라",
+			"StoryTag": "Avoid",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.8 (Admit, 정신력 -2 -0.8) / Blue -0.8 (Avoid, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_C2a",
+		"QuestionID": "Q_ST_C2a",
+		"QuestionType": "Story",
+		"QuestionText": "판사도 그렇게 말했죠. 그 판결, 정당했습니까?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_C1", "Button": "Red" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "정당했다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 15, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "과했다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +1 (Admit, 정신력 -5 -2, 체력 +15 +3) / Blue -0.8 (Deny, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_C2b",
+		"QuestionID": "Q_ST_C2b",
+		"QuestionType": "Story",
+		"QuestionText": "법정에서도 그렇게 말했죠. 통하던가요?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_C1", "Button": "Blue" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "통하지 않았다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "법정은 모른다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.8 (Admit, 정신력 -2 -0.8) / Blue -2 (Deny, 정신력 -5 -2)"
+	},
+	{
+		"Name": "Q_ST_C3",
+		"QuestionID": "Q_ST_C3",
+		"QuestionType": "Story",
+		"QuestionText": "선고가 내려질 때 방청석을 보았습니까?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_C2a", "Button": "Red" }, { "QuestionID": "Q_ST_C2a", "Button": "Blue" }, { "QuestionID": "Q_ST_C2b", "Button": "Red" }, { "QuestionID": "Q_ST_C2b", "Button": "Blue" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "보았다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "보지 못했다",
+			"StoryTag": "Avoid",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (Admit, 정신력 -5 -2) / Blue -0.8 (Avoid, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_D1",
+		"QuestionID": "Q_ST_D1",
+		"QuestionType": "Story",
+		"QuestionText": "누군가 당신을 기다립니까?",
+		"AllowedPhases": [2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "기다린다",
+			"StoryTag": "Avoid",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "아무도 없다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.8 (Avoid, 정신력 -2 -0.8) / Blue -0.8 (Admit, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_D2a",
+		"QuestionID": "Q_ST_D2a",
+		"QuestionType": "Story",
+		"QuestionText": "면회 신청 기록은 0건입니다. 왜일까요?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_D1", "Button": "Red" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "올 수 없어서",
+			"StoryTag": "Avoid",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "오지 않기로 해서",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.8 (Avoid, 정신력 -2 -0.8) / Blue -2 (Admit, 정신력 -5 -2)"
+	},
+	{
+		"Name": "Q_ST_D2b",
+		"QuestionID": "Q_ST_D2b",
+		"QuestionType": "Story",
+		"QuestionText": "그렇죠. 그런데 그 아이를 기다리던 사람은요?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_D1", "Button": "Blue" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "아직 기다린다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "모르는 일이다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (Admit, 정신력 -5 -2) / Blue -0.8 (Deny, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_D3",
+		"QuestionID": "Q_ST_D3",
+		"QuestionType": "Story",
+		"QuestionText": "그 부모에게 한마디 전할 수 있다면?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_D2a", "Button": "Red" }, { "QuestionID": "Q_ST_D2a", "Button": "Blue" }, { "QuestionID": "Q_ST_D2b", "Button": "Red" }, { "QuestionID": "Q_ST_D2b", "Button": "Blue" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "잘못했습니다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 15, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "할 말이 없다",
+			"StoryTag": "Avoid",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +1 (Admit, 정신력 -5 -2, 체력 +15 +3) / Blue -0.8 (Avoid, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_E1",
+		"QuestionID": "Q_ST_E1",
+		"QuestionType": "Story",
+		"QuestionText": "이 방, 낯익지 않습니까?",
+		"AllowedPhases": [2],
+		"MinRunCount": 2,
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "낯익다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "처음 본다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.8 (Admit, 정신력 -2 -0.8) / Blue -0.8 (Deny, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_E2a",
+		"QuestionID": "Q_ST_E2a",
+		"QuestionType": "Story",
+		"QuestionText": "그렇겠죠. 몇 번째인지 세어 보셨습니까?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_E1", "Button": "Red" } ],
+		"MinRunCount": 2,
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "세고 있다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "세고 싶지 않다",
+			"StoryTag": "Avoid",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.8 (Admit, 정신력 -2 -0.8) / Blue -2 (Avoid, 정신력 -5 -2)"
+	},
+	{
+		"Name": "Q_ST_E2b",
+		"QuestionID": "Q_ST_E2b",
+		"QuestionType": "Story",
+		"QuestionText": "지난번에도 그렇게 답하셨습니다. 기억합니까?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_E1", "Button": "Blue" } ],
+		"MinRunCount": 2,
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "믿지 않는다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "그랬던가",
+			"StoryTag": "Avoid",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (Deny, 정신력 -5 -2) / Blue -0.8 (Avoid, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_E3",
+		"QuestionID": "Q_ST_E3",
+		"QuestionType": "Story",
+		"QuestionText": "왜 이것이 반복된다고 생각하십니까?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_E2a", "Button": "Red" }, { "QuestionID": "Q_ST_E2a", "Button": "Blue" }, { "QuestionID": "Q_ST_E2b", "Button": "Red" }, { "QuestionID": "Q_ST_E2b", "Button": "Blue" } ],
+		"MinRunCount": 2,
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "내가 한 일 때문에",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "당신의 장난이다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (Admit, 정신력 -5 -2) / Blue -0.8 (Deny, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_F1",
+		"QuestionID": "Q_ST_F1",
+		"QuestionType": "Story",
+		"QuestionText": "벌은 언젠가 끝나야 합니까?",
+		"AllowedPhases": [2],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "끝나야 한다",
+			"StoryTag": "Avoid",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "끝나선 안 된다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.8 (Avoid, 정신력 -2 -0.8) / Blue -0.8 (Admit, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_F2a",
+		"QuestionID": "Q_ST_F2a",
+		"QuestionType": "Story",
+		"QuestionText": "누가 끝을 정합니까? 벌받는 쪽입니까?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_F1", "Button": "Red" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "그건 아니다",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "충분히 받았다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -0.8 (Admit, 정신력 -2 -0.8) / Blue -2 (Deny, 정신력 -5 -2)"
+	},
+	{
+		"Name": "Q_ST_F2b",
+		"QuestionID": "Q_ST_F2b",
+		"QuestionType": "Story",
+		"QuestionText": "엄격하시군요. 당신 자신에게도입니까?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_F1", "Button": "Blue" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "나에게도",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "나는 다르다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -2, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (Admit, 정신력 -5 -2) / Blue -0.8 (Deny, 정신력 -2 -0.8)"
+	},
+	{
+		"Name": "Q_ST_F3",
+		"QuestionID": "Q_ST_F3",
+		"QuestionType": "Story",
+		"QuestionText": "용서를 구한다면, 누구에게 구하겠습니까?",
+		"AllowedPhases": [2],
+		"RequiredChoices": [ { "QuestionID": "Q_ST_F2a", "Button": "Red" }, { "QuestionID": "Q_ST_F2a", "Button": "Blue" }, { "QuestionID": "Q_ST_F2b", "Button": "Red" }, { "QuestionID": "Q_ST_F2b", "Button": "Blue" } ],
+		"bEnabled": true,
+		"RedChoice": {
+			"DisplayText": "그 아이에게",
+			"StoryTag": "Admit",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 15, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "구할 것이 없다",
+			"StoryTag": "Deny",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +1 (Admit, 정신력 -5 -2, 체력 +15 +3) / Blue -2 (Deny, 정신력 -5 -2)"
+	}
+]

@@ -1,0 +1,503 @@
+[
+	{
+		"Name": "Q_EV_001",
+		"QuestionID": "Q_EV_001",
+		"QuestionType": "Event",
+		"QuestionText": "방을 조금 꾸며 봤습니다. 마음에 드십니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_BouncingOrbs" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -15, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -4.5 (튀는 구체 -4.5) / Blue -4.5 (체력 -15 -4.5)"
+	},
+	{
+		"Name": "Q_EV_002",
+		"QuestionID": "Q_EV_002",
+		"QuestionType": "Event",
+		"QuestionText": "천장을 조심하십시오. 바닥도요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_FallingDebris" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_BouncingOrbs" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (낙하 잔해 -2) / Blue -4.5 (튀는 구체 -4.5)"
+	},
+	{
+		"Name": "Q_EV_003",
+		"QuestionID": "Q_EV_003",
+		"QuestionType": "Event",
+		"QuestionText": "잠시 소란스러울 겁니다. 고르십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 3, "Param": "Zombie_Walker" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_RisingPillar" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -3 (걷는 좀비 3 -6, 피난 기둥 +3) / Blue -3 (체력 -10 -3)"
+	},
+	{
+		"Name": "Q_EV_004",
+		"QuestionID": "Q_EV_004",
+		"QuestionType": "Event",
+		"QuestionText": "이번엔 방이 당신에게 질문할 차례입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -10, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" } ] }
+			]
+		},
+		"BalanceNote": "Red -4 (정신력 -10 -4) / Blue -3 (골렘 R 1 -5, 엄폐 벽 +2)"
+	},
+	{
+		"Name": "Q_EV_005",
+		"QuestionID": "Q_EV_005",
+		"QuestionType": "Event",
+		"QuestionText": "실력을 보여 주십시오. 기록해 두겠습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_BouncingOrbs" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 5, "Effects": [ { "EffectTag": { "TagName": "Effect.Death" }, "Value": 0, "Param": "None" } ] },
+				{ "Weight": 95, "Effects": [ { "EffectTag": { "TagName": "Effect.None" }, "Value": 0, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -7.5 (튀는 구체 -4.5, 정전 -3) / Blue -7.5 (5%×(즉사 -150) + 95%×(없음 0))"
+	},
+	{
+		"Name": "Q_EV_006",
+		"QuestionID": "Q_EV_006",
+		"QuestionType": "Event",
+		"QuestionText": "가만히 서 있기 지루하시죠. 움직여 보십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" } ] }
+			]
+		},
+		"BalanceNote": "Red -3 (골렘 N 1 -3) / Blue -2 (독가스 구역 -2)"
+	},
+	{
+		"Name": "Q_EV_007",
+		"QuestionID": "Q_EV_007",
+		"QuestionType": "Event",
+		"QuestionText": "운동은 건강에 좋습니다. 살아남는다면요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_FallingDebris" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (낙하 잔해 -2) / Blue -2 (정신력 -5 -2)"
+	},
+	{
+		"Name": "Q_EV_008",
+		"QuestionID": "Q_EV_008",
+		"QuestionType": "Event",
+		"QuestionText": "방이 변합니다. 어느 쪽 변화를 원하십니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+			]
+		},
+		"BalanceNote": "Red -2 (독가스 구역 -2) / Blue -3 (정전 -3)"
+	},
+	{
+		"Name": "Q_EV_009",
+		"QuestionID": "Q_EV_009",
+		"QuestionType": "Event",
+		"QuestionText": "몸으로 답하는 문제도 준비했습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_LowGravity" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "아무것도 하지 않는다",
+			"Outcomes": []
+		},
+		"BalanceNote": "Red 0 (중력 이상 0) / Blue 0 (효과 없음)"
+	},
+	{
+		"Name": "Q_EV_010",
+		"QuestionID": "Q_EV_010",
+		"QuestionType": "Event",
+		"QuestionText": "어떤 환경에서 더 오래 버티는지 궁금하군요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" } ] }
+			]
+		},
+		"BalanceNote": "Red +5 (회복 주사 1 +5) / Blue +3 (튀는 구체(보상형) +3)"
+	},
+	{
+		"Name": "Q_EV_011",
+		"QuestionID": "Q_EV_011",
+		"QuestionType": "Event",
+		"QuestionText": "시설 점검 시간입니다. 협조 부탁드립니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "그냥 지나간다",
+			"Outcomes": []
+		},
+		"BalanceNote": "Red 0 (튀는 구체(보상형) +3, 정전 -3) / Blue 0 (효과 없음)"
+	},
+	{
+		"Name": "Q_EV_012",
+		"QuestionID": "Q_EV_012",
+		"QuestionType": "Event",
+		"QuestionText": "이 방에는 아직 안 보여 드린 기능이 많습니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_L" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_FallingDebris" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" } ] }
+			]
+		},
+		"BalanceNote": "Red +6 (의료 키트 1 +9, 골렘 N 1 -3) / Blue +6 (스택 +10, 낙하 잔해 -2, 독가스 구역 -2)"
+	},
+	{
+		"Name": "Q_EV_013",
+		"QuestionID": "Q_EV_013",
+		"QuestionType": "Event",
+		"QuestionText": "방을 조금 꾸며 봤습니다. 마음에 드십니까?",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_BouncingOrbs" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+			]
+		},
+		"BalanceNote": "Red +5.5 (스택 +10, 튀는 구체 -4.5) / Blue +4 (라이플 R 1 +7, 정전 -3)"
+	},
+	{
+		"Name": "Q_EV_014",
+		"QuestionID": "Q_EV_014",
+		"QuestionType": "Event",
+		"QuestionText": "천장을 조심하십시오. 바닥도요.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": -25, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Brute" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_RisingPillar" } ] }
+			]
+		},
+		"BalanceNote": "Red -7.5 (체력 -25 -7.5) / Blue -7 (거대 좀비 2 -10, 피난 기둥 +3)"
+	},
+	{
+		"Name": "Q_EV_015",
+		"QuestionID": "Q_EV_015",
+		"QuestionType": "Event",
+		"QuestionText": "잠시 소란스러울 겁니다. 고르십시오.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Rifle" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" } ] }
+			]
+		},
+		"BalanceNote": "Red +5 (엄폐 벽 +2, 라이플 탄약 1 +3) / Blue +5 (회복 주사 1 +5)"
+	},
+	{
+		"Name": "Q_EV_016",
+		"QuestionID": "Q_EV_016",
+		"QuestionType": "Event",
+		"QuestionText": "이번엔 방이 당신에게 질문할 차례입니다.",
+		"AllowedPhases": [1, 2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_FallingDebris" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Runner" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_LowGravity" } ] }
+			]
+		},
+		"BalanceNote": "Red -4 (독가스 구역 -2, 낙하 잔해 -2) / Blue -6 (달리는 좀비 2 -6, 중력 이상 0)"
+	},
+	{
+		"Name": "Q_EV_017",
+		"QuestionID": "Q_EV_017",
+		"QuestionType": "Event",
+		"QuestionText": "실력을 보여 주십시오. 기록해 두겠습니다.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_SupplyDefense" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" } ] }
+			]
+		},
+		"BalanceNote": "Red +3 (보급 상자 방어 +3) / Blue +5 (회복 주사 1 +5)"
+	},
+	{
+		"Name": "Q_EV_018",
+		"QuestionID": "Q_EV_018",
+		"QuestionType": "Event",
+		"QuestionText": "가만히 서 있기 지루하시죠. 움직여 보십시오.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Pistol" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_LaserSweep" } ] }
+			]
+		},
+		"BalanceNote": "Red +2 (권총 탄약 1 +2) / Blue +2 (레이저 스윕 +2)"
+	},
+	{
+		"Name": "Q_EV_019",
+		"QuestionID": "Q_EV_019",
+		"QuestionType": "Event",
+		"QuestionText": "운동은 건강에 좋습니다. 살아남는다면요.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_ElectricFloor" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Turret" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" } ] }
+			]
+		},
+		"BalanceNote": "Red -1 (전기 바닥 -1) / Blue +1 (천장 터렛 -1, 엄폐 벽 +2)"
+	},
+	{
+		"Name": "Q_EV_020",
+		"QuestionID": "Q_EV_020",
+		"QuestionType": "Event",
+		"QuestionText": "방이 변합니다. 어느 쪽 변화를 원하십니까?",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Pistol_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_PressurePlates" } ] }
+			]
+		},
+		"BalanceNote": "Red +6 (권총 R 1 +6) / Blue +4 (압력판 퍼즐 +4)"
+	},
+	{
+		"Name": "Q_EV_021",
+		"QuestionID": "Q_EV_021",
+		"QuestionType": "Event",
+		"QuestionText": "몸으로 답하는 문제도 준비했습니다.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_PressurePlates" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Health" }, "Value": 10, "Param": "None" } ] }
+			]
+		},
+		"BalanceNote": "Red +1 (압력판 퍼즐 +4, 정전 -3) / Blue +2 (체력 +10 +2)"
+	},
+	{
+		"Name": "Q_EV_022",
+		"QuestionID": "Q_EV_022",
+		"QuestionType": "Event",
+		"QuestionText": "어떤 환경에서 더 오래 버티는지 궁금하군요.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_SupplyDefense" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_RisingPillar" } ] }
+			]
+		},
+		"BalanceNote": "Red +7 (라이플 R 1 +7) / Blue +6 (보급 상자 방어 +3, 피난 기둥 +3)"
+	},
+	{
+		"Name": "Q_EV_023",
+		"QuestionID": "Q_EV_023",
+		"QuestionType": "Event",
+		"QuestionText": "시설 점검 시간입니다. 협조 부탁드립니다.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Turret" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_ElectricFloor" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" } ] }
+			]
+		},
+		"BalanceNote": "Red -4 (천장 터렛 -1, 엄폐 벽 +2, 골렘 R 1 -5) / Blue -3 (전기 바닥 -1, 독가스 구역 -2)"
+	},
+	{
+		"Name": "Q_EV_024",
+		"QuestionID": "Q_EV_024",
+		"QuestionType": "Event",
+		"QuestionText": "이 방에는 아직 안 보여 드린 기능이 많습니다.",
+		"AllowedPhases": [2],
+		"bEnabled": false,
+		"RedChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_ElectricFloor" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+			]
+		},
+		"BlueChoice": {
+			"DisplayText": "",
+			"Outcomes": [
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Robot_Rogue" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" } ] }
+			]
+		},
+		"BalanceNote": "Red -3 (전기 바닥 -1, 정신력 -5 -2) / Blue -4 (괴물 로봇 1 -6, 엄폐 벽 +2)"
+	}
+]
