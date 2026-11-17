@@ -8,6 +8,7 @@
 | 00_Rules | [Architecture.md](00_Rules/Architecture.md) | 폴더 구조, 계층, 확장성 설계 원칙 |
 | 00_Rules | [CodingConvention.md](00_Rules/CodingConvention.md) | C++ 코드 작성 양식 |
 | 01_Design | [GDD.md](01_Design/GDD.md) | 게임 기획서 (노션 초기 기획 + 보완안) |
+| 01_Design | [QuestionGuideline.md](01_Design/QuestionGuideline.md) | 질문지 작성 기준·Fable 작업 지시서: 질문 207개 구성, 몬스터·아이템·이벤트 목록, 가치 환산표, 스택 시뮬레이션, 스토리 연쇄 규칙 |
 | 01_Design | [DesignReview.md](01_Design/DesignReview.md) | 초기 기획의 부족한 점과 개선 제안 |
 | 02_Tech | [Roadmap.md](02_Tech/Roadmap.md) | 개발 순서 (마일스톤 M0~M5) |
 | 02_Tech | [ChoiceSystem.md](02_Tech/ChoiceSystem.md) | 선택지 효과 시스템 설계, 치트 커맨드, 에디터 연결 가이드 (M1) |
