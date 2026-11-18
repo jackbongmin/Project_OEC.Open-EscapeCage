@@ -31,6 +31,9 @@ public:
 	// SpawnRadius 안의 무작위 위치 (회전은 이 액터 기준)
 	FTransform GetRandomSpawnTransform() const;
 
+	// 무작위 위치에서 바로 아래 바닥 위치 (물리가 없는 픽업용. 바닥을 못 찾으면 bOutFoundGround = false)
+	FTransform GetRandomGroundTransform(bool& bOutFoundGround) const;
+
 	// 이 지점에서 무언가 소환됐을 때 호출 (연출용)
 	UFUNCTION(BlueprintImplementableEvent, Category = "OEC|Spawn")
 	void BP_OnSpawned(AActor* InSpawnedActor);
@@ -45,6 +48,10 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "OEC|Spawn", meta = (ClampMin = "0"))
 	float SpawnRadius = 100.0f;
+
+	// 바닥을 찾을 때 아래로 검사하는 거리
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "OEC|Spawn", meta = (ClampMin = "0"))
+	float GroundTraceDistance = 3000.0f;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "OEC|Components")
 	TObjectPtr<USceneComponent> SceneRoot;

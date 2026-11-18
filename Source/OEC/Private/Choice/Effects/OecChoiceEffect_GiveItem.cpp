@@ -43,8 +43,25 @@ void UOecChoiceEffect_GiveItem::Execute(const FOecChoiceEffectContext& InContext
 		FActorSpawnParameters spawnParams;
 		spawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
-		if (AOecItemPickupBase* pickup = world->SpawnActor<AOecItemPickupBase>(pickupClass, spawnPoint->GetRandomSpawnTransform(), spawnParams))
+		// 픽업은 물리가 없으므로 투하구 아래 바닥에 바로 놓는다
+		bool bFoundGround = false;
+		const FTransform groundTransform = spawnPoint->GetRandomGroundTransform(bFoundGround);
+
+		if (AOecItemPickupBase* pickup = world->SpawnActor<AOecItemPickupBase>(pickupClass, groundTransform, spawnParams))
 		{
+			if (bFoundGround)
+			{
+				// 메시 피벗이 가운데여도 바닥에 묻히지 않게 바운드 아래쪽을 바닥에 맞춤
+				FVector boundsOrigin;
+				FVector boundsExtent;
+				pickup->GetActorBounds(true, boundsOrigin, boundsExtent);
+				pickup->AddActorWorldOffset(FVector(0.0f, 0.0f, groundTransform.GetLocation().Z - (boundsOrigin.Z - boundsExtent.Z)));
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("[Effect.Give.Item] 투하구 아래에서 바닥을 찾지 못해 투하구 위치에 놓습니다 (GroundTraceDistance 확인)"));
+			}
+
 			pickup->SetItemData(InEffect.Param, quantity);
 			spawnPoint->BP_OnSpawned(pickup);
 			UE_LOG(LogTemp, Log, TEXT("아이템 투하: %s x%d"), *itemData->ItemName, quantity);

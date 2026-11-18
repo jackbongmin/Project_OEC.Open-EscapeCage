@@ -16,6 +16,7 @@ namespace OecGameplayTags
 	// 게임플레이 이벤트
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Event_Monster_Attack, "Event.Monster.Attack", "몬스터 공격 판정 애님 노티파이");
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Event_Weapon_MeleeHit, "Event.Weapon.MeleeHit", "근접 무기 타격 판정 애님 노티파이");
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Event_Item_Use, "Event.Item.Use", "소모품 사용 (OptionalObject = UOecItemUsePayload)");
 
 	// 선택지 효과
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Effect_None, "Effect.None", "아무 일 없음 / 무의미 질문");

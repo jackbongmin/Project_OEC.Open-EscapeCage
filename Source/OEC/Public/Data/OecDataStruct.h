@@ -187,6 +187,10 @@ struct FItemStaticData : public FTableRowBase
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Consumable", meta = (EditCondition = "ItemType==EItemType::Consumable", EditConditionHides))
     float SanityRestoreAmount = 0.0f; // 정신력 회복량
 
+    // 사용했을 때 추가로 실행할 효과 (선택지 효과와 같은 구조. 예: Effect.Buff, Effect.Stack)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Consumable", meta = (EditCondition = "ItemType==EItemType::Consumable", EditConditionHides))
+    TArray<FOecChoiceEffect> UseEffects;
+
     // 향후 GAS 연동을 위한 태그 (Heal, SpeedUp 등)
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Consumable", meta = (EditCondition = "ItemType==EItemType::Consumable", EditConditionHides))
     FGameplayTag EffectTag;

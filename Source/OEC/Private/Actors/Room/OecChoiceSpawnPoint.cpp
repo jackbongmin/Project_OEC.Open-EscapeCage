@@ -56,3 +56,24 @@ FTransform AOecChoiceSpawnPoint::GetRandomSpawnTransform() const
 
 	return FTransform(GetActorRotation(), spawnLocation);
 }
+
+FTransform AOecChoiceSpawnPoint::GetRandomGroundTransform(bool& bOutFoundGround) const
+{
+	FTransform spawnTransform = GetRandomSpawnTransform();
+	bOutFoundGround = false;
+
+	const FVector traceStart = spawnTransform.GetLocation();
+	const FVector traceEnd = traceStart - FVector(0.0f, 0.0f, GroundTraceDistance);
+
+	FCollisionQueryParams queryParams(SCENE_QUERY_STAT(OecSpawnGroundTrace), false, this);
+	FHitResult hitResult;
+
+	// 바닥·벽 같은 고정 지형만 검사 (다른 픽업이나 캐릭터 위에 올라가지 않게)
+	if (GetWorld()->LineTraceSingleByObjectType(hitResult, traceStart, traceEnd, FCollisionObjectQueryParams(ECC_WorldStatic), queryParams))
+	{
+		spawnTransform.SetLocation(hitResult.ImpactPoint);
+		bOutFoundGround = true;
+	}
+
+	return spawnTransform;
+}

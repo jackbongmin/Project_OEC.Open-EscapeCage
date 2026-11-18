@@ -19,6 +19,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GAS/Attributeset/OecPlayerAttributeSet.h"
 #include "AbilitySystemComponent.h"
+#include "GAS/Ability/OecGA_UseItem.h"
 
 #include "Actors/Item/Weapon/OecWeaponBase.h"
 #include "Actors/Item/Weapon/OecRangedWeapon.h"
@@ -384,9 +385,25 @@ void AOecPlayerCharacter::ExecuteQuickSlot(int32 InSlotIndex)
 
         if (UAbilitySystemComponent* asc = GetAbilitySystemComponent())
         {
-            asc->AbilityLocalInputPressed(static_cast<int32>(EOecAbilityInputID::ItemUse));
+            // 어떤 아이템인지 이벤트에 실어 보낸다 (UOecGA_UseItem이 받아서 데이터대로 효과 적용)
+            UOecItemUsePayload* payload = NewObject<UOecItemUsePayload>(this);
+            payload->ItemCode = targetItemCode;
 
-            invenSub->RemoveItem(targetItemCode, 1);
+            FGameplayEventData eventData;
+            eventData.EventTag = OecGameplayTags::Event_Item_Use;
+            eventData.Instigator = this;
+            eventData.Target = this;
+            eventData.OptionalObject = payload;
+
+            // 어빌리티가 실제로 발동했을 때만 아이템을 소모
+            if (asc->HandleGameplayEvent(OecGameplayTags::Event_Item_Use, &eventData) > 0)
+            {
+                invenSub->RemoveItem(targetItemCode, 1);
+            }
+            else
+            {
+                UE_LOG(LogTemp, Warning, TEXT("소모품 사용 실패: 플레이어에게 UOecGA_UseItem 어빌리티가 없습니다 (DefaultAbilities 확인)"));
+            }
         }
     }
     else if (itemData->ItemType == EItemType::Weapon)
