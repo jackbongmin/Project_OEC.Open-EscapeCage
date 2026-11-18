@@ -72,6 +72,9 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent, Category = "OEC|Event")
 	void BP_OnPlayerHit(float InDamage);
 
+	// 하위 클래스용: 선택지 효과 1개 실행 (대상 = 이벤트를 일으킨 플레이어)
+	void ExecuteEventEffect(const FOecChoiceEffect& InEffect);
+
 	// 종료 후 제거까지 기다리는 시간 (내려가는 연출 등)
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "OEC|Event", meta = (ClampMin = "0"))
 	float DestroyDelay = 0.0f;

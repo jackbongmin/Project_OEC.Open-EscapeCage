@@ -156,6 +156,11 @@ void AOecRoomEventBase::ExecuteEffects(const TArray<FOecChoiceEffect>& InEffects
 	}
 }
 
+void AOecRoomEventBase::ExecuteEventEffect(const FOecChoiceEffect& InEffect)
+{
+	ExecuteEffects({ InEffect });
+}
+
 void AOecRoomEventBase::SetBasicShapeColor(UMeshComponent* InMesh, const FLinearColor& InColor)
 {
 	if (!InMesh || !InMesh->GetMaterial(0)) return;

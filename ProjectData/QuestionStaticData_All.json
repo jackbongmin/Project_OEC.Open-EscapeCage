@@ -3530,7 +3530,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3556,7 +3556,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3582,7 +3582,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3608,7 +3608,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3634,7 +3634,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3660,7 +3660,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3686,7 +3686,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",

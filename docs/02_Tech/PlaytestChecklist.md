@@ -61,6 +61,7 @@
 | E-7 | `OecGiveItem EV_Insurance` → 사용 → 나쁜 확률 결과 | 로그 "보험 증서 사용: 결과 N → M" |
 | E-8 | `OecGiveItem EV_Silencer` → 사용 → 몬스터 소환 | 몬스터가 나오지 않음 |
 | E-9 | `OecGiveItem EV_ChaosCube` → 사용 | 무작위 이벤트 |
+| E-10 | (페이즈 2 이벤트, 선택) `OecSetPhase 2` 후 `OecRunEffect Effect.Event.Start 1 Event_Turret` 등 | 터렛을 총으로 부수면 성공, 압력판·전기 바닥·레이저·보급 상자 동작 ([EventSystem.md](EventSystem.md) 3장) |
 
 ## 6. 회차 반복
 | # | 확인 | 기대 결과 |

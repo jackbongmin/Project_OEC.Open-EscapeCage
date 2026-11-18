@@ -31,7 +31,7 @@
 | 메모·보험·소음 차단기처럼 "나중에 한 번" 발동하는 효과 | **충전식 지속 효과**(AnswerModifier, Value = 남은 횟수)로 저장, 필요한 시스템이 `ConsumeAnswerModifier`로 1 소모 | 상태 아이콘 UI에 그대로 표시 가능. 새 충전 효과 = 하위 클래스 1개 |
 | 보험이 "나쁜 결과"를 판정해야 한다 | 실행기마다 `IsHarmful` (체력·정신력 감소, 즉사, 몬스터, 어두워짐, 해로운 버프·이벤트) | 새 효과도 자기 해로움만 선언하면 됨 |
 
-## 3. 이벤트 (페이즈 1용 "쉬움" 7종 + 보상형 1)
+## 3. 이벤트 ("쉬움" 7종 + 보상형 1 + 페이즈 2 "보통" 5종)
 
 | ID | 클래스 | 내용 (기본 표시) | 종료 | 성공 조건 → 보상 |
 |---|---|---|---|---|
@@ -47,7 +47,19 @@
 - 수치(개수, 속도, 피해, 범위)는 각 클래스의 디테일 (Details) › OEC | Event에서 바꾼다. 블루프린트 하위 클래스를 만들고 데이터의 `EventActorClass`를 그 블루프린트로 바꾸면 된다.
 - 연출: `BP_OnEventStarted`, `BP_OnEventFinished(성공 여부)`, `BP_OnPlayerHit(피해량)`.
 - 솟는 구조물은 컴포넌트 태그 `OecRise`가 붙은 메시를 함께 움직인다. 블루프린트에서 메시를 추가하고 태그만 붙이면 된다.
-- 보통 난이도 5종(보급 상자 방어, 레이저 스윕, 전기 바닥, 천장 터렛, 압력판)은 페이즈 2용이라 아직 없다. 쓰는 질문은 꺼져 있다.
+
+**보통 난이도 (페이즈 2 전용, `AllowedPhases` = [2])**
+
+| ID | 클래스 | 내용 (기본 표시) | 종료 | 성공 조건 → 보상 / 실패 |
+|---|---|---|---|---|
+| `Event_SupplyDefense` | `OecRoomEvent_SupplyDefense` | 노란 상자 + 걷는 좀비 4마리 (데이터의 시작 효과) | 30초 | 버티면 상자가 초록으로 열리고 라이플 R / 권총 R / 의료 키트 중 하나 |
+| `Event_LaserSweep` | `OecRoomEvent_LaserSweep` | 바닥 높이 35의 빨간 막대(길이 1400)가 초당 70도 회전, 닿으면 체력 -10 | 20초 | 한 번도 안 맞으면 스택 +1 |
+| `Event_ElectricFloor` | `OecRoomEvent_ElectricFloor` | 6×6 타일(200 단위)이 체크무늬로 노랑 경고 0.8초 → 파랑 감전 1.7초 번갈아. 감전 타일 위면 체력 -8 (점프 중에는 안전) | 20초 | 한 번도 안 맞으면 회복 주사 |
+| `Event_Turret` | `OecRoomEvent_Turret` | 높이 380의 빨간 구 터렛이 1.2초마다 플레이어를 사격 (체력 -4), 엄폐 벽에 가려지면 빗나감. 엄폐 벽은 시작 효과로 함께 등장 | 20초 | **부수면** (체력 60) 라이플 탄약 2묶음. 시간이 지나면 보상 없음 |
+| `Event_PressurePlates` | `OecRoomEvent_PressurePlates` | 기준점 둘레 판 3개가 무작위 순서로 노랗게 깜빡임 → 같은 순서로 밟기 | 30초 | 성공 스택 +1 / 틀리거나 시간 초과 시 정신력 -10 |
+
+- 터렛은 ASC와 체력 어트리뷰트를 가지고 있어 **기존 총·근접 무기의 피해 GE로 그대로 부서진다** (무기 코드 수정 없음). 사격 연출은 `BP_OnTurretFired(총구, 끝 위치, 명중)`에서, 개발 빌드에서는 디버그 선이 보인다.
+- 압력판은 가이드라인 원안의 "단말기에 나온 순서" 대신 판이 직접 깜빡여 순서를 보여 준다 (단말기 연동은 UI 작업 때). 순서 표시 연출은 `BP_OnPlateShown(판 번호)`.
 
 ## 4. 이벤트 아이템 5종
 
@@ -65,7 +77,7 @@
 ## 5. 에디터 작업 (사용자)
 
 ### 5.1 이벤트 데이터 테이블
-1. 윈도우 탐색기에서 `ProjectData/RoomEventData.json`을 콘텐츠 브라우저의 `05_Data` 폴더로 끌어다 놓는다.
+1. (이미 만들었다면 우클릭 → 새 파일로 리임포트 (Reimport With New File)로 13행 버전을 다시 임포트) 윈도우 탐색기에서 `ProjectData/RoomEventData.json`을 콘텐츠 브라우저의 `05_Data` 폴더로 끌어다 놓는다.
 2. 데이터 테이블 옵션 (DataTable Options) 창에서 행 타입 (Row Type)을 **OecRoomEventData**로 고르고 적용 (Apply) → 이름을 `DT_RoomEvent`로.
 3. 프로젝트 설정 › OEC Game Data Settings › DataTables › **Room Event Data Table**에 `DT_RoomEvent` 지정.
 
@@ -85,7 +97,7 @@
 - 체력·정신력 회복량은 0. 픽업은 비워 두면 기본 픽업.
 
 ### 5.4 질문 테이블 다시 임포트
-- `ProjectData/QuestionStaticData_All.json` (쉬움 이벤트와 이벤트 아이템을 쓰는 질문이 켜졌다. 켜진 질문 187개).
+- `ProjectData/QuestionStaticData_All.json` (이벤트 12종과 이벤트 아이템을 쓰는 질문이 켜졌다. 켜진 질문 194개).
 - 단말기의 Question Type Weights에 **이벤트** 가중치(페이즈 1: 10)가 들어 있는지 확인한다.
 
 ## 6. 동작 확인
@@ -95,7 +107,9 @@
 | `OecRunEffect Effect.Event.Start 1 Event_FallingDebris` | 붉은 원 → 잔해 낙하 10회. 다 피하면 응급 붕대 투하 |
 | `OecRunEffect Effect.Event.Start 1 Event_RisingPillar` | 기둥이 솟고 20초 뒤 내려감 |
 | `OecRunEffect Effect.Event.Start 1 Event_Blackout` | 방이 어두워지고 답변 3번 뒤 밝아짐 |
-| `OecRunEffect Effect.Event.Start 1 Random` | 무작위 이벤트 |
+| `OecRunEffect Effect.Event.Start 1 Random` | 무작위 이벤트 (현재 페이즈에서 나올 수 있는 것 중) |
+| `OecSetPhase 2` 후 `OecRunEffect Effect.Event.Start 1 Event_Turret` | 엄폐 벽과 터렛 등장, 총으로 부수면 라이플 탄약 투하 |
+| `OecRunEffect Effect.Event.Start 1 Event_PressurePlates` | 판 3개가 순서대로 깜빡인 뒤 같은 순서로 밟으면 스택 +1 |
 | `OecGiveItem EV_Reroll` → 퀵슬롯 사용 | 단말기 질문이 바뀜. 스토리 질문일 때는 바뀌지 않고 아이템도 그대로 |
 | `OecGiveItem EV_Peek` → 사용 | 다음 확률 질문 버튼에 "[메모] 확정: ..." |
 | `OecGiveItem EV_Silencer` → 사용 → 몬스터 소환 결과 선택 | 로그 "소음 차단기로 소환이 무효", 몬스터 없음 |
