@@ -12,7 +12,9 @@
 | 1인칭 이동, 달리기, 점프, 스태미나 | ✅ | `OecPlayerCharacter` | |
 | E 상호작용 | ✅ (에디터 확인 대기) | `OecInteractionComponent`, `OecInteractRangeComponent`, `OecInteractableBase` | 범위 콜리전으로 후보, 시선 각도로 선택. 후보가 있을 때만 Tick ([InteractionAndMelee.md](InteractionAndMelee.md)) |
 | 단말기 질문 표시 (가중치 랜덤, 중복 방지) | ✅ | `OecTerminalBase`, `OecTerminalWidget` | |
-| 회차 반복 (사망·붕괴 → 종료 화면 → 다음 회차, 회차 단위 초기화) | 🔧 | `Subsystems/OecRunSubsystem`, `UI/Ingame/OecRunEndWidget`, `OecHUD` | 빌드 확인, 플레이 미확인 (2026-11-18). 탈출 엔딩 미연결. [RunSystem.md](RunSystem.md) |
+| 회차 반복 (사망·붕괴 → 종료 화면 → 다음 회차, 회차 단위 초기화) | 🔧 | `Subsystems/OecRunSubsystem`, `UI/Ingame/OecRunEndWidget`, `OecHUD` | 빌드 확인, 플레이 미확인 (2026-11-18). 탈출 엔딩은 `OecRunEndTrigger` 배치 필요. [RunSystem.md](RunSystem.md) |
+| 버프 4종(이동 속도·점프·공격 속도·감속) + 답변마다 체력·정신력 패시브 | 🔧 | `OecChoiceEffect_AnswerStat`/`_AnswerHealth`/`_AnswerSanity`, `AttackSpeed` 어트리뷰트 | 빌드 확인, 플레이 미확인 (2026-11-18). 버프 GE 4개는 에디터 작업. [ChoiceSystem.md](ChoiceSystem.md) 8장 |
+| 방 이벤트 (쉬움 7종 + 보상형) + 이벤트 아이템 5종 | 🔧 | `Actors/Room/Event/*`, `OecChoiceEffect_StartEvent`/`_Charge`/`_QuestionReroll` | 빌드 확인, 플레이 미확인 (2026-11-18). 보통 난이도 5종(페이즈 2) 미구현. [EventSystem.md](EventSystem.md) |
 | 답변당 정신력 감소 | 🔧 | `OecChoiceSubsystem` | 설정 `SanityChangePerAnswer` (-1) |
 | 질문 출제 규칙 (비활성, 페이즈 제한, 튜토리얼 순서, 연쇄, 스택 보정, 연속 제한) | 🔧 | `Question/OecQuestionSubsystem`, `Question/Filters/*`, `Question/Selectors/*` | 빌드 확인, 에디터 플레이 미확인 (2026-11-17). [QuestionSystem.md](QuestionSystem.md) |
 | 빨강/파랑 물리 버튼 | ✅ | `OecQuestionButton` | |

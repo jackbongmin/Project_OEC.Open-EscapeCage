@@ -48,10 +48,17 @@ AOecTerminalBase ──(질문 선택)──> AOecQuestionButton.SetChoiceData()
 | `Effect.Stat.Health` | `_Health` | 증감량 | - | 체력 10 회복 |
 | `Effect.Stat.Sanity` | `_Sanity` | 증감량 | - | 정신력 10 감소 |
 | `Effect.Death` | `_Death` | - | - | 즉시 사망 |
-| `Effect.Buff` | `_Buff` | GE 레벨 | 버프 ID | Haste 버프 획득 |
+| `Effect.Buff` | `_Buff` | 지속 답변 수 | 버프 ID | 이동 속도 증가 (답변 5번 동안) |
 | `Effect.Spawn.Monster` | `_SpawnMonster` | 마리 수 | 몬스터 코드 / `Random` | 골렘 2마리 소환 |
 | `Effect.Give.Item` | `_GiveItem` | 수량 | 아이템 코드 | 회복약 획득 |
 | `Effect.Passive.AnswerStackChance` | `_AnswerStackChance` | 확률 (0.01 = 1%) | - | 앞으로 답변할 때마다 1% 확률로 스택 +1 |
+| `Effect.Passive.AnswerHealth` | `_AnswerHealth` | 1회 변화량 | 지속 답변 수 (예: `10`) | 답변 10번 동안 매번 체력 +2 |
+| `Effect.Passive.AnswerSanity` | `_AnswerSanity` | 1회 변화량 | 지속 답변 수 | 답변 10번 동안 매번 정신력 -1 |
+| `Effect.Event.Start` | `_StartEvent` | - | 이벤트 ID / `Random` | 튀는 구체 5개 (30초) ([EventSystem.md](EventSystem.md)) |
+| `Effect.Question.Reroll` | `_QuestionReroll` | - | - | 지금 질문 교체 |
+| `Effect.Question.Peek` | `_PeekOutcome` (충전식) | 충전 횟수 | - | 다음 확률 결과 미리 보기 |
+| `Effect.Guard.Insurance` | `_Insurance` (충전식) | 충전 횟수 | - | 나쁜 확률 결과 1회 다시 굴림 |
+| `Effect.Guard.Silencer` | `_Silencer` (충전식) | 충전 횟수 | - | 다음 몬스터 소환 1회 무효 |
 | `Effect.Env.Darken` | `_Darken` | 지속 답변 수 (0 = 영구) | - | 방이 어두워짐 (답변 3번 동안) |
 
 새 효과 추가 순서
@@ -202,3 +209,54 @@ AOecTerminalBase ──(질문 선택)──> AOecQuestionButton.SetChoiceData()
 2. 튜토리얼 3번 → 걷는 좀비가 소환되고, 파란 쪽을 고르면 응급 붕대가 떨어지는지.
 3. 응급 붕대를 줍고 퀵슬롯에 넣어 사용 → 체력이 10 오르고 개수가 1 줄어드는지 (`OecShowState`로 확인).
 4. 콘솔 `OecSpawnMonster Zombie_Brute` → 거대 좀비 소환 확인.
+
+---
+
+## 8. 버프·답변 패시브 (2026-11-18)
+
+### 8.1 구조
+| 효과 | 구현 | 반영 위치 |
+|---|---|---|
+| 이동 속도 증가·감소 | GE가 `Speed`, `SprintSpeed` 어트리뷰트를 곱연산으로 변경 | 플레이어가 매 프레임 이동 속도에 반영 (기존 코드) |
+| 점프력 증가 | GE가 `JumpForce` 변경 | 위와 같음 |
+| 공격 속도 증가 | 신규 어트리뷰트 `AttackSpeed` (기본 1) | 원거리 연사 간격 ÷ 배율, 근접 공격·재장전 몽타주 재생 속도 × 배율 (`UOecPlayerAttributeSet::GetAttackSpeedMultiplier`) |
+| 답변마다 체력·정신력 | 공용 베이스 `UOecChoiceEffect_AnswerStat` + 하위 2개. 지속 효과(AnswerModifier)로 걸고 답변마다 체력·정신력 실행기를 호출 | 다시 얻으면 변화량은 더해지고 남은 횟수는 갱신 |
+
+- 버프·디버프는 **답변 횟수**로 유지한다. 시간제면 기다리기만 해도 디버프가 풀리기 때문이다.
+  - 버프 GE는 무한 지속(Infinite)으로 만들고, 실행기가 지속 효과(AnswerModifier)로 남은 답변 수를 세다가 0이 되면 GE를 제거한다.
+  - 지속 답변 수는 질문 데이터의 `Value` (0 이하면 설정 **Default Buff Answer Duration**, 기본 3).
+  - 같은 버프를 다시 얻으면 GE를 겹쳐 걸지 않고 남은 답변 수만 갱신한다. 지속 효과는 태그 + 버프 ID(`Param`)로 구분해서, 서로 다른 버프는 각자 센다.
+- 수치(배율)는 **GE에서** 정한다 (데이터).
+- 버튼 문구: 버프는 프로젝트 설정 **Choice Buff Display Names**의 이름(기본값 4개 등록됨), 패시브는 "답변 10번 동안 매번 체력 +2".
+- 공격 속도는 원거리 무기의 연사를 **시작할 때** 간격을 정하므로, 연사 중에 버프가 걸리면 다음 발사 입력부터 반영된다.
+
+### 8.2 에디터 작업 (사용자)
+**GE 4개 만들기** (`Content/01_OEC/07_GAS/GE/`, 블루프린트 클래스 → 부모 `GameplayEffect`)
+
+모두 지속 시간 정책 (Duration Policy) = **무한 (Infinite)**. 끝나는 시점은 코드가 답변 횟수로 정한다.
+
+| 에셋 | 모디파이어 (Modifiers) |
+|---|---|
+| `GE_Buff_Haste` | `OecAttributeSetBase.Speed` 곱하기 1.3, `OecPlayerAttributeSet.SprintSpeed` 곱하기 1.3 |
+| `GE_Buff_Jump` | `OecPlayerAttributeSet.JumpForce` 곱하기 2.0 |
+| `GE_Buff_AttackSpeed` | `OecPlayerAttributeSet.AttackSpeed` 곱하기 1.3 |
+| `GE_Buff_Slow` | `OecAttributeSetBase.Speed` 곱하기 0.7, `OecPlayerAttributeSet.SprintSpeed` 곱하기 0.7 |
+
+- 모디파이어 연산 (Modifier Op)은 곱하기 계열(UE 5.6 목록에서는 `Multiply Additive` 또는 `Multiply Compound`)을 고르고, 값은 **배율 그대로**(1.3 = 30% 증가, 0.7 = 30% 감소) 넣는다. 두 연산은 같은 버프가 여러 개 겹칠 때만 결과가 다르다 (Additive: 증가분끼리 더함, Compound: 배율끼리 곱함). 이름이 다르게 보이면 디테일 패널 검색창에 `Modifier Op`를 입력해 확인한다.
+- 스태킹 (Stacking) 설정은 필요 없다. 같은 버프를 다시 받으면 코드가 GE를 다시 걸지 않고 남은 답변 수만 갱신한다.
+
+**프로젝트 설정 › OEC Game Data Settings › Choice › Choice Buff Effects**에 등록
+
+| 키 | 값 |
+|---|---|
+| `Buff_Haste` | `GE_Buff_Haste` |
+| `Buff_Jump` | `GE_Buff_Jump` |
+| `Buff_AttackSpeed` | `GE_Buff_AttackSpeed` |
+| `Buff_Slow` | `GE_Buff_Slow` |
+
+**질문 테이블 다시 임포트**: `ProjectData/QuestionStaticData_All.json` (버프·패시브 질문 15개가 켜졌다).
+
+### 8.3 동작 확인
+1. 콘솔 `OecRunEffect Effect.Buff 3 Buff_Haste` → 걷기·달리기가 빨라지는지, 질문에 3번 답한 뒤 돌아오는지 (기다리기만 해서는 풀리지 않음).
+2. `OecRunEffect Effect.Buff 3 Buff_AttackSpeed` → 라이플 연사, 도끼 휘두르기, 재장전이 빨라지는지. `OecShowState`에 남은 답변 수가 표시되는지.
+3. `OecRunEffect Effect.Passive.AnswerHealth 2 10` → 질문에 답할 때마다 체력 +2, `OecShowState`에 지속 효과 표시, 10번 뒤 사라지는지.

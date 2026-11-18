@@ -10,6 +10,7 @@
 
 ```
 체력 0 / 정신력 0 (AOecPlayerCharacter가 어트리뷰트 변화를 구독)
+탈출 방 출구 (AOecRunEndTrigger에 플레이어가 들어옴)
    └→ UOecRunSubsystem.EndRun(사유)
         └→ OnRunEnded ──> AOecHUD: 종료 화면(UOecRunEndWidget) 표시, 마우스 표시, 이동·시점 입력 차단
                           "다시 시작" 버튼
@@ -71,6 +72,19 @@
 5. 질문에 답할 때마다 정신력이 1씩 줄어드는지 확인.
 
 ## 8. 알려진 한계
-- **탈출 엔딩은 아직 연결하지 않았다.** `EndRun(Escape)`를 탈출 방에서 부르면 같은 흐름으로 동작한다.
+- 탈출 엔딩은 `AOecRunEndTrigger`로 연결했다 (2026-11-18). 탈출도 루프라서 "다시 시작"을 누르면 다음 회차가 메인 방에서 시작된다 (GDD 노말 엔딩).
 - **진엔딩 판정**(기억 조각 + 스토리 성향)은 없다. 스토리 성향 횟수는 `UOecQuestionSubsystem::GetStoryTagCount`로 읽을 수 있다.
 - 레벨 다시 로드는 동기 로드라 화면이 잠깐 멈출 수 있다. 필요하면 로딩 화면이나 페이드를 붙인다.
+
+---
+
+## 9. 탈출 엔딩 (2026-11-18)
+
+- `AOecRunEndTrigger` (Actors/Room): 상자 영역에 **플레이어가 조종하는 폰**이 들어오면 `EndRun(EndReason)`. 기본 사유는 탈출.
+- 진엔딩용 숨겨진 문 같은 곳에도 사유만 바꿔 재사용할 수 있다 (진엔딩 사유는 판정 기능을 만들 때 추가).
+- 문 열림·빛 연출은 `BP_OnTriggered`에서 블루프린트로.
+
+**배치 (사용자)**
+1. `Content/01_OEC/01_Map/Rooms/Test/L_Test_Exit` 레벨을 연다.
+2. 액터 배치 (Place Actors) 패널에서 `OecRunEndTrigger`를 찾아 출구 위치에 놓고, 디테일 (Details) › Trigger Box의 상자 크기 (Box Extent)를 출구 크기에 맞춘다.
+3. 저장. 복도 2에서 탈출 방 문을 열고 들어가 트리거에 닿으면 "탈출" 종료 화면이 뜬다.

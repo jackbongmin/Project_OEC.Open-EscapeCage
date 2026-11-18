@@ -11,8 +11,10 @@
 | 01_Design | [QuestionGuideline.md](01_Design/QuestionGuideline.md) | 질문지 작성 기준·Fable 작업 지시서: 질문 207개 구성, 몬스터·아이템·이벤트 목록, 가치 환산표, 스택 시뮬레이션, 스토리 연쇄 규칙 |
 | 01_Design | [QuestionBalanceReport.md](01_Design/QuestionBalanceReport.md) | 작성된 질문 207개의 밸런스 리포트: 카테고리별 통계, 스택 시뮬레이션, 정신력 계산, 꺼 둔 질문과 필요한 콘텐츠 |
 | 01_Design | [DesignReview.md](01_Design/DesignReview.md) | 초기 기획의 부족한 점과 개선 제안 |
+| 02_Tech | [EventSystem.md](02_Tech/EventSystem.md) | 방 이벤트 시스템과 이벤트 아이템 5종: 구조, 이벤트 표, 에디터 작업 |
 | 02_Tech | [QuestionSystem.md](02_Tech/QuestionSystem.md) | 질문 출제 시스템: 필터·선택기 구조, 출제 조건 필드, 프로젝트 설정, 에디터 연결 가이드 |
 | 02_Tech | [RunSystem.md](02_Tech/RunSystem.md) | 회차(반복) 시스템: 사망·붕괴 → 종료 화면 → 다음 회차, 회차마다 초기화되는 것, 종료 화면 위젯 |
+| 02_Tech | [PlaytestChecklist.md](02_Tech/PlaytestChecklist.md) | 플레이 확인 목록 (페이즈 1): 빌드만 확인한 기능을 흐름 순서로 점검 |
 | 02_Tech | [Roadmap.md](02_Tech/Roadmap.md) | 개발 순서 (마일스톤 M0~M5) |
 | 02_Tech | [ChoiceSystem.md](02_Tech/ChoiceSystem.md) | 선택지 효과 시스템 설계, 치트 커맨드, 에디터 연결 가이드 (M1) |
 | 02_Tech | [InteractionAndMelee.md](02_Tech/InteractionAndMelee.md) | 상호작용(E키) 범위 콜리전 + 시선 선택, 근접 무기 구조와 에디터 연결 |
