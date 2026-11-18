@@ -12,7 +12,7 @@
 | `Core/` | 게임모드, 플레이어 컨트롤러, HUD | `AOecGameModeBase` |
 | `Settings/` | 프로젝트 설정 (`UDeveloperSettings`) | `UOecGameDataSettings` |
 | `Data/` | 데이터 구조체, enum | `FItemStaticData`, `EDoorType` |
-| `Subsystems/` | 전역 상태와 시스템 (게임 인스턴스 / 월드) | `UOecInventorySubsystem` |
+| `Subsystems/` | 전역 상태와 시스템 (게임 인스턴스 / 월드) | `UOecInventorySubsystem`, `UOecRunSubsystem` |
 | `GAS/` | 어빌리티, 이펙트, 어트리뷰트, 태그 | `UOecGA_WeaponFire`, `OecGameplayTags` |
 | `Choice/` | 선택지 효과 시스템 (서브시스템 + `Effects/` 실행기) | `UOecChoiceSubsystem`, `UOecChoiceEffect_Stack` |
 | `Question/` | 질문 출제 시스템 (서브시스템 + `Filters/` 필터 + `Selectors/` 선택기) | `UOecQuestionSubsystem`, `UOecQuestionFilter_Phase` |

@@ -12,6 +12,8 @@
 | 1인칭 이동, 달리기, 점프, 스태미나 | ✅ | `OecPlayerCharacter` | |
 | E 상호작용 | ✅ (에디터 확인 대기) | `OecInteractionComponent`, `OecInteractRangeComponent`, `OecInteractableBase` | 범위 콜리전으로 후보, 시선 각도로 선택. 후보가 있을 때만 Tick ([InteractionAndMelee.md](InteractionAndMelee.md)) |
 | 단말기 질문 표시 (가중치 랜덤, 중복 방지) | ✅ | `OecTerminalBase`, `OecTerminalWidget` | |
+| 회차 반복 (사망·붕괴 → 종료 화면 → 다음 회차, 회차 단위 초기화) | 🔧 | `Subsystems/OecRunSubsystem`, `UI/Ingame/OecRunEndWidget`, `OecHUD` | 빌드 확인, 플레이 미확인 (2026-11-18). 탈출 엔딩 미연결. [RunSystem.md](RunSystem.md) |
+| 답변당 정신력 감소 | 🔧 | `OecChoiceSubsystem` | 설정 `SanityChangePerAnswer` (-1) |
 | 질문 출제 규칙 (비활성, 페이즈 제한, 튜토리얼 순서, 연쇄, 스택 보정, 연속 제한) | 🔧 | `Question/OecQuestionSubsystem`, `Question/Filters/*`, `Question/Selectors/*` | 빌드 확인, 에디터 플레이 미확인 (2026-11-17). [QuestionSystem.md](QuestionSystem.md) |
 | 빨강/파랑 물리 버튼 | ✅ | `OecQuestionButton` | |
 | 질문 결과 → 실제 효과 | ✅ | `Choice/OecChoiceSubsystem`, `Choice/Effects/*` | 효과 10종, 확률 결과, 지속 효과, 문구 자동 생성. 에디터 동작 확인 완료. [ChoiceSystem.md](ChoiceSystem.md) |
@@ -29,7 +31,7 @@
 | 근접 무기 | ✅ (에디터 연결 대기) | `OecMeleeWeapon`, `OecGA_MeleeAttack` | 몽타주 노티파이 순간 카메라 앞 구체 스윕, 벽 너머 제외. 무기 교체 시 이전 무기 어빌리티 회수 ([InteractionAndMelee.md](InteractionAndMelee.md)) |
 | 샷건 | ❌ | | |
 | 인벤토리 20칸, 퀵슬롯 5칸 | ✅ | `OecInventorySubsystem`, `OecQuickSlotSubsystem` | 아이템 설명창 TODO |
-| 소모품 사용 (체력 회복) | ✅ | `OecGA_UseItem` | 정신력·이속 아이템 없음 |
+| 소모품 사용 (체력·정신력 회복, 추가 효과) | 🔧 | `OecGA_UseItem` | 모든 소모품 공용, 아이템 코드를 이벤트로 전달 (2026-11-18, 빌드 확인·플레이 미확인). [ChoiceSystem.md](ChoiceSystem.md) 7장 |
 | 몬스터 AI (시야, BT, 공격, 사망) | ✅ | `OecAIController`, `OecMonsterBase`, `OecGA_MonsterAttack` | 골렘 N/R/SR |
 | 풀링 | ✅ | `OecPoolingSubsystem` | 몬스터에 적용. 사망·반납 시 AI 시야·BT·어빌리티·이동 정지, 중복 반납 방지 ([TS-003](../03_Troubleshooting/TS-003_몬스터_사망_후_시야_유지.md)) |
 | 정신력 수치와 UI 바 | ⚠️ | `OecPlayerAttributeSet`, `OecStatPanelWidget` | 시작값 80, MaxSanity 100, 0~Max 클램프 추가 (M1). 답변·피격 감소와 단계 효과는 M2 |

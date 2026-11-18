@@ -149,3 +149,56 @@ AOecTerminalBase ──(질문 선택)──> AOecQuestionButton.SetChoiceData()
 2. 콘솔 `OecAddStack 5` → 메인 문이 열리는지 확인.
 3. 콘솔 `OecRunEffect Effect.Env.Darken 2` → 조명 변화 확인 → 버튼 2번 누르면 원래대로.
 4. `OecShowState`로 상태 확인.
+
+---
+
+## 7. 아이템 투하와 소모품 사용 (2026-11-18)
+
+### 7.1 투하 위치 바닥 보정
+- 픽업 액터에는 물리가 없어서, 천장 투하구 위치에 그대로 생성하면 공중에 떠 있었다 (소방 도끼가 안 보이던 원인 중 하나).
+- `AOecChoiceSpawnPoint::GetRandomGroundTransform`이 투하 위치에서 아래로 선을 쏴서 바닥(`WorldStatic`)을 찾고, `Effect.Give.Item`은 픽업의 바운드 아래쪽을 바닥에 맞춰 놓는다.
+- 검사 거리는 스폰 지점 디테일 (Details) › **Ground Trace Distance** (기본 3000). 바닥을 못 찾으면 경고 로그를 남기고 투하구 위치에 놓는다.
+
+### 7.2 소모품 사용 (`UOecGA_UseItem`)
+| 이전 | 지금 |
+|---|---|
+| 어빌리티 블루프린트 하나가 데이터 행 하나에 고정 (`GA_Heal10` → 항상 같은 회복량) | 모든 소모품이 어빌리티 하나를 공유. 퀵슬롯 사용 시 `Event.Item.Use` 이벤트에 **아이템 코드를 실어** 보낸다 |
+| 입력 ID(ItemUse)로 발동, 어빌리티가 없어도 아이템이 소모됨 | 이벤트로 발동, **어빌리티가 실제로 발동했을 때만** 아이템 소모 |
+| GE와 회복량을 블루프린트마다 지정 | 아이템 데이터의 `HealthRestoreAmount`, `SanityRestoreAmount`, `UseEffects`를 선택지 효과 실행기로 적용 (GE: 프로젝트 설정의 Choice Health/Sanity Effect) |
+
+- 새 소모품 = 데이터 테이블 행 추가. 어빌리티를 새로 만들지 않는다.
+- `UseEffects`는 선택지 효과와 같은 구조라서, 이후 이벤트 아이템(질문 변경권 등)이나 버프 아이템도 같은 방식으로 붙일 수 있다.
+- 플레이어 `DefaultAbilities`에 `UOecGA_UseItem`(또는 그 하위 블루프린트, 예: 기존 `GA_Heal10`)이 하나 들어 있어야 한다. 없으면 "소모품 사용 실패" 경고가 뜨고 아이템은 소모되지 않는다.
+  - `GA_Heal10`에 있던 Item Data Row, Item Effect Class 속성은 삭제됐다 (더 이상 쓰지 않음).
+
+### 7.3 에디터 작업 (사용자)
+**`DT_ItemStaticData` 행 추가·수정**
+
+| 행 이름 | Item Name | Item Type | Health Restore Amount | Pickup Actor Class |
+|---|---|---|---|---|
+| `Weapon_FireAxe` (기존) | - | - | - | `BP_Pickup_Axe` 지정 |
+| `Heal_S` | 응급 붕대 | 소모품 (Consumable) | 10 | 회복 아이템 픽업 (없으면 비워 두기 = 기본 픽업) |
+| `Heal_M` | 회복 주사 | 소모품 (Consumable) | 25 | 위와 같음 |
+| `Heal_L` | 의료 키트 | 소모품 (Consumable) | 50 | 위와 같음 |
+
+- 행 이름과 Item Code를 같게 쓴다 (다르면 시작할 때 오류 로그가 뜬다).
+
+**`DT_MonsterStaticData` 행 추가** (좀비 3종, 기존 골렘 행을 복제해서 고치면 빠르다)
+
+| 행 이름 | Monster Name | Monster Class | 위협도 (참고) |
+|---|---|---|---|
+| `Zombie_Walker` | 걷는 좀비 | `BP_ZombieMen` | 1 |
+| `Zombie_Runner` | 달리는 좀비 | `BP_ZombieGirl` | 2 |
+| `Zombie_Brute` | 거대 좀비 | `BP_SpecialZombie` | 3 |
+
+- 체력·공격력·이동 속도·공격 범위·공격 몽타주·기본 어빌리티는 행마다 채운다. 위협도가 높을수록 강하게 (걷는 좀비 < 골렘 N ≈ 달리는 좀비 < 거대 좀비 ≈ 골렘 R).
+- 각 좀비 블루프린트의 디테일 (Details) › OEC | Monster › **Monster Code**를 위 행 이름과 같게 넣는다.
+- AI 컨트롤러 클래스 (AI Controller Class)는 `BP_AiController`, 자동 빙의 AI (Auto Possess AI)는 `Placed in World or Spawned` (6.5와 같음).
+
+**질문 테이블 다시 임포트**: `ProjectData/QuestionStaticData_All.json` (좀비·회복 아이템 질문이 켜졌다).
+
+### 7.4 동작 확인
+1. 튜토리얼 2번에서 소방 도끼 선택 → 투하구 아래 바닥에 도끼 픽업이 놓이는지.
+2. 튜토리얼 3번 → 걷는 좀비가 소환되고, 파란 쪽을 고르면 응급 붕대가 떨어지는지.
+3. 응급 붕대를 줍고 퀵슬롯에 넣어 사용 → 체력이 10 오르고 개수가 1 줄어드는지 (`OecShowState`로 확인).
+4. 콘솔 `OecSpawnMonster Zombie_Brute` → 거대 좀비 소환 확인.
