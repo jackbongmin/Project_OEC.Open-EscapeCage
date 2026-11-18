@@ -93,6 +93,14 @@ public:
     UPROPERTY(Config, EditAnywhere, Category = "Choice")
     TMap<FName, TSoftClassPtr<UGameplayEffect>> ChoiceBuffEffects;
 
+    // 버프의 Value(지속 답변 수)가 0 이하일 때 쓰는 기본 지속 답변 수
+    UPROPERTY(Config, EditAnywhere, Category = "Choice", meta = (ClampMin = "1"))
+    int32 DefaultBuffAnswerDuration = 3;
+
+    // 버프 ID → 버튼에 표시할 이름 (없으면 ID 그대로 표시)
+    UPROPERTY(Config, EditAnywhere, Category = "Choice")
+    TMap<FName, FText> ChoiceBuffDisplayNames;
+
     // 아이템 데이터에 픽업 액터가 없을 때 쓰는 기본 픽업
     UPROPERTY(Config, EditAnywhere, Category = "Choice")
     TSoftClassPtr<AOecItemPickupBase> DefaultPickupClass;

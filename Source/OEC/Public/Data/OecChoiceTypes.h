@@ -117,6 +117,10 @@ public:
 	UPROPERTY(BlueprintReadOnly)
 	float Value = 0.0f;
 
+	// 같은 태그 안의 구분자 (예: Effect.Buff의 버프 ID). 태그 + Param이 같으면 같은 지속 효과로 본다
+	UPROPERTY(BlueprintReadOnly)
+	FName Param = NAME_None;
+
 	// 남은 답변 수 (INDEX_NONE = 영구)
 	UPROPERTY(BlueprintReadOnly)
 	int32 RemainingAnswers = INDEX_NONE;

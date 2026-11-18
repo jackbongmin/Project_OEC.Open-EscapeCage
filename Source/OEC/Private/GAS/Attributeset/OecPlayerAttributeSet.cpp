@@ -3,6 +3,8 @@
 
 #include "GAS/Attributeset/OecPlayerAttributeSet.h"
 #include "GameplayEffectExtension.h"
+#include "AbilitySystemComponent.h"
+#include "AbilitySystemGlobals.h"
 
 UOecPlayerAttributeSet::UOecPlayerAttributeSet()
 {
@@ -16,6 +18,16 @@ UOecPlayerAttributeSet::UOecPlayerAttributeSet()
 
     InitSprintSpeed(1500.f);
     InitJumpForce(600.f);
+    InitAttackSpeed(1.f);
+}
+
+float UOecPlayerAttributeSet::GetAttackSpeedMultiplier(const AActor* InActor)
+{
+    const UAbilitySystemComponent* asc = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(InActor);
+    if (!asc || !asc->HasAttributeSetForAttribute(GetAttackSpeedAttribute())) return 1.0f;
+
+    // 디버프가 겹쳐도 멈추지 않게 하한을 둔다
+    return FMath::Max(asc->GetNumericAttribute(GetAttackSpeedAttribute()), 0.1f);
 }
 
 void UOecPlayerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)

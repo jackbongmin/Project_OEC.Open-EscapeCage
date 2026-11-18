@@ -6,6 +6,7 @@
 #include "Actors/Item/Weapon/OecMeleeWeapon.h"
 #include "Actors/Characters/Player/OecPlayerCharacter.h"
 #include "AbilitySystemComponent.h"
+#include "GAS/Attributeset/OecPlayerAttributeSet.h"
 #include "AbilitySystemInterface.h"
 #include "Abilities/Tasks/AbilityTask_PlayMontageAndWait.h"
 #include "Abilities/Tasks/AbilityTask_WaitGameplayEvent.h"
@@ -41,13 +42,15 @@ void UOecGA_MeleeAttack::ActivateAbility(const FGameplayAbilitySpecHandle InHand
 	bHitPerformed = false;
 	weapon->PlaySwingFX();
 
+	const float attackSpeed = UOecPlayerAttributeSet::GetAttackSpeedMultiplier(GetAvatarActorFromActorInfo());
+
 	// 1. 몽타주가 없으면 바로 판정하고 일정 시간 뒤 종료
 	UAnimMontage* attackMontage = weapon->GetAttackMontage();
 	if (!attackMontage)
 	{
 		PerformHit();
 
-		UAbilityTask_WaitDelay* delayTask = UAbilityTask_WaitDelay::WaitDelay(this, weapon->GetAttackIntervalWithoutMontage());
+		UAbilityTask_WaitDelay* delayTask = UAbilityTask_WaitDelay::WaitDelay(this, weapon->GetAttackIntervalWithoutMontage() / attackSpeed);
 		delayTask->OnFinish.AddDynamic(this, &UOecGA_MeleeAttack::OnAttackIntervalFinished);
 		delayTask->ReadyForActivation();
 		return;
@@ -59,7 +62,7 @@ void UOecGA_MeleeAttack::ActivateAbility(const FGameplayAbilitySpecHandle InHand
 	eventTask->ReadyForActivation();
 
 	// 3. 몽타주 재생
-	UAbilityTask_PlayMontageAndWait* montageTask = UAbilityTask_PlayMontageAndWait::CreatePlayMontageAndWaitProxy(this, NAME_None, attackMontage);
+	UAbilityTask_PlayMontageAndWait* montageTask = UAbilityTask_PlayMontageAndWait::CreatePlayMontageAndWaitProxy(this, NAME_None, attackMontage, attackSpeed);
 	montageTask->OnBlendOut.AddDynamic(this, &UOecGA_MeleeAttack::OnMontageFinished);
 	montageTask->OnCompleted.AddDynamic(this, &UOecGA_MeleeAttack::OnMontageFinished);
 	montageTask->OnInterrupted.AddDynamic(this, &UOecGA_MeleeAttack::OnMontageFinished);

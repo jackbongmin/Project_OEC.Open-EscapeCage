@@ -38,10 +38,11 @@ void AOecRangedWeapon::StartAttack()
 	// 2. 첫 발은 즉시 발사
 	TriggerFireAbility();
 
-	// 3. 연사 설정 (FireRate 간격으로 Fire 함수를 반복 호출)
+	// 3. 연사 설정 (FireRate 간격으로 Fire 함수를 반복 호출, 공격 속도 버프만큼 간격이 줄어듦)
 	if (FireRate > 0.0f)
 	{
-		GetWorldTimerManager().SetTimer(FireTimerHandle, this, &AOecRangedWeapon::TriggerFireAbility, FireRate, true);
+		const float fireInterval = FireRate / UOecPlayerAttributeSet::GetAttackSpeedMultiplier(OwnerCharacter);
+		GetWorldTimerManager().SetTimer(FireTimerHandle, this, &AOecRangedWeapon::TriggerFireAbility, fireInterval, true);
 	}
 }
 

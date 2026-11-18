@@ -95,7 +95,7 @@ void UOecCheatManager::OecShowState()
 
 		for (const FOecAnswerModifier& modifier : choiceSubsystem->GetAnswerModifiers())
 		{
-			UE_LOG(LogTemp, Warning, TEXT("[State]   - %s (값 %g, 남은 답변 %d)"), *modifier.EffectTag.ToString(), modifier.Value, modifier.RemainingAnswers);
+			UE_LOG(LogTemp, Warning, TEXT("[State]   - %s %s (값 %g, 남은 답변 %d)"), *modifier.EffectTag.ToString(), modifier.Param == NAME_None ? TEXT("") : *modifier.Param.ToString(), modifier.Value, modifier.RemainingAnswers);
 		}
 	}
 

@@ -4,6 +4,7 @@
 #include "GAS/Ability/OecGA_WeaponReload.h"
 #include "Actors/Item/Weapon/OecRangedWeapon.h"
 #include "Subsystems/OecInventorySubsystem.h"
+#include "GAS/Attributeset/OecPlayerAttributeSet.h"
 #include "Abilities/Tasks/AbilityTask_PlayMontageAndWait.h" 
 
 UOecGA_WeaponReload::UOecGA_WeaponReload()
@@ -51,7 +52,7 @@ void UOecGA_WeaponReload::ActivateAbility(const FGameplayAbilitySpecHandle Handl
 	UAnimMontage* reloadMontage = weapon->GetReloadMontage();
 	if (reloadMontage)
 	{
-		UAbilityTask_PlayMontageAndWait* task = UAbilityTask_PlayMontageAndWait::CreatePlayMontageAndWaitProxy(this, NAME_None, reloadMontage);
+		UAbilityTask_PlayMontageAndWait* task = UAbilityTask_PlayMontageAndWait::CreatePlayMontageAndWaitProxy(this, NAME_None, reloadMontage, UOecPlayerAttributeSet::GetAttackSpeedMultiplier(GetAvatarActorFromActorInfo()));
 
 		task->OnBlendOut.AddDynamic(this, &UOecGA_WeaponReload::OnMontageCompleted);
 		task->OnCompleted.AddDynamic(this, &UOecGA_WeaponReload::OnMontageCompleted);

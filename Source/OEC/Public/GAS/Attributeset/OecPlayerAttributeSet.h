@@ -48,4 +48,13 @@ public:
     UPROPERTY(BlueprintReadOnly, Category = "OEC|Attributes")
     FGameplayAttributeData JumpForce;
     ATTRIBUTE_ACCESSORS(UOecPlayerAttributeSet, JumpForce)
+
+    // 공격·재장전 속도 배율 (1 = 기본, 1.3 = 30% 빠름). 공격 속도 버프 GE가 곱연산으로 바꾼다
+    UPROPERTY(BlueprintReadOnly, Category = "OEC|Attributes")
+    FGameplayAttributeData AttackSpeed;
+    ATTRIBUTE_ACCESSORS(UOecPlayerAttributeSet, AttackSpeed)
+
+public:
+    // 액터의 공격 속도 배율 (어트리뷰트가 없으면 1). 무기·어빌리티가 연사 간격과 몽타주 재생 속도에 곱한다
+    static float GetAttackSpeedMultiplier(const AActor* InActor);
 };

@@ -189,11 +189,19 @@ int32 UOecChoiceSubsystem::RollOutcomeIndex(const FOecChoiceData& InChoice) cons
 	return InChoice.Outcomes.Num() - 1;
 }
 
-void UOecChoiceSubsystem::AddAnswerModifier(const FGameplayTag& InEffectTag, float InValue, int32 InRemainingAnswers, bool bInAccumulate)
+bool UOecChoiceSubsystem::HasAnswerModifier(const FGameplayTag& InEffectTag, FName InParam) const
 {
-	FOecAnswerModifier* modifier = AnswerModifiers.FindByPredicate([&InEffectTag](const FOecAnswerModifier& InModifier)
+	return AnswerModifiers.ContainsByPredicate([&InEffectTag, InParam](const FOecAnswerModifier& InModifier)
 	{
-		return InModifier.EffectTag == InEffectTag;
+		return InModifier.EffectTag == InEffectTag && InModifier.Param == InParam;
+	});
+}
+
+void UOecChoiceSubsystem::AddAnswerModifier(const FGameplayTag& InEffectTag, float InValue, int32 InRemainingAnswers, bool bInAccumulate, FName InParam)
+{
+	FOecAnswerModifier* modifier = AnswerModifiers.FindByPredicate([&InEffectTag, InParam](const FOecAnswerModifier& InModifier)
+	{
+		return InModifier.EffectTag == InEffectTag && InModifier.Param == InParam;
 	});
 
 	if (modifier)
@@ -205,12 +213,13 @@ void UOecChoiceSubsystem::AddAnswerModifier(const FGameplayTag& InEffectTag, flo
 	{
 		FOecAnswerModifier newModifier;
 		newModifier.EffectTag = InEffectTag;
+		newModifier.Param = InParam;
 		newModifier.Value = InValue;
 		newModifier.RemainingAnswers = InRemainingAnswers;
 		modifier = &AnswerModifiers.Add_GetRef(newModifier);
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("지속 효과 적용: %s (값 %g, 남은 답변 %d)"), *InEffectTag.ToString(), modifier->Value, modifier->RemainingAnswers);
+	UE_LOG(LogTemp, Log, TEXT("지속 효과 적용: %s %s (값 %g, 남은 답변 %d)"), *InEffectTag.ToString(), *InParam.ToString(), modifier->Value, modifier->RemainingAnswers);
 
 	OnAnswerModifierChanged.Broadcast(*modifier, true);
 }

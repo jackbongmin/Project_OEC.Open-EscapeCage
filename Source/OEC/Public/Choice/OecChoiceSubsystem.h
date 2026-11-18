@@ -42,8 +42,11 @@ public:
 	UFUNCTION(BlueprintPure, Category = "OEC|Choice")
 	FString BuildChoiceText(const FOecChoiceData& InChoice) const;
 
-	// 답변 단위 지속 효과 추가 (같은 태그가 있으면 누적하거나 갱신)
-	void AddAnswerModifier(const FGameplayTag& InEffectTag, float InValue, int32 InRemainingAnswers, bool bInAccumulate);
+	// 답변 단위 지속 효과 추가 (같은 태그 + Param이 있으면 누적하거나 갱신)
+	void AddAnswerModifier(const FGameplayTag& InEffectTag, float InValue, int32 InRemainingAnswers, bool bInAccumulate, FName InParam = NAME_None);
+
+	// 같은 태그 + Param의 지속 효과가 걸려 있는지
+	bool HasAnswerModifier(const FGameplayTag& InEffectTag, FName InParam = NAME_None) const;
 
 	UFUNCTION(BlueprintPure, Category = "OEC|Choice")
 	const TArray<FOecChoiceRecord>& GetChoiceHistory() const { return ChoiceHistory; }
