@@ -33,6 +33,9 @@ public:
 	FOnQuickSlotUpdated OnQuickSlotUpdated;
 
 private:
+	UFUNCTION()
+	void OnRunStarted(int32 InRunCount);
+
 	UPROPERTY()
 	TMap<int32, FName> QuickSlots;
 

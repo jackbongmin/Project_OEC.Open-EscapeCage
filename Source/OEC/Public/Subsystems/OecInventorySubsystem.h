@@ -38,6 +38,9 @@ public:
     FOnInventoryUpdated OnInventoryUpdated;
 
 private:
+    UFUNCTION()
+    void OnRunStarted(int32 InRunCount);
+
     UPROPERTY()
     TArray<FInventorySlot> InventorySlots;
 

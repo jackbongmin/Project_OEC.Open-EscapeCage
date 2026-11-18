@@ -18,6 +18,17 @@ enum class EQuestionType : uint8
     Tutorial    UMETA(DisplayName = "튜토리얼")
 };
 
+// 회차가 끝난 이유 (엔딩 연출, 통계에 사용)
+UENUM(BlueprintType)
+enum class EOecRunEndReason : uint8
+{
+    None        UMETA(DisplayName = "없음"),
+    Death       UMETA(DisplayName = "사망 (체력 0)"),
+    Collapse    UMETA(DisplayName = "붕괴 (정신력 0)"),
+    Escape      UMETA(DisplayName = "탈출"),
+    Restart     UMETA(DisplayName = "강제 재시작 (치트)")
+};
+
 // 단말기의 어느 버튼으로 답했는지 (연쇄 질문의 선행 조건에 사용)
 UENUM(BlueprintType)
 enum class EOecChoiceButton : uint8

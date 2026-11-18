@@ -20,6 +20,7 @@ struct FInputActionValue;
 enum class EOecWeaponState : uint8;
 class UOecPlayerAttributeSet;
 class UOecCrosshairWidget;
+struct FOnAttributeChangeData;
 
 UCLASS()
 class OEC_API AOecPlayerCharacter : public AOecCharacterBase
@@ -174,6 +175,11 @@ protected:
 
     void OnAimStarted();
     void OnAimCompleted();
+
+    // 체력 0 = 사망, 정신력 0 = 붕괴 → 회차 종료
+    void OnHealthAttributeChanged(const FOnAttributeChangeData& InData);
+    void OnSanityAttributeChanged(const FOnAttributeChangeData& InData);
+    void HandleRunEnd(EOecRunEndReason InReason);
 
 protected:
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "OEC|Camera")

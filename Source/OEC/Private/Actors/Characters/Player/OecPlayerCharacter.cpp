@@ -20,6 +20,7 @@
 #include "GAS/Attributeset/OecPlayerAttributeSet.h"
 #include "AbilitySystemComponent.h"
 #include "GAS/Ability/OecGA_UseItem.h"
+#include "Subsystems/OecRunSubsystem.h"
 
 #include "Actors/Item/Weapon/OecWeaponBase.h"
 #include "Actors/Item/Weapon/OecRangedWeapon.h"
@@ -67,6 +68,9 @@ void AOecPlayerCharacter::BeginPlay()
         PlayerAttributeSet = const_cast<UOecPlayerAttributeSet*>(asc->GetSet<UOecPlayerAttributeSet>());
 
         asc->AddLooseGameplayTag(OecGameplayTags::Character_Player);
+
+        asc->GetGameplayAttributeValueChangeDelegate(UOecAttributeSetBase::GetHealthAttribute()).AddUObject(this, &AOecPlayerCharacter::OnHealthAttributeChanged);
+        asc->GetGameplayAttributeValueChangeDelegate(UOecPlayerAttributeSet::GetSanityAttribute()).AddUObject(this, &AOecPlayerCharacter::OnSanityAttributeChanged);
         if (HasAuthority())
         {
             for (TSubclassOf<UOecGameplayAbility>& AbilityClass : DefaultAbilities)
@@ -578,6 +582,38 @@ void AOecPlayerCharacter::OnAimCompleted()
         if (AOecHUD* hud = Cast<AOecHUD>(pc->GetHUD()))
             if (hud->GetInGameWidget())
                 hud->GetInGameWidget()->UpdateCrosshairAimState(false);
+}
+
+void AOecPlayerCharacter::OnHealthAttributeChanged(const FOnAttributeChangeData& InData)
+{
+    if (InData.NewValue <= 0.0f && InData.OldValue > 0.0f)
+    {
+        HandleRunEnd(EOecRunEndReason::Death);
+    }
+}
+
+void AOecPlayerCharacter::OnSanityAttributeChanged(const FOnAttributeChangeData& InData)
+{
+    if (InData.NewValue <= 0.0f && InData.OldValue > 0.0f)
+    {
+        HandleRunEnd(EOecRunEndReason::Collapse);
+    }
+}
+
+void AOecPlayerCharacter::HandleRunEnd(EOecRunEndReason InReason)
+{
+    UOecRunSubsystem* runSubsystem = GetGameInstance()->GetSubsystem<UOecRunSubsystem>();
+    if (!runSubsystem || runSubsystem->IsRunEnding()) return;
+
+    UE_LOG(LogTemp, Warning, TEXT("[%s] %s"), *GetName(), InReason == EOecRunEndReason::Death ? TEXT("사망") : TEXT("정신 붕괴"));
+
+    // 다음 회차까지 조작 막기 (연출은 OnRunEnded를 구독한 UI·블루프린트가 담당)
+    if (APlayerController* pc = Cast<APlayerController>(GetController()))
+    {
+        DisableInput(pc);
+    }
+
+    runSubsystem->EndRun(InReason);
 }
 
 void AOecPlayerCharacter::UpdateStatUI()

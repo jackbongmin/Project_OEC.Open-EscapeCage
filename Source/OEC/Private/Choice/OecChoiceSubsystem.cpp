@@ -4,6 +4,9 @@
 #include "Choice/OecChoiceSubsystem.h"
 #include "Choice/Effects/OecChoiceEffectExecutor.h"
 #include "Subsystems/OecEventSubsystem.h"
+#include "Subsystems/OecRunSubsystem.h"
+#include "Settings/OecGameDataSettings.h"
+#include "GAS/OecGameplayTags.h"
 #include "UObject/UObjectHash.h"
 
 void UOecChoiceSubsystem::Initialize(FSubsystemCollectionBase& InCollection)
@@ -13,6 +16,23 @@ void UOecChoiceSubsystem::Initialize(FSubsystemCollectionBase& InCollection)
 	InCollection.InitializeDependency<UOecEventSubsystem>();
 
 	RegisterExecutors();
+
+	if (UOecRunSubsystem* runSubsystem = InCollection.InitializeDependency<UOecRunSubsystem>())
+	{
+		runSubsystem->OnRunStarted.AddDynamic(this, &UOecChoiceSubsystem::OnRunStarted);
+	}
+}
+
+void UOecChoiceSubsystem::OnRunStarted(int32 InRunCount)
+{
+	// 지속 효과는 회차가 끝나면 사라진다 (선택 기록은 회차를 넘어 유지)
+	const TArray<FOecAnswerModifier> removedModifiers = AnswerModifiers;
+	AnswerModifiers.Empty();
+
+	for (const FOecAnswerModifier& modifier : removedModifiers)
+	{
+		OnAnswerModifierChanged.Broadcast(modifier, false);
+	}
 }
 
 void UOecChoiceSubsystem::Deinitialize()
@@ -80,6 +100,16 @@ void UOecChoiceSubsystem::SubmitChoice(FName InQuestionID, const FOecChoiceData&
 
 	// 1. 이전 답변에서 걸린 지속 효과 진행 (이번 선택으로 새로 걸린 효과는 다음 답변부터 적용)
 	TickAnswerModifiers(context);
+
+	// 답변할 때마다 정신력 변화 (GDD 3.2)
+	const float sanityChangePerAnswer = GetDefault<UOecGameDataSettings>()->SanityChangePerAnswer;
+	if (!FMath::IsNearlyZero(sanityChangePerAnswer))
+	{
+		FOecChoiceEffect sanityEffect;
+		sanityEffect.EffectTag = OecGameplayTags::Effect_Stat_Sanity;
+		sanityEffect.Value = sanityChangePerAnswer;
+		ExecuteEffect(sanityEffect, InInstigator);
+	}
 
 	// 2. 결과 뽑기 → 효과 실행
 	const int32 outcomeIndex = RollOutcomeIndex(InChoice);

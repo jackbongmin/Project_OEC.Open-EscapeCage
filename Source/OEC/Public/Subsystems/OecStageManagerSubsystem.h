@@ -42,6 +42,9 @@ public:
 	void GeneratePhase2Rooms(int32 InCorridorLevel, const TArray<FTransform>& InDoorTransforms);
 
 private:
+	UFUNCTION()
+	void OnRunStarted(int32 InRunCount);
+
 	// 실제 맵을 월드에 스폰하는 헬퍼 함수
 	void SpawnRoomLevel(TSoftObjectPtr<UWorld> InRoomLevel, FTransform InSpawnTransform);
 

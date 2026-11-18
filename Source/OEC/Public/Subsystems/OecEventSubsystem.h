@@ -39,9 +39,13 @@ public:
 	FOnKeyStacksChangedDelegate OnKeyStacksChanged;
 
 private:
-	// 페이즈 2 문 열쇠 스택 (초기값 3은 테스트용)
+	UFUNCTION()
+	void OnRunStarted(int32 InRunCount);
+
+private:
+	// 페이즈 2 문 열쇠 스택 (초기값은 프로젝트 설정 InitialKeyStacks)
 	UPROPERTY()
-	int32 PlayerStacks = 3;
+	int32 PlayerStacks = 0;
 
 	UPROPERTY()
 	TArray<FName> UsedQuestionIDs;

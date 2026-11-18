@@ -46,6 +46,14 @@ public:
     UPROPERTY(Config, EditAnywhere, Category = "Stage", meta = (ClampMin = "1"))
     int32 Phase1MaxStack = 5;
 
+    // 페이즈 2 시작 시 열쇠 스택 (GDD 논의 필요 항목. 회차가 시작될 때 이 값으로 초기화)
+    UPROPERTY(Config, EditAnywhere, Category = "Stage", meta = (ClampMin = "0"))
+    int32 InitialKeyStacks = 3;
+
+    // 회차가 끝난 뒤 자동으로 다음 회차를 시작하기까지의 시간 (초). 0 = 종료 화면의 "다시 시작" 버튼을 누를 때까지 대기
+    UPROPERTY(Config, EditAnywhere, Category = "Stage", meta = (ClampMin = "0"))
+    float RunAutoRestartDelay = 0.0f;
+
     /* ==========================================
            질문 출제 규칙
         ========================================== */
@@ -65,6 +73,10 @@ public:
     // 회차마다 다시 출제되는 타입 (그 외 타입은 풀이 소진될 때까지 재출제하지 않음)
     UPROPERTY(Config, EditAnywhere, Category = "Question")
     TArray<EQuestionType> RunScopedQuestionTypes;
+
+    // 답변할 때마다 바뀌는 정신력 (GDD 3.2. 음수 = 감소, 0 = 끔)
+    UPROPERTY(Config, EditAnywhere, Category = "Question")
+    float SanityChangePerAnswer = -1.0f;
 
     /* ==========================================
            선택지 효과

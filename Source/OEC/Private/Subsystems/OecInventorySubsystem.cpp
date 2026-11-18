@@ -3,12 +3,26 @@
 
 #include "Subsystems/OecInventorySubsystem.h"
 #include "Subsystems/OecGameDataSubsystem.h"
+#include "Subsystems/OecRunSubsystem.h"
 
 void UOecInventorySubsystem::Initialize(FSubsystemCollectionBase& InCollection)
 {
 	Super::Initialize(InCollection);
 	InventorySlots.Empty();
 	InventorySlots.SetNum(MaxSlotCount);
+
+	if (UOecRunSubsystem* runSubsystem = InCollection.InitializeDependency<UOecRunSubsystem>())
+	{
+		runSubsystem->OnRunStarted.AddDynamic(this, &UOecInventorySubsystem::OnRunStarted);
+	}
+}
+
+void UOecInventorySubsystem::OnRunStarted(int32 InRunCount)
+{
+	// 새 회차는 빈손으로 시작
+	InventorySlots.Empty();
+	InventorySlots.SetNum(MaxSlotCount);
+	OnInventoryUpdated.Broadcast();
 }
 
 bool UOecInventorySubsystem::TryAddItem(FName InItemCode, int32 InCount)

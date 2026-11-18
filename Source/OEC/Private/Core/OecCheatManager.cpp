@@ -4,6 +4,7 @@
 #include "Core/OecCheatManager.h"
 #include "Choice/OecChoiceSubsystem.h"
 #include "Question/OecQuestionSubsystem.h"
+#include "Subsystems/OecRunSubsystem.h"
 #include "Subsystems/OecStageManagerSubsystem.h"
 #include "Subsystems/OecEventSubsystem.h"
 #include "GAS/OecGameplayTags.h"
@@ -108,10 +109,11 @@ void UOecCheatManager::OecShowState()
 
 void UOecCheatManager::OecStartNewRun()
 {
-	if (UOecQuestionSubsystem* questionSubsystem = GetWorld()->GetGameInstance()->GetSubsystem<UOecQuestionSubsystem>())
+	if (UOecRunSubsystem* runSubsystem = GetWorld()->GetGameInstance()->GetSubsystem<UOecRunSubsystem>())
 	{
-		questionSubsystem->StartNewRun();
-		UE_LOG(LogTemp, Warning, TEXT("[Cheat] %d회차 시작"), questionSubsystem->GetRunCount());
+		UE_LOG(LogTemp, Warning, TEXT("[Cheat] %d회차 강제 종료"), runSubsystem->GetRunCount());
+		runSubsystem->EndRun(EOecRunEndReason::Restart);
+		runSubsystem->RequestNextRun();
 	}
 }
 

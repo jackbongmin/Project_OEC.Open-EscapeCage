@@ -56,7 +56,7 @@ public:
 	UFUNCTION(Exec)
 	void OecShowState();
 
-	// 새 회차 시작 (튜토리얼·스토리 질문이 다시 나오고 회차 수가 1 오름)
+	// 이번 회차를 끝내고 다음 회차 시작 (레벨 다시 로드, 회차 단위 상태 초기화)
 	UFUNCTION(Exec)
 	void OecStartNewRun();
 

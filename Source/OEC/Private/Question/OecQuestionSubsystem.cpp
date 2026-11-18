@@ -8,6 +8,7 @@
 #include "Choice/OecChoiceSubsystem.h"
 #include "Subsystems/OecEventSubsystem.h"
 #include "Subsystems/OecStageManagerSubsystem.h"
+#include "Subsystems/OecRunSubsystem.h"
 #include "Settings/OecGameDataSettings.h"
 #include "Engine/DataTable.h"
 #include "UObject/UObjectHash.h"
@@ -20,6 +21,7 @@ void UOecQuestionSubsystem::Initialize(FSubsystemCollectionBase& InCollection)
 	UOecChoiceSubsystem* choiceSubsystem = InCollection.InitializeDependency<UOecChoiceSubsystem>();
 	UOecStageManagerSubsystem* stageManager = InCollection.InitializeDependency<UOecStageManagerSubsystem>();
 	UOecEventSubsystem* eventSubsystem = InCollection.InitializeDependency<UOecEventSubsystem>();
+	UOecRunSubsystem* runSubsystem = InCollection.InitializeDependency<UOecRunSubsystem>();
 
 	RegisterRules();
 
@@ -40,6 +42,17 @@ void UOecQuestionSubsystem::Initialize(FSubsystemCollectionBase& InCollection)
 		LastKeyStacks = eventSubsystem->GetCurrentStacks();
 		eventSubsystem->OnKeyStacksChanged.AddDynamic(this, &UOecQuestionSubsystem::OnKeyStacksChanged);
 	}
+
+	if (runSubsystem)
+	{
+		runSubsystem->OnRunStarted.AddDynamic(this, &UOecQuestionSubsystem::OnRunStarted);
+	}
+}
+
+int32 UOecQuestionSubsystem::GetRunCount() const
+{
+	const UOecRunSubsystem* runSubsystem = GetGameInstance()->GetSubsystem<UOecRunSubsystem>();
+	return runSubsystem ? runSubsystem->GetRunCount() : 1;
 }
 
 void UOecQuestionSubsystem::Deinitialize()
@@ -84,7 +97,7 @@ void UOecQuestionSubsystem::RegisterRules()
 FOecQuestionContext UOecQuestionSubsystem::MakeContext(const TMap<EQuestionType, float>& InTypeWeights) const
 {
 	FOecQuestionContext context;
-	context.RunCount = RunCount;
+	context.RunCount = GetRunCount();
 	context.AnswersWithoutStack = AnswersWithoutStack;
 	context.TypeWeights = &InTypeWeights;
 	context.QuestionSubsystem = this;
@@ -179,9 +192,8 @@ const FQuestionStaticData* UOecQuestionSubsystem::SelectFromCandidates(const FOe
 	return nullptr;
 }
 
-void UOecQuestionSubsystem::StartNewRun()
+void UOecQuestionSubsystem::OnRunStarted(int32 InRunCount)
 {
-	++RunCount;
 	AnswersWithoutStack = 0;
 	bStackGainedSinceLastAnswer = false;
 	PresentedQuestionTypes.Empty();
@@ -189,8 +201,14 @@ void UOecQuestionSubsystem::StartNewRun()
 	AnswerTypeHistory.Empty();
 	StoryTagCounts.Empty();
 
-	UE_LOG(LogTemp, Log, TEXT("%d회차 시작: 회차 단위 질문 기록 초기화"), RunCount);
-	OnRunStarted.Broadcast(RunCount);
+	// 스테이지·열쇠 초기화로 바뀐 스택을 다음 답변의 "스택 획득"으로 오인하지 않게 기준값도 맞춘다
+	LastPhase1Stack = 0;
+	if (const UOecEventSubsystem* eventSubsystem = GetGameInstance()->GetSubsystem<UOecEventSubsystem>())
+	{
+		LastKeyStacks = eventSubsystem->GetCurrentStacks();
+	}
+
+	UE_LOG(LogTemp, Log, TEXT("%d회차 시작: 회차 단위 질문 기록 초기화"), InRunCount);
 }
 
 EOecChoiceButton UOecQuestionSubsystem::GetRunAnswer(FName InQuestionID) const

@@ -2,10 +2,26 @@
 
 
 #include "Subsystems/OecEventSubsystem.h"
+#include "Subsystems/OecRunSubsystem.h"
+#include "Settings/OecGameDataSettings.h"
 
 void UOecEventSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
+
+	PlayerStacks = GetDefault<UOecGameDataSettings>()->InitialKeyStacks;
+
+	if (UOecRunSubsystem* runSubsystem = Collection.InitializeDependency<UOecRunSubsystem>())
+	{
+		runSubsystem->OnRunStarted.AddDynamic(this, &UOecEventSubsystem::OnRunStarted);
+	}
+}
+
+void UOecEventSubsystem::OnRunStarted(int32 InRunCount)
+{
+	// 질문 풀 사용 기록(UsedQuestionIDs)은 회차를 넘어 유지한다 (풀이 소진될 때까지 새 질문)
+	PlayerStacks = GetDefault<UOecGameDataSettings>()->InitialKeyStacks;
+	OnKeyStacksChanged.Broadcast(PlayerStacks);
 }
 
 void UOecEventSubsystem::MarkQuestionUsed(FName InQuestionID)

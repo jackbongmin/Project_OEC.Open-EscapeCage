@@ -59,6 +59,9 @@ public:
 	FOnAnswerModifierChangedDelegate OnAnswerModifierChanged;
 
 private:
+	UFUNCTION()
+	void OnRunStarted(int32 InRunCount);
+
 	void RegisterExecutors();
 
 	const UOecChoiceEffectExecutor* FindExecutor(const FGameplayTag& InEffectTag) const;

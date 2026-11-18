@@ -12,8 +12,6 @@ class UDataTable;
 class UOecQuestionFilter;
 class UOecQuestionSelector;
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnRunStartedDelegate, int32, InRunCount);
-
 /**
  * 질문 출제 서브시스템
  *
@@ -36,10 +34,6 @@ public:
 	// 다음 질문 뽑기 (낼 수 있는 질문이 없으면 nullptr)
 	const FQuestionStaticData* PickQuestion(const UDataTable* InQuestionTable, const TMap<EQuestionType, float>& InTypeWeights);
 
-	// 새 회차 시작 (회차 단위 기록 초기화, 회차 수 +1)
-	UFUNCTION(BlueprintCallable, Category = "OEC|Question")
-	void StartNewRun();
-
 	// 이번 회차에 이 질문에 답한 버튼 (답하지 않았으면 None)
 	UFUNCTION(BlueprintPure, Category = "OEC|Question")
 	EOecChoiceButton GetRunAnswer(FName InQuestionID) const;
@@ -48,7 +42,7 @@ public:
 	bool HasAnsweredThisRun(FName InQuestionID) const { return RunAnswers.Contains(InQuestionID); }
 
 	UFUNCTION(BlueprintPure, Category = "OEC|Question")
-	int32 GetRunCount() const { return RunCount; }
+	int32 GetRunCount() const;
 
 	UFUNCTION(BlueprintPure, Category = "OEC|Question")
 	int32 GetAnswersWithoutStack() const { return AnswersWithoutStack; }
@@ -60,11 +54,11 @@ public:
 	UFUNCTION(BlueprintPure, Category = "OEC|Question")
 	int32 GetStoryTagCount(EOecStoryTag InStoryTag) const;
 
-public:
-	UPROPERTY(BlueprintAssignable, Category = "OEC|Events")
-	FOnRunStartedDelegate OnRunStarted;
-
 protected:
+	// 새 회차: 회차 단위 기록 초기화
+	UFUNCTION()
+	void OnRunStarted(int32 InRunCount);
+
 	UFUNCTION()
 	void OnChoiceResolved(const FOecChoiceRecord& InRecord, const FOecChoiceOutcome& InOutcome);
 
@@ -91,9 +85,6 @@ private:
 	// 우선순위 내림차순
 	UPROPERTY()
 	TArray<TObjectPtr<UOecQuestionSelector>> Selectors;
-
-	// 현재 회차 (1부터)
-	int32 RunCount = 1;
 
 	// 스택을 얻지 못한 연속 답변 수
 	int32 AnswersWithoutStack = 0;

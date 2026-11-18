@@ -3,6 +3,7 @@
 
 #include "Subsystems/OecStageManagerSubsystem.h"
 #include "Subsystems/OecGameDataSubsystem.h"
+#include "Subsystems/OecRunSubsystem.h"
 #include "Settings/OecGameDataSettings.h"
 #include "Engine/LevelStreamingDynamic.h"
 #include "Algo/RandomShuffle.h"
@@ -14,6 +15,20 @@ void UOecStageManagerSubsystem::Initialize(FSubsystemCollectionBase& InCollectio
 	CurrentStack = 0;
 	MaxStack = GetDefault<UOecGameDataSettings>()->Phase1MaxStack;
 	CurrentPhase = EOecGamePhase::Phase1_MainRoom;
+
+	if (UOecRunSubsystem* runSubsystem = InCollection.InitializeDependency<UOecRunSubsystem>())
+	{
+		runSubsystem->OnRunStarted.AddDynamic(this, &UOecStageManagerSubsystem::OnRunStarted);
+	}
+}
+
+void UOecStageManagerSubsystem::OnRunStarted(int32 InRunCount)
+{
+	// 새 회차는 메인 방(페이즈 1), 전구 0개부터
+	CurrentStack = 0;
+	CurrentPhase = EOecGamePhase::Phase1_MainRoom;
+	OnStackChanged.Broadcast(CurrentStack, MaxStack);
+	OnPhaseChanged.Broadcast();
 }
 
 void UOecStageManagerSubsystem::Deinitialize()
