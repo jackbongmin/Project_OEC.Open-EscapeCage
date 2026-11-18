@@ -7,6 +7,7 @@
 #include "Subsystems/OecPoolingSubsystem.h"
 #include "Subsystems/OecGameDataSubsystem.h"
 #include "GAS/OecGameplayTags.h"
+#include "Choice/OecChoiceSubsystem.h"
 #include "GameFramework/Pawn.h"
 
 namespace
@@ -29,6 +30,13 @@ void UOecChoiceEffect_SpawnMonster::Execute(const FOecChoiceEffectContext& InCon
 	UOecPoolingSubsystem* poolingSubsystem = world->GetSubsystem<UOecPoolingSubsystem>();
 	UOecGameDataSubsystem* dataSubsystem = gameInstance->GetSubsystem<UOecGameDataSubsystem>();
 	if (!spawnPointSubsystem || !poolingSubsystem || !dataSubsystem) return;
+
+	// 소음 차단기가 충전되어 있으면 이번 소환 1회를 통째로 무효
+	if (InContext.ChoiceSubsystem && InContext.ChoiceSubsystem->ConsumeAnswerModifier(OecGameplayTags::Effect_Guard_Silencer))
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[Effect.Spawn.Monster] 소음 차단기로 소환이 무효가 되었습니다 (%s)"), *InEffect.Param.ToString());
+		return;
+	}
 
 	const int32 spawnCount = FMath::Max(FMath::RoundToInt(InEffect.Value), 1);
 

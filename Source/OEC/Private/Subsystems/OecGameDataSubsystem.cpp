@@ -18,6 +18,7 @@ void UOecGameDataSubsystem::Deinitialize()
 	CachedItemData.Empty();
 	CachedMonsterData.Empty();
 	CachedSanityData.Empty();
+	CachedRoomEventData.Empty();
 
 	Super::Deinitialize();
 }
@@ -36,6 +37,7 @@ void UOecGameDataSubsystem::CacheAllData()
 	CacheDataTable<FItemStaticData>(settings->ItemDataTable, CachedItemData, TEXT("ItemData"));
 	CacheDataTable<FMonsterStaticData>(settings->MonsterDataTable, CachedMonsterData, TEXT("MonsterData"));
 	CacheDataTable<FSanityStaticData>(settings->SanityDataTable, CachedSanityData, TEXT("SanityData"));
+	CacheDataTable<FOecRoomEventData>(settings->RoomEventDataTable, CachedRoomEventData, TEXT("RoomEventData"));
 
 	// 아이템은 행 이름으로 찾으므로, 행 이름과 ItemCode 칸이 다르면 경고 (예: 행 이름 NewRow, ItemCode Weapon_FireAxe)
 	for (const TPair<FName, FItemStaticData>& itemPair : CachedItemData)
@@ -52,6 +54,18 @@ void UOecGameDataSubsystem::CacheAllData()
 const FQuestionStaticData* UOecGameDataSubsystem::GetQuestionData(FName QuestionID) const
 {
 	return CachedQuestionData.Find(QuestionID);
+}
+
+const FOecRoomEventData* UOecGameDataSubsystem::GetRoomEventData(FName InEventID) const
+{
+	return CachedRoomEventData.Find(InEventID);
+}
+
+TArray<FName> UOecGameDataSubsystem::GetRoomEventIDs() const
+{
+	TArray<FName> eventIDs;
+	CachedRoomEventData.GetKeys(eventIDs);
+	return eventIDs;
 }
 
 const FRoomStaticData* UOecGameDataSubsystem::GetRoomData(FName RoomID) const

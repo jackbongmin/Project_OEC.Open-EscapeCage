@@ -19,6 +19,7 @@ class OEC_API UOecChoiceEffect_StatChange : public UOecChoiceEffectExecutor
 public:
 	virtual void Execute(const FOecChoiceEffectContext& InContext, const FOecChoiceEffect& InEffect) const override;
 	virtual FString BuildDescription(const FOecChoiceEffect& InEffect) const override;
+	virtual bool IsHarmful(const FOecChoiceEffect& InEffect) const override { return InEffect.Value < 0.0f; }
 
 protected:
 	virtual TSoftClassPtr<UGameplayEffect> GetStatEffectClass() const PURE_VIRTUAL(UOecChoiceEffect_StatChange::GetStatEffectClass, return nullptr;);

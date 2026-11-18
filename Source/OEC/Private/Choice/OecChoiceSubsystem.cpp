@@ -8,6 +8,7 @@
 #include "Settings/OecGameDataSettings.h"
 #include "GAS/OecGameplayTags.h"
 #include "UObject/UObjectHash.h"
+#include "Data/OecDataStruct.h"
 
 void UOecChoiceSubsystem::Initialize(FSubsystemCollectionBase& InCollection)
 {
@@ -112,7 +113,34 @@ void UOecChoiceSubsystem::SubmitChoice(FName InQuestionID, const FOecChoiceData&
 	}
 
 	// 2. 결과 뽑기 → 효과 실행
-	const int32 outcomeIndex = RollOutcomeIndex(InChoice);
+	int32 outcomeIndex = INDEX_NONE;
+	bool bPreRolled = false;
+
+	// WARDEN의 메모로 미리 굴린 결과가 있으면 그대로 사용
+	if (const FIntPoint* preRolled = PreRolledOutcomes.Find(InQuestionID))
+	{
+		if (InChoice.Outcomes.Num() > 1)
+		{
+			outcomeIndex = InButton == EOecChoiceButton::Blue ? preRolled->Y : preRolled->X;
+			bPreRolled = InChoice.Outcomes.IsValidIndex(outcomeIndex);
+		}
+		PreRolledOutcomes.Remove(InQuestionID);
+	}
+
+	if (!bPreRolled)
+	{
+		outcomeIndex = RollOutcomeIndex(InChoice);
+
+		// 보험 증서: 확률 결과가 나쁘게 나오면 한 번 다시 굴림
+		if (InChoice.Outcomes.Num() > 1 && InChoice.Outcomes.IsValidIndex(outcomeIndex) && IsOutcomeHarmful(InChoice.Outcomes[outcomeIndex])
+			&& ConsumeAnswerModifier(OecGameplayTags::Effect_Guard_Insurance))
+		{
+			const int32 firstIndex = outcomeIndex;
+			outcomeIndex = RollOutcomeIndex(InChoice);
+			UE_LOG(LogTemp, Warning, TEXT("보험 증서 사용: 결과 %d → %d로 다시 굴림"), firstIndex, outcomeIndex);
+		}
+	}
+
 	const FOecChoiceOutcome* outcome = InChoice.Outcomes.IsValidIndex(outcomeIndex) ? &InChoice.Outcomes[outcomeIndex] : nullptr;
 
 	if (outcome)
@@ -187,6 +215,71 @@ int32 UOecChoiceSubsystem::RollOutcomeIndex(const FOecChoiceData& InChoice) cons
 	}
 
 	return InChoice.Outcomes.Num() - 1;
+}
+
+bool UOecChoiceSubsystem::ConsumeAnswerModifier(const FGameplayTag& InEffectTag, FName InParam)
+{
+	const int32 modifierIndex = AnswerModifiers.IndexOfByPredicate([&InEffectTag, InParam](const FOecAnswerModifier& InModifier)
+	{
+		return InModifier.EffectTag == InEffectTag && InModifier.Param == InParam;
+	});
+
+	if (modifierIndex == INDEX_NONE) return false;
+
+	FOecAnswerModifier& modifier = AnswerModifiers[modifierIndex];
+	modifier.Value -= 1.0f;
+	UE_LOG(LogTemp, Log, TEXT("충전 효과 소모: %s (남은 %g)"), *InEffectTag.ToString(), FMath::Max(modifier.Value, 0.0f));
+
+	if (modifier.Value <= 0.0f)
+	{
+		const FOecAnswerModifier removedModifier = modifier;
+		AnswerModifiers.RemoveAt(modifierIndex);
+		OnAnswerModifierChanged.Broadcast(removedModifier, false);
+	}
+
+	return true;
+}
+
+bool UOecChoiceSubsystem::CanExecuteEffect(const FOecChoiceEffect& InEffect, AActor* InInstigator)
+{
+	const UOecChoiceEffectExecutor* executor = FindExecutor(InEffect.EffectTag);
+	return executor && executor->CanExecute(MakeContext(InInstigator), InEffect);
+}
+
+bool UOecChoiceSubsystem::IsOutcomeHarmful(const FOecChoiceOutcome& InOutcome) const
+{
+	for (const FOecChoiceEffect& effect : InOutcome.Effects)
+	{
+		const UOecChoiceEffectExecutor* executor = FindExecutor(effect.EffectTag);
+		if (executor && executor->IsHarmful(effect)) return true;
+	}
+
+	return false;
+}
+
+void UOecChoiceSubsystem::PresentQuestion(const FQuestionStaticData& InQuestion)
+{
+	PreRolledOutcomes.Remove(InQuestion.QuestionID);
+
+	// 확률 선택지가 있는 질문에서만 메모를 소모한다
+	const bool bHasRandomChoice = InQuestion.RedChoice.Outcomes.Num() > 1 || InQuestion.BlueChoice.Outcomes.Num() > 1;
+	if (!bHasRandomChoice || !ConsumeAnswerModifier(OecGameplayTags::Effect_Question_Peek)) return;
+
+	const FIntPoint preRolled(RollOutcomeIndex(InQuestion.RedChoice), RollOutcomeIndex(InQuestion.BlueChoice));
+	PreRolledOutcomes.Add(InQuestion.QuestionID, preRolled);
+
+	UE_LOG(LogTemp, Log, TEXT("WARDEN의 메모: 질문 [%s] 결과를 미리 굴림 (빨강 %d / 파랑 %d)"), *InQuestion.QuestionID.ToString(), preRolled.X, preRolled.Y);
+}
+
+FString UOecChoiceSubsystem::BuildPresentedChoiceText(FName InQuestionID, EOecChoiceButton InButton, const FOecChoiceData& InChoice) const
+{
+	const FIntPoint* preRolled = PreRolledOutcomes.Find(InQuestionID);
+	if (!preRolled || InChoice.Outcomes.Num() <= 1) return BuildChoiceText(InChoice);
+
+	const int32 outcomeIndex = InButton == EOecChoiceButton::Blue ? preRolled->Y : preRolled->X;
+	if (!InChoice.Outcomes.IsValidIndex(outcomeIndex)) return BuildChoiceText(InChoice);
+
+	return FString::Printf(TEXT("[메모] 확정: %s"), *BuildOutcomeText(InChoice.Outcomes[outcomeIndex]));
 }
 
 bool UOecChoiceSubsystem::HasAnswerModifier(const FGameplayTag& InEffectTag, FName InParam) const

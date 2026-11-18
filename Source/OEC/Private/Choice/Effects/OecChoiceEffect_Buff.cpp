@@ -63,6 +63,11 @@ void UOecChoiceEffect_Buff::OnModifierExpired(const FOecChoiceEffectContext& InC
 	UE_LOG(LogTemp, Log, TEXT("버프 [%s] 종료"), *InModifier.Param.ToString());
 }
 
+bool UOecChoiceEffect_Buff::IsHarmful(const FOecChoiceEffect& InEffect) const
+{
+	return GetDefault<UOecGameDataSettings>()->HarmfulBuffIDs.Contains(InEffect.Param);
+}
+
 FString UOecChoiceEffect_Buff::BuildDescription(const FOecChoiceEffect& InEffect) const
 {
 	const FText* displayName = GetDefault<UOecGameDataSettings>()->ChoiceBuffDisplayNames.Find(InEffect.Param);

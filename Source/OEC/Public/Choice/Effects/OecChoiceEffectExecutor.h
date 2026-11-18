@@ -36,6 +36,12 @@ public:
 	// 문구 자동 생성 시 "아무 일 없음"으로 취급할지 (확률 문구에서 생략됨)
 	virtual bool IsEmptyEffect() const { return false; }
 
+	// 지금 실행할 수 있는지 (아이템 사용 전 검사. false면 아이템이 소모되지 않음)
+	virtual bool CanExecute(const FOecChoiceEffectContext& InContext, const FOecChoiceEffect& InEffect) const { return true; }
+
+	// 플레이어에게 해로운 효과인지 (보험 증서가 "나쁜 결과"를 판정할 때 사용)
+	virtual bool IsHarmful(const FOecChoiceEffect& InEffect) const { return false; }
+
 	// 지속 효과: 이후 답변마다 호출
 	virtual void OnAnswerTick(const FOecChoiceEffectContext& InContext, const FOecAnswerModifier& InModifier) const {}
 

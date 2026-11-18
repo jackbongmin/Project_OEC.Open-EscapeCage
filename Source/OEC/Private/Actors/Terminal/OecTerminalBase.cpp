@@ -41,7 +41,22 @@ void AOecTerminalBase::BeginPlay()
     {
         BlueButton->OnButtonClicked.AddDynamic(this, &AOecTerminalBase::InitializeTerminal);
     }
-	
+
+    // 질문 변경권을 쓰면 새 질문을 뽑는다
+    if (UOecQuestionSubsystem* questionSubsystem = GetGameInstance()->GetSubsystem<UOecQuestionSubsystem>())
+    {
+        questionSubsystem->OnQuestionRerollRequested.AddDynamic(this, &AOecTerminalBase::InitializeTerminal);
+    }
+}
+
+void AOecTerminalBase::EndPlay(const EEndPlayReason::Type InEndPlayReason)
+{
+    if (UOecQuestionSubsystem* questionSubsystem = GetGameInstance()->GetSubsystem<UOecQuestionSubsystem>())
+    {
+        questionSubsystem->OnQuestionRerollRequested.RemoveDynamic(this, &AOecTerminalBase::InitializeTerminal);
+    }
+
+    Super::EndPlay(InEndPlayReason);
 }
 
 void AOecTerminalBase::InitializeTerminal()
@@ -66,9 +81,15 @@ void AOecTerminalBase::InitializeTerminal()
         UE_LOG(LogTemp, Log, TEXT("===================================="));
 
         // 버튼 문구는 선택지 데이터에서 생성 (DisplayText가 비어 있으면 효과로 자동 생성)
+        // (WARDEN의 메모가 있으면 확률 결과를 미리 굴려 문구에 보여 준다)
         UOecChoiceSubsystem* choiceSubsystem = GetGameInstance()->GetSubsystem<UOecChoiceSubsystem>();
-        const FString redText = choiceSubsystem ? choiceSubsystem->BuildChoiceText(finalQuestion->RedChoice) : finalQuestion->RedChoice.DisplayText;
-        const FString blueText = choiceSubsystem ? choiceSubsystem->BuildChoiceText(finalQuestion->BlueChoice) : finalQuestion->BlueChoice.DisplayText;
+        if (choiceSubsystem)
+        {
+            choiceSubsystem->PresentQuestion(*finalQuestion);
+        }
+
+        const FString redText = choiceSubsystem ? choiceSubsystem->BuildPresentedChoiceText(finalQuestion->QuestionID, EOecChoiceButton::Red, finalQuestion->RedChoice) : finalQuestion->RedChoice.DisplayText;
+        const FString blueText = choiceSubsystem ? choiceSubsystem->BuildPresentedChoiceText(finalQuestion->QuestionID, EOecChoiceButton::Blue, finalQuestion->BlueChoice) : finalQuestion->BlueChoice.DisplayText;
 
         if (UOecTerminalWidget* terminalUI = Cast<UOecTerminalWidget>(ScreenWidget->GetUserWidgetObject()))
         {

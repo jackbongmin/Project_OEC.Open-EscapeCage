@@ -12,6 +12,8 @@ class UDataTable;
 class UOecQuestionFilter;
 class UOecQuestionSelector;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnQuestionRerollRequestedDelegate);
+
 /**
  * 질문 출제 서브시스템
  *
@@ -34,6 +36,14 @@ public:
 	// 다음 질문 뽑기 (낼 수 있는 질문이 없으면 nullptr)
 	const FQuestionStaticData* PickQuestion(const UDataTable* InQuestionTable, const TMap<EQuestionType, float>& InTypeWeights);
 
+	// 지금 화면에 떠 있는 질문을 바꿀 수 있는지 (스토리·튜토리얼 제외)
+	UFUNCTION(BlueprintPure, Category = "OEC|Question")
+	bool CanRerollCurrentQuestion() const;
+
+	// 질문 교체 요청 (단말기가 구독해서 새 질문을 뽑는다. 지금 질문은 바로 다음 출제에서 제외)
+	UFUNCTION(BlueprintCallable, Category = "OEC|Question")
+	void RequestReroll();
+
 	// 이번 회차에 이 질문에 답한 버튼 (답하지 않았으면 None)
 	UFUNCTION(BlueprintPure, Category = "OEC|Question")
 	EOecChoiceButton GetRunAnswer(FName InQuestionID) const;
@@ -53,6 +63,10 @@ public:
 	// 이번 회차 스토리 성향별 선택 횟수 (엔딩 판정용)
 	UFUNCTION(BlueprintPure, Category = "OEC|Question")
 	int32 GetStoryTagCount(EOecStoryTag InStoryTag) const;
+
+public:
+	UPROPERTY(BlueprintAssignable, Category = "OEC|Events")
+	FOnQuestionRerollRequestedDelegate OnQuestionRerollRequested;
 
 protected:
 	// 새 회차: 회차 단위 기록 초기화
@@ -95,6 +109,16 @@ private:
 	int32 LastPhase1Stack = 0;
 
 	int32 LastKeyStacks = 0;
+
+	// 마지막으로 출제한 질문 (질문 교체용)
+	FName CurrentQuestionID;
+
+	EQuestionType CurrentQuestionType = EQuestionType::Balance;
+
+	bool bHasCurrentQuestion = false;
+
+	// 교체를 요청한 질문 (바로 다음 출제에서만 제외)
+	FName RerollExcludedQuestionID;
 
 	// 화면에 낸 질문의 타입 (답변이 들어왔을 때 타입을 알기 위함)
 	TMap<FName, EQuestionType> PresentedQuestionTypes;

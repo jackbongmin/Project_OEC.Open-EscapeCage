@@ -20,4 +20,5 @@ public:
 
 	virtual void Execute(const FOecChoiceEffectContext& InContext, const FOecChoiceEffect& InEffect) const override;
 	virtual FString BuildDescription(const FOecChoiceEffect& InEffect) const override;
+	virtual bool IsHarmful(const FOecChoiceEffect& InEffect) const override { return true; }
 };

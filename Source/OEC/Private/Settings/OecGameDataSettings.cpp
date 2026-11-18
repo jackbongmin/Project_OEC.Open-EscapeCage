@@ -17,4 +17,6 @@ UOecGameDataSettings::UOecGameDataSettings()
 	ChoiceBuffDisplayNames.Add(TEXT("Buff_Jump"), FText::FromString(TEXT("점프력 증가")));
 	ChoiceBuffDisplayNames.Add(TEXT("Buff_AttackSpeed"), FText::FromString(TEXT("공격 속도 증가")));
 	ChoiceBuffDisplayNames.Add(TEXT("Buff_Slow"), FText::FromString(TEXT("이동 속도 감소")));
+
+	HarmfulBuffIDs.Add(TEXT("Buff_Slow"));
 }

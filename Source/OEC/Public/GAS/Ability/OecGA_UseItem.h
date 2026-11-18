@@ -38,8 +38,13 @@ public:
 	UOecGA_UseItem();
 
 protected:
+	// 효과를 지금 쓸 수 없는 아이템이면 이벤트에 반응하지 않는다 → 아이템이 소모되지 않음 (예: 스토리 질문에 질문 변경권)
+	virtual bool ShouldAbilityRespondToEvent(const FGameplayAbilityActorInfo* InActorInfo, const FGameplayEventData* InPayload) const override;
+
 	virtual void ActivateAbility(const FGameplayAbilitySpecHandle InHandle, const FGameplayAbilityActorInfo* InActorInfo, const FGameplayAbilityActivationInfo InActivationInfo, const FGameplayEventData* InTriggerEventData) override;
 
 private:
+	const FItemStaticData* FindUsedItemData(const FGameplayAbilityActorInfo* InActorInfo, const FGameplayEventData* InPayload) const;
+
 	void ApplyItemEffects(const FItemStaticData& InItemData, AActor* InAvatar) const;
 };

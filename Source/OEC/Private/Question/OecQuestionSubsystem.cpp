@@ -134,6 +134,10 @@ const FQuestionStaticData* UOecQuestionSubsystem::PickQuestion(const UDataTable*
 			if (const FQuestionStaticData* question = SelectFromCandidates(context, candidates))
 			{
 				PresentedQuestionTypes.Add(question->QuestionID, question->QuestionType);
+				CurrentQuestionID = question->QuestionID;
+				CurrentQuestionType = question->QuestionType;
+				bHasCurrentQuestion = true;
+				RerollExcludedQuestionID = NAME_None;
 				return question;
 			}
 		}
@@ -155,7 +159,7 @@ void UOecQuestionSubsystem::CollectCandidates(const FOecQuestionContext& InConte
 {
 	for (const FQuestionStaticData* row : InRows)
 	{
-		if (!row) continue;
+		if (!row || row->QuestionID == RerollExcludedQuestionID) continue;
 
 		bool bPassed = true;
 		for (const UOecQuestionFilter* filter : Filters)
@@ -195,6 +199,8 @@ const FQuestionStaticData* UOecQuestionSubsystem::SelectFromCandidates(const FOe
 void UOecQuestionSubsystem::OnRunStarted(int32 InRunCount)
 {
 	AnswersWithoutStack = 0;
+	bHasCurrentQuestion = false;
+	RerollExcludedQuestionID = NAME_None;
 	bStackGainedSinceLastAnswer = false;
 	PresentedQuestionTypes.Empty();
 	RunAnswers.Empty();
@@ -209,6 +215,20 @@ void UOecQuestionSubsystem::OnRunStarted(int32 InRunCount)
 	}
 
 	UE_LOG(LogTemp, Log, TEXT("%d회차 시작: 회차 단위 질문 기록 초기화"), InRunCount);
+}
+
+bool UOecQuestionSubsystem::CanRerollCurrentQuestion() const
+{
+	return bHasCurrentQuestion && CurrentQuestionType != EQuestionType::Story && CurrentQuestionType != EQuestionType::Tutorial;
+}
+
+void UOecQuestionSubsystem::RequestReroll()
+{
+	if (!CanRerollCurrentQuestion()) return;
+
+	UE_LOG(LogTemp, Log, TEXT("질문 [%s] 교체 요청"), *CurrentQuestionID.ToString());
+	RerollExcludedQuestionID = CurrentQuestionID;
+	OnQuestionRerollRequested.Broadcast();
 }
 
 EOecChoiceButton UOecQuestionSubsystem::GetRunAnswer(FName InQuestionID) const

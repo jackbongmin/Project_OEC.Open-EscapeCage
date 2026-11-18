@@ -12,6 +12,7 @@
 #include "OecDataStruct.generated.h"
 
 class AOecItemPickupBase;
+class AOecRoomEventBase;
 
 
 /*
@@ -107,6 +108,67 @@ public:
     // 방에서 발생할 수 있는 이벤트 태그 리스트
     UPROPERTY(EditAnywhere, BlueprintReadWrite)
     FGameplayTagContainer PossibleEventTags;
+};
+
+/*
+===========================================================================
+방 이벤트 데이터 (DT_RoomEvent, QuestionGuideline.md 5장)
+ - 행 이름 = 이벤트 ID (Effect.Event.Start의 Param)
+ - 끝나는 조건: 시간(DurationSeconds) / 답변 수(DurationAnswers) / 둘 다 0이면 페이즈가 바뀔 때
+===========================================================================
+*/
+USTRUCT(BlueprintType)
+struct FOecRoomEventData : public FTableRowBase
+{
+    GENERATED_BODY()
+
+public:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FString EventName;
+
+    // 버튼 문구 (비우면 EventName)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    FString Description;
+
+    // 생성할 이벤트 액터 (C++ 클래스나 그 블루프린트 하위 클래스)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    TSoftClassPtr<AOecRoomEventBase> EventActorClass;
+
+    // 무작위 이벤트(불안정한 큐브)로 나올 수 있는 페이즈. 비어 있으면 모든 페이즈
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    TArray<int32> AllowedPhases;
+
+    // 무작위 이벤트 후보에 넣을지
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    bool bAllowRandom = true;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "0"))
+    float DurationSeconds = 0.0f;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (ClampMin = "0"))
+    int32 DurationAnswers = 0;
+
+    // 끝까지 버티면 성공 (false면 이벤트가 CompleteEvent(true)를 불러야 성공)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    bool bSucceedOnTimeout = true;
+
+    // 한 번이라도 피격되면 실패 (예: 낙하 잔해 "다 피하면")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    bool bFailOnPlayerHit = false;
+
+    // 해로운 이벤트인지 (보험 증서 판정, 아이콘 색)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    bool bHarmful = false;
+
+    // 시작할 때 실행 (예: 정전 = 방 어두워짐)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    TArray<FOecChoiceEffect> StartEffects;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    TArray<FOecChoiceEffect> SuccessEffects;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite)
+    TArray<FOecChoiceEffect> FailEffects;
 };
 
 /*

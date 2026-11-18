@@ -25,6 +25,10 @@ public:
 	const FItemStaticData* GetItemData(FName ItemID) const;
 	const FMonsterStaticData* GetMonsterData(FName MonsterID) const;
 	const FSanityStaticData* GetSanityData(FName SanityID) const;
+	const FOecRoomEventData* GetRoomEventData(FName InEventID) const;
+
+	// 등록된 방 이벤트 ID 전체 (무작위 이벤트용)
+	TArray<FName> GetRoomEventIDs() const;
 
 	// 등록된 몬스터 코드 전체 (무작위 소환용)
 	TArray<FName> GetAllMonsterCodes() const;
@@ -41,6 +45,7 @@ private:
 	TMap<FName, FItemStaticData> CachedItemData;
 	TMap<FName, FMonsterStaticData> CachedMonsterData;
 	TMap<FName, FSanityStaticData> CachedSanityData;
+	TMap<FName, FOecRoomEventData> CachedRoomEventData;
 };
 
 template<typename T>

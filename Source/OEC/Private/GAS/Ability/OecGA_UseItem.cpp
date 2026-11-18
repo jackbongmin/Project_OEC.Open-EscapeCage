@@ -16,15 +16,40 @@ UOecGA_UseItem::UOecGA_UseItem()
 	AbilityTriggers.Add(triggerData);
 }
 
+const FItemStaticData* UOecGA_UseItem::FindUsedItemData(const FGameplayAbilityActorInfo* InActorInfo, const FGameplayEventData* InPayload) const
+{
+	const AActor* avatar = InActorInfo ? InActorInfo->AvatarActor.Get() : nullptr;
+	const UOecItemUsePayload* payload = InPayload ? Cast<UOecItemUsePayload>(InPayload->OptionalObject) : nullptr;
+	const UGameInstance* gameInstance = avatar ? avatar->GetGameInstance() : nullptr;
+	const UOecGameDataSubsystem* dataSubsystem = gameInstance ? gameInstance->GetSubsystem<UOecGameDataSubsystem>() : nullptr;
+	return (payload && dataSubsystem) ? dataSubsystem->GetItemData(payload->ItemCode) : nullptr;
+}
+
+bool UOecGA_UseItem::ShouldAbilityRespondToEvent(const FGameplayAbilityActorInfo* InActorInfo, const FGameplayEventData* InPayload) const
+{
+	if (!Super::ShouldAbilityRespondToEvent(InActorInfo, InPayload)) return false;
+
+	const FItemStaticData* itemData = FindUsedItemData(InActorInfo, InPayload);
+	if (!itemData) return false;
+
+	AActor* avatar = InActorInfo->AvatarActor.Get();
+	UOecChoiceSubsystem* choiceSubsystem = avatar->GetGameInstance()->GetSubsystem<UOecChoiceSubsystem>();
+	if (!choiceSubsystem) return false;
+
+	for (const FOecChoiceEffect& useEffect : itemData->UseEffects)
+	{
+		if (!choiceSubsystem->CanExecuteEffect(useEffect, avatar)) return false;
+	}
+
+	return true;
+}
+
 void UOecGA_UseItem::ActivateAbility(const FGameplayAbilitySpecHandle InHandle, const FGameplayAbilityActorInfo* InActorInfo, const FGameplayAbilityActivationInfo InActivationInfo, const FGameplayEventData* InTriggerEventData)
 {
 	Super::ActivateAbility(InHandle, InActorInfo, InActivationInfo, InTriggerEventData);
 
 	AActor* avatar = InActorInfo ? InActorInfo->AvatarActor.Get() : nullptr;
-	const UOecItemUsePayload* payload = InTriggerEventData ? Cast<UOecItemUsePayload>(InTriggerEventData->OptionalObject) : nullptr;
-	const UGameInstance* gameInstance = avatar ? avatar->GetGameInstance() : nullptr;
-	const UOecGameDataSubsystem* dataSubsystem = gameInstance ? gameInstance->GetSubsystem<UOecGameDataSubsystem>() : nullptr;
-	const FItemStaticData* itemData = (payload && dataSubsystem) ? dataSubsystem->GetItemData(payload->ItemCode) : nullptr;
+	const FItemStaticData* itemData = FindUsedItemData(InActorInfo, InTriggerEventData);
 
 	if (!itemData)
 	{

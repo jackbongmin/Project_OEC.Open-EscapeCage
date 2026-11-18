@@ -30,6 +30,11 @@ namespace OecGameplayTags
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Effect_Passive_AnswerStackChance, "Effect.Passive.AnswerStackChance", "이후 답변마다 확률로 스택 +1. Value = 확률(0.01 = 1%), 중첩");
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Effect_Passive_AnswerHealth, "Effect.Passive.AnswerHealth", "이후 답변마다 체력 변화. Value = 1회 변화량, Param = 지속 답변 수");
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Effect_Passive_AnswerSanity, "Effect.Passive.AnswerSanity", "이후 답변마다 정신력 변화. Value = 1회 변화량, Param = 지속 답변 수");
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Effect_Event_Start, "Effect.Event.Start", "방 이벤트 시작. Param = 이벤트 ID (DT_RoomEvent 행 이름) 또는 Random");
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Effect_Question_Reroll, "Effect.Question.Reroll", "지금 단말기 질문을 다른 질문으로 교체 (스토리·튜토리얼 제외)");
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Effect_Question_Peek, "Effect.Question.Peek", "다음 확률 질문의 결과를 미리 굴려 보여 줌 (충전식)");
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Effect_Guard_Insurance, "Effect.Guard.Insurance", "다음 확률 결과가 나쁘면 한 번 다시 굴림 (충전식)");
+	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Effect_Guard_Silencer, "Effect.Guard.Silencer", "다음 몬스터 소환 1회 무효 (충전식)");
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Effect_Env, "Effect.Env", "환경 효과 (부모 태그)");
 	UE_DEFINE_GAMEPLAY_TAG_COMMENT(Effect_Env_Darken, "Effect.Env.Darken", "방 어두워짐. Value = 지속 답변 수 (0 이하 = 영구)");
 

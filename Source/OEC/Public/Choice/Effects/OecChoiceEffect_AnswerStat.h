@@ -21,6 +21,7 @@ class OEC_API UOecChoiceEffect_AnswerStat : public UOecChoiceEffectExecutor
 public:
 	virtual void Execute(const FOecChoiceEffectContext& InContext, const FOecChoiceEffect& InEffect) const override;
 	virtual FString BuildDescription(const FOecChoiceEffect& InEffect) const override;
+	virtual bool IsHarmful(const FOecChoiceEffect& InEffect) const override { return InEffect.Value < 0.0f; }
 	virtual void OnAnswerTick(const FOecChoiceEffectContext& InContext, const FOecAnswerModifier& InModifier) const override;
 
 protected:

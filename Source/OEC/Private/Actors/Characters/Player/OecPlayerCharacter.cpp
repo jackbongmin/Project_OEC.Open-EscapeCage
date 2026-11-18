@@ -406,7 +406,7 @@ void AOecPlayerCharacter::ExecuteQuickSlot(int32 InSlotIndex)
             }
             else
             {
-                UE_LOG(LogTemp, Warning, TEXT("소모품 사용 실패: 플레이어에게 UOecGA_UseItem 어빌리티가 없습니다 (DefaultAbilities 확인)"));
+                UE_LOG(LogTemp, Warning, TEXT("소모품 사용 안 됨: 지금 쓸 수 없는 아이템이거나 플레이어에게 UOecGA_UseItem 어빌리티가 없습니다"));
             }
         }
     }

@@ -96,7 +96,8 @@ UENUM(BlueprintType)
 enum class EOecSpawnPointType : uint8
 {
     Monster     UMETA(DisplayName = "몬스터 스폰구"),
-    Item        UMETA(DisplayName = "아이템 투하구")
+    Item        UMETA(DisplayName = "아이템 투하구"),
+    Event       UMETA(DisplayName = "이벤트 기준점 (방 중앙 바닥)")
 };
 
 UENUM(BlueprintType)

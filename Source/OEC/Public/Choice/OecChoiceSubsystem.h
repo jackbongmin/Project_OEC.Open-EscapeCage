@@ -9,6 +9,7 @@
 #include "OecChoiceSubsystem.generated.h"
 
 class UOecChoiceEffectExecutor;
+struct FQuestionStaticData;
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnChoiceResolvedDelegate, const FOecChoiceRecord&, InRecord, const FOecChoiceOutcome&, InOutcome);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FOnAnswerModifierChangedDelegate, const FOecAnswerModifier&, InModifier, bool, bInActive);
@@ -47,6 +48,21 @@ public:
 
 	// 같은 태그 + Param의 지속 효과가 걸려 있는지
 	bool HasAnswerModifier(const FGameplayTag& InEffectTag, FName InParam = NAME_None) const;
+
+	// 충전식 지속 효과(Value = 남은 횟수)를 1 소모. 없으면 false (예: 소음 차단기, 보험 증서)
+	bool ConsumeAnswerModifier(const FGameplayTag& InEffectTag, FName InParam = NAME_None);
+
+	// 효과를 지금 실행할 수 있는지 (실행기의 CanExecute)
+	bool CanExecuteEffect(const FOecChoiceEffect& InEffect, AActor* InInstigator);
+
+	// 결과에 해로운 효과가 하나라도 있는지
+	bool IsOutcomeHarmful(const FOecChoiceOutcome& InOutcome) const;
+
+	// 단말기가 질문을 화면에 띄울 때 호출 (WARDEN의 메모가 충전되어 있으면 확률 결과를 미리 굴린다)
+	void PresentQuestion(const FQuestionStaticData& InQuestion);
+
+	// 화면에 띄운 질문의 버튼 문구 (미리 굴린 결과가 있으면 그 결과를 보여 줌)
+	FString BuildPresentedChoiceText(FName InQuestionID, EOecChoiceButton InButton, const FOecChoiceData& InChoice) const;
 
 	UFUNCTION(BlueprintPure, Category = "OEC|Choice")
 	const TArray<FOecChoiceRecord>& GetChoiceHistory() const { return ChoiceHistory; }
@@ -90,4 +106,7 @@ private:
 
 	UPROPERTY()
 	TArray<FOecChoiceRecord> ChoiceHistory;
+
+	// 미리 굴린 결과 (질문 ID → X = 빨강 결과 번호, Y = 파랑 결과 번호)
+	TMap<FName, FIntPoint> PreRolledOutcomes;
 };
