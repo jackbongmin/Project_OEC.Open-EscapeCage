@@ -4,6 +4,9 @@
 #include "Subsystems/OecStageManagerSubsystem.h"
 #include "Subsystems/OecGameDataSubsystem.h"
 #include "Subsystems/OecRunSubsystem.h"
+#include "Subsystems/OecInventorySubsystem.h"
+#include "Choice/OecChoiceSubsystem.h"
+#include "GAS/OecGameplayTags.h"
 #include "Settings/OecGameDataSettings.h"
 #include "Engine/LevelStreamingDynamic.h"
 #include "Algo/RandomShuffle.h"
@@ -38,14 +41,53 @@ void UOecStageManagerSubsystem::Deinitialize()
 
 void UOecStageManagerSubsystem::AddStack(int32 InAmount)
 {
+	// 페이즈 2: 스택 대신 열쇠 아이템
+	if (CurrentPhase != EOecGamePhase::Phase1_MainRoom)
+	{
+		GrantKeys(InAmount);
+		return;
+	}
+
 	CurrentStack = FMath::Clamp(CurrentStack + InAmount, 0, MaxStack);
 	OnStackChanged.Broadcast(CurrentStack, MaxStack);
 
-	if(CurrentStack>=MaxStack && CurrentPhase == EOecGamePhase::Phase1_MainRoom)
+	// 전구가 다 켜지면 페이즈 2로 넘어가고 메인 문 열쇠를 떨어뜨린다 (문은 플레이어가 직접 연다)
+	if (CurrentStack >= MaxStack)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("페이즈 2 진입"));
 		ChangePhase(EOecGamePhase::Phase2_Corridor);
+		GrantKeys(GetDefault<UOecGameDataSettings>()->Phase1CompleteKeyCount);
 	}
+}
+
+void UOecStageManagerSubsystem::GrantKeys(int32 InAmount)
+{
+	if (InAmount == 0) return;
+
+	const FName keyItemCode = GetDefault<UOecGameDataSettings>()->KeyItemCode;
+
+	// 잃는 경우: 가지고 있는 열쇠에서 제거
+	if (InAmount < 0)
+	{
+		if (UOecInventorySubsystem* inventorySubsystem = GetGameInstance()->GetSubsystem<UOecInventorySubsystem>())
+		{
+			inventorySubsystem->RemoveItem(keyItemCode, -InAmount);
+		}
+		return;
+	}
+
+	// 얻는 경우: 아이템 지급 효과로 투하구에서 떨어뜨린다
+	if (UOecChoiceSubsystem* choiceSubsystem = GetGameInstance()->GetSubsystem<UOecChoiceSubsystem>())
+	{
+		FOecChoiceEffect keyEffect;
+		keyEffect.EffectTag = OecGameplayTags::Effect_Give_Item;
+		keyEffect.Value = InAmount;
+		keyEffect.Param = keyItemCode;
+		choiceSubsystem->ExecuteEffect(keyEffect, nullptr);
+	}
+
+	UE_LOG(LogTemp, Log, TEXT("열쇠 %d개 지급"), InAmount);
+	OnKeyRewarded.Broadcast(InAmount);
 }
 
 void UOecStageManagerSubsystem::ChangePhase(EOecGamePhase InNewPhase)

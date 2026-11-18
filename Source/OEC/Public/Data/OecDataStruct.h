@@ -207,6 +207,10 @@ struct FItemStaticData : public FTableRowBase
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Base")
     TSoftClassPtr<AOecItemPickupBase> PickupActorClass;
 
+    // 투하구에서 떨어져 바닥에 닿을 때 소리 (비우면 프로젝트 설정의 기본 소리)
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Base")
+    TSoftObjectPtr<USoundBase> DropSound;
+
 
     /* ==========================================
        무기(Weapon) 전용 수치

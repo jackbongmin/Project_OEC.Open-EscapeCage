@@ -11,6 +11,7 @@
 class UGameplayEffect;
 class AOecItemPickupBase;
 class UUserWidget;
+class USoundBase;
 
 /**
  * 프로젝트 설정 > Game > OEC Game Data Settings
@@ -50,9 +51,13 @@ public:
     UPROPERTY(Config, EditAnywhere, Category = "Stage", meta = (ClampMin = "1"))
     int32 Phase1MaxStack = 5;
 
-    // 페이즈 2 시작 시 열쇠 스택 (GDD 논의 필요 항목. 회차가 시작될 때 이 값으로 초기화)
+    // 문을 여는 열쇠 아이템 코드 (페이즈 2에서는 스택 대신 이 아이템이 투하된다)
+    UPROPERTY(Config, EditAnywhere, Category = "Stage")
+    FName KeyItemCode = TEXT("Key_Door");
+
+    // 페이즈 1을 끝냈을 때 주는 열쇠 수 (메인 문을 직접 열게 하기 위함)
     UPROPERTY(Config, EditAnywhere, Category = "Stage", meta = (ClampMin = "0"))
-    int32 InitialKeyStacks = 3;
+    int32 Phase1CompleteKeyCount = 1;
 
     // 회차가 끝난 뒤 자동으로 다음 회차를 시작하기까지의 시간 (초). 0 = 종료 화면의 "다시 시작" 버튼을 누를 때까지 대기
     UPROPERTY(Config, EditAnywhere, Category = "Stage", meta = (ClampMin = "0"))
@@ -112,6 +117,10 @@ public:
     // 아이템 데이터에 픽업 액터가 없을 때 쓰는 기본 픽업
     UPROPERTY(Config, EditAnywhere, Category = "Choice")
     TSoftClassPtr<AOecItemPickupBase> DefaultPickupClass;
+
+    // 투하된 아이템이 바닥에 닿을 때 소리 (아이템 데이터의 DropSound가 비어 있을 때)
+    UPROPERTY(Config, EditAnywhere, Category = "Choice")
+    TSoftObjectPtr<USoundBase> DefaultItemDropSound;
 
     /* ==========================================
            상호작용

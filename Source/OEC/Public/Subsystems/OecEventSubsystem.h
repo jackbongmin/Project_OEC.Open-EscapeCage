@@ -6,12 +6,10 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 #include "OecEventSubsystem.generated.h"
 
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnKeyStacksChangedDelegate, int32, InCurrentStacks);
-
 /**
- * 질문 진행 상태 서브시스템
- * - 이미 나온 질문 관리 (중복 출제 방지)
- * - 페이즈 2 문 열쇠 스택
+ * 질문 사용 기록 서브시스템
+ * - 이미 나온 질문 관리 (풀이 소진될 때까지 재출제 방지, 회차를 넘어 유지)
+ * - 페이즈 2 열쇠는 스택이 아니라 인벤토리 아이템이다 (프로젝트 설정 KeyItemCode)
  * 선택지 결과 처리는 UOecChoiceSubsystem이 담당한다.
  */
 UCLASS()
@@ -20,33 +18,13 @@ class OEC_API UOecEventSubsystem : public UGameInstanceSubsystem
 	GENERATED_BODY()
 
 public:
-	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
-
 	void MarkQuestionUsed(FName InQuestionID);
 
 	bool IsQuestionUsed(FName InQuestionID) const;
 
 	void ResetUsedQuestions();
 
-	UFUNCTION(BlueprintCallable, Category = "OEC|Stack")
-	int32 GetCurrentStacks() const { return PlayerStacks; }
-
-	UFUNCTION(BlueprintCallable, Category = "OEC|Stack")
-	void ModifyStacks(int32 InAmount);
-
-public:
-	UPROPERTY(BlueprintAssignable, Category = "OEC|Events")
-	FOnKeyStacksChangedDelegate OnKeyStacksChanged;
-
 private:
-	UFUNCTION()
-	void OnRunStarted(int32 InRunCount);
-
-private:
-	// 페이즈 2 문 열쇠 스택 (초기값은 프로젝트 설정 InitialKeyStacks)
-	UPROPERTY()
-	int32 PlayerStacks = 0;
-
 	UPROPERTY()
 	TArray<FName> UsedQuestionIDs;
 };

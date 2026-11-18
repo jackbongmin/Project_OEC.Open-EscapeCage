@@ -80,7 +80,7 @@ protected:
 	void OnPhase1StackChanged(int32 InCurrentStack, int32 InMaxStack);
 
 	UFUNCTION()
-	void OnKeyStacksChanged(int32 InCurrentStacks);
+	void OnKeyRewarded(int32 InKeyCount);
 
 private:
 	void RegisterRules();
@@ -107,8 +107,6 @@ private:
 	bool bStackGainedSinceLastAnswer = false;
 
 	int32 LastPhase1Stack = 0;
-
-	int32 LastKeyStacks = 0;
 
 	// 마지막으로 출제한 질문 (질문 교체용)
 	FName CurrentQuestionID;

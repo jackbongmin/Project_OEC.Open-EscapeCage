@@ -37,10 +37,9 @@ void UOecQuestionSubsystem::Initialize(FSubsystemCollectionBase& InCollection)
 		stageManager->OnStackChanged.AddDynamic(this, &UOecQuestionSubsystem::OnPhase1StackChanged);
 	}
 
-	if (eventSubsystem)
+	if (stageManager)
 	{
-		LastKeyStacks = eventSubsystem->GetCurrentStacks();
-		eventSubsystem->OnKeyStacksChanged.AddDynamic(this, &UOecQuestionSubsystem::OnKeyStacksChanged);
+		stageManager->OnKeyRewarded.AddDynamic(this, &UOecQuestionSubsystem::OnKeyRewarded);
 	}
 
 	if (runSubsystem)
@@ -209,10 +208,6 @@ void UOecQuestionSubsystem::OnRunStarted(int32 InRunCount)
 
 	// 스테이지·열쇠 초기화로 바뀐 스택을 다음 답변의 "스택 획득"으로 오인하지 않게 기준값도 맞춘다
 	LastPhase1Stack = 0;
-	if (const UOecEventSubsystem* eventSubsystem = GetGameInstance()->GetSubsystem<UOecEventSubsystem>())
-	{
-		LastKeyStacks = eventSubsystem->GetCurrentStacks();
-	}
 
 	UE_LOG(LogTemp, Log, TEXT("%d회차 시작: 회차 단위 질문 기록 초기화"), InRunCount);
 }
@@ -273,13 +268,11 @@ void UOecQuestionSubsystem::OnPhase1StackChanged(int32 InCurrentStack, int32 InM
 	LastPhase1Stack = InCurrentStack;
 }
 
-void UOecQuestionSubsystem::OnKeyStacksChanged(int32 InCurrentStacks)
+void UOecQuestionSubsystem::OnKeyRewarded(int32 InKeyCount)
 {
-	// 문을 열 때 소모되는 감소는 무시하고, 늘어난 경우만 스택 획득으로 본다
-	if (InCurrentStacks > LastKeyStacks)
+	// 페이즈 2의 스택 보상 = 열쇠 지급
+	if (InKeyCount > 0)
 	{
 		bStackGainedSinceLastAnswer = true;
 	}
-
-	LastKeyStacks = InCurrentStacks;
 }

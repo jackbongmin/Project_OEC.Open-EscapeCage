@@ -31,8 +31,11 @@ public:
 	// SpawnRadius 안의 무작위 위치 (회전은 이 액터 기준)
 	FTransform GetRandomSpawnTransform() const;
 
-	// 무작위 위치에서 바로 아래 바닥 위치 (물리가 없는 픽업용. 바닥을 못 찾으면 bOutFoundGround = false)
+	// 무작위 위치에서 바로 아래 바닥 위치 (바닥을 못 찾으면 bOutFoundGround = false)
 	FTransform GetRandomGroundTransform(bool& bOutFoundGround) const;
+
+	// 주어진 위치 바로 아래 바닥 (고정 지형만). 못 찾으면 false
+	bool FindGroundBelow(const FVector& InLocation, FVector& OutGroundLocation) const;
 
 	// 이 지점에서 무언가 소환됐을 때 호출 (연출용)
 	UFUNCTION(BlueprintImplementableEvent, Category = "OEC|Spawn")

@@ -4,9 +4,15 @@
 #include "Actors/Interactable/Item/OecItemPickupBase.h"
 #include "Subsystems/OecInventorySubsystem.h"
 #include "Subsystems/OecGameDataSubsystem.h"
+#include "Kismet/GameplayStatics.h"
+#include "Sound/SoundBase.h"
 
 AOecItemPickupBase::AOecItemPickupBase()
 {
+	// 떨어지는 동안만 Tick
+	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bStartWithTickEnabled = false;
+
 	ItemCode = NAME_None;
 	Quantity = 1;
 }
@@ -15,6 +21,48 @@ void AOecItemPickupBase::SetItemData(FName InItemCode, int32 InQuantity)
 {
 	ItemCode = InItemCode;
 	Quantity = FMath::Max(InQuantity, 1);
+}
+
+void AOecItemPickupBase::StartDrop(float InGroundZ, USoundBase* InLandSound)
+{
+	// 메시 피벗이 가운데여도 바운드 아래쪽이 바닥에 닿는 높이에서 멈추도록 계산
+	FVector boundsOrigin;
+	FVector boundsExtent;
+	GetActorBounds(true, boundsOrigin, boundsExtent);
+	const float bottomOffset = GetActorLocation().Z - (boundsOrigin.Z - boundsExtent.Z);
+
+	LandActorZ = InGroundZ + bottomOffset;
+	PendingLandSound = InLandSound;
+	DropSpeed = 0.0f;
+
+	SetActorTickEnabled(true);
+}
+
+void AOecItemPickupBase::Tick(float InDeltaTime)
+{
+	Super::Tick(InDeltaTime);
+
+	DropSpeed += DropGravity * InDeltaTime;
+	FVector location = GetActorLocation();
+	location.Z -= DropSpeed * InDeltaTime;
+
+	if (location.Z > LandActorZ)
+	{
+		SetActorLocation(location);
+		return;
+	}
+
+	// 착지
+	location.Z = LandActorZ;
+	SetActorLocation(location);
+	SetActorTickEnabled(false);
+
+	if (PendingLandSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(this, PendingLandSound, location);
+	}
+
+	BP_OnLanded();
 }
 
 void AOecItemPickupBase::Interact_Implementation(AActor* InInteractor)

@@ -9,6 +9,7 @@
 #include "Subsystems/OecInventorySubsystem.h"
 #include "Settings/OecGameDataSettings.h"
 #include "GAS/OecGameplayTags.h"
+#include "Sound/SoundBase.h"
 
 UOecChoiceEffect_GiveItem::UOecChoiceEffect_GiveItem()
 {
@@ -43,19 +44,16 @@ void UOecChoiceEffect_GiveItem::Execute(const FOecChoiceEffectContext& InContext
 		FActorSpawnParameters spawnParams;
 		spawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
 
-		// 픽업은 물리가 없으므로 투하구 아래 바닥에 바로 놓는다
-		bool bFoundGround = false;
-		const FTransform groundTransform = spawnPoint->GetRandomGroundTransform(bFoundGround);
+		// 투하구에서 생성해 바닥까지 떨어뜨린다 (착지 소리: 아이템 데이터 → 없으면 설정 기본값)
+		const FTransform dropTransform = spawnPoint->GetRandomSpawnTransform();
 
-		if (AOecItemPickupBase* pickup = world->SpawnActor<AOecItemPickupBase>(pickupClass, groundTransform, spawnParams))
+		if (AOecItemPickupBase* pickup = world->SpawnActor<AOecItemPickupBase>(pickupClass, dropTransform, spawnParams))
 		{
-			if (bFoundGround)
+			FVector groundLocation;
+			if (spawnPoint->FindGroundBelow(dropTransform.GetLocation(), groundLocation))
 			{
-				// 메시 피벗이 가운데여도 바닥에 묻히지 않게 바운드 아래쪽을 바닥에 맞춤
-				FVector boundsOrigin;
-				FVector boundsExtent;
-				pickup->GetActorBounds(true, boundsOrigin, boundsExtent);
-				pickup->AddActorWorldOffset(FVector(0.0f, 0.0f, groundTransform.GetLocation().Z - (boundsOrigin.Z - boundsExtent.Z)));
+				USoundBase* landSound = itemData->DropSound.IsNull() ? GetDefault<UOecGameDataSettings>()->DefaultItemDropSound.LoadSynchronous() : itemData->DropSound.LoadSynchronous();
+				pickup->StartDrop(groundLocation.Z, landSound);
 			}
 			else
 			{

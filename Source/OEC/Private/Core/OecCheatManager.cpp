@@ -6,7 +6,8 @@
 #include "Question/OecQuestionSubsystem.h"
 #include "Subsystems/OecRunSubsystem.h"
 #include "Subsystems/OecStageManagerSubsystem.h"
-#include "Subsystems/OecEventSubsystem.h"
+#include "Subsystems/OecInventorySubsystem.h"
+#include "Settings/OecGameDataSettings.h"
 #include "GAS/OecGameplayTags.h"
 #include "GAS/Attributeset/OecPlayerAttributeSet.h"
 #include "AbilitySystemComponent.h"
@@ -78,9 +79,9 @@ void UOecCheatManager::OecShowState()
 			stageManager->GetCurrentPhase() == EOecGamePhase::Phase1_MainRoom ? 1 : 2, stageManager->GetCurrentStack(), stageManager->GetMaxStack());
 	}
 
-	if (const UOecEventSubsystem* eventSubsystem = gameInstance->GetSubsystem<UOecEventSubsystem>())
+	if (const UOecInventorySubsystem* inventorySubsystem = gameInstance->GetSubsystem<UOecInventorySubsystem>())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[State] 열쇠 스택 %d"), eventSubsystem->GetCurrentStacks());
+		UE_LOG(LogTemp, Warning, TEXT("[State] 열쇠 %d개"), inventorySubsystem->GetItemQuantity(GetDefault<UOecGameDataSettings>()->KeyItemCode));
 	}
 
 	if (const UAbilitySystemComponent* asc = UAbilitySystemGlobals::GetAbilitySystemComponentFromActor(GetPlayerPawn()))

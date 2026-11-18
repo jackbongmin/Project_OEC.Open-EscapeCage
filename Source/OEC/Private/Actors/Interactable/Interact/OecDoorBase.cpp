@@ -2,45 +2,14 @@
 
 
 #include "Actors/Interactable/Interact/OecDoorBase.h"
-#include "Subsystems/OecEventSubsystem.h"
-#include "Subsystems/OecStageManagerSubsystem.h"
+#include "Subsystems/OecInventorySubsystem.h"
+#include "Settings/OecGameDataSettings.h"
 
 AOecDoorBase::AOecDoorBase()
 {
     DoorType = EDoorType::RandomDoor;
-    RequiredStacks = 1;
-    bShouldConsumeStack = true;
+    RequiredKeyCount = 1;
     bIsOpen = false;
-}
-
-void AOecDoorBase::BeginPlay()
-{
-    Super::BeginPlay();
-
-    if (DoorType != EDoorType::MainDoor) return;
-
-    if (UOecStageManagerSubsystem* stageManager = GetGameInstance()->GetSubsystem<UOecStageManagerSubsystem>())
-    {
-        stageManager->OnPhaseChanged.AddUniqueDynamic(this, &AOecDoorBase::OnPhaseChanged);
-    }
-
-    // 이미 페이즈 2인 상태에서 스폰/스트리밍된 경우 바로 열어둠
-    OnPhaseChanged();
-}
-
-void AOecDoorBase::OnPhaseChanged()
-{
-    if (DoorType != EDoorType::MainDoor || bIsOpen || !IsPhase2()) return;
-
-    SetDoorState(true);
-    SetInteractPromptVisible(false);
-    UE_LOG(LogTemp, Log, TEXT("[%s] 페이즈 2 진입으로 메인 문 개방"), *GetName());
-}
-
-bool AOecDoorBase::IsPhase2() const
-{
-    const UOecStageManagerSubsystem* stageManager = GetGameInstance()->GetSubsystem<UOecStageManagerSubsystem>();
-    return stageManager && stageManager->GetCurrentPhase() == EOecGamePhase::Phase2_Corridor;
 }
 
 void AOecDoorBase::SetDoorState(bool bInOpen)
@@ -75,43 +44,27 @@ void AOecDoorBase::Interact_Implementation(AActor* InInteractor)
         return;
     }
 
-    // 메인 문은 열쇠 스택을 쓰지 않음. 페이즈 1 전구가 다 켜져야만 열림
-    if (DoorType == EDoorType::MainDoor)
+    UOecInventorySubsystem* inventorySubsystem = GetGameInstance()->GetSubsystem<UOecInventorySubsystem>();
+    if (!inventorySubsystem) return;
+
+    // 1. 열쇠 확인
+    const FName keyItemCode = GetDefault<UOecGameDataSettings>()->KeyItemCode;
+    const int32 currentKeyCount = inventorySubsystem->GetItemQuantity(keyItemCode);
+
+    if (currentKeyCount < RequiredKeyCount)
     {
-        if (IsPhase2())
-        {
-            OnPhaseChanged();
-        }
-        else
-        {
-            UE_LOG(LogTemp, Warning, TEXT("[%s] 메인 문은 전구 5개가 모두 켜져야 열립니다"), *GetName());
-        }
+        UE_LOG(LogTemp, Warning, TEXT("[%s] 열쇠 부족 (필요 %d, 보유 %d)"), *GetName(), RequiredKeyCount, currentKeyCount);
+        BP_OnOpenDenied(currentKeyCount, RequiredKeyCount);
         return;
     }
 
-    UOecEventSubsystem* eventSubsystem = GetGameInstance()->GetSubsystem<UOecEventSubsystem>();
-    if (!eventSubsystem) return;
-
-    int32 currentStack = eventSubsystem->GetCurrentStacks();
-
-    // 스택 유무 확인
-    if (currentStack >= RequiredStacks)
+    // 2. 열쇠 소모 후 개방
+    if (RequiredKeyCount > 0)
     {
-        // 소모 설정이 켜져 있을 때만 스택 차감 (페이즈 2 랜덤문 전용)
-        if (bShouldConsumeStack)
-        {
-            eventSubsystem->ModifyStacks(-RequiredStacks);
-        }
-
-        SetDoorState(true);
-		SetInteractPromptVisible(false);
-        UE_LOG(LogTemp, Log, TEXT("[%s] 개방 성공"), *GetName());
-    }
-    else
-    {
-        UE_LOG(LogTemp, Warning, TEXT("[%s] 스택 부족 필요: %d, 현재: %d"), *GetName(), RequiredStacks, currentStack);
-        // 나중에 여기에 화면 흔들림이나 "띠딕!" 하는 거절 사운드 재생하면 됨
+        inventorySubsystem->RemoveItem(keyItemCode, RequiredKeyCount);
     }
 
+    SetDoorState(true);
+    SetInteractPromptVisible(false);
+    UE_LOG(LogTemp, Log, TEXT("[%s] 열쇠 %d개로 개방"), *GetName(), RequiredKeyCount);
 }
-
