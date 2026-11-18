@@ -258,7 +258,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "축하합니다. 아직 살아 계시니 드립니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -279,7 +279,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "보상 시간입니다. 하나만 가져가십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -289,10 +289,10 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
 			]
 		},
-		"BalanceNote": "Red +4 (답변마다 정신력 +1(10회) +4) / Blue +5 (이동 속도 증가 +3, 응급 붕대 1 +2)"
+		"BalanceNote": "Red +4 (답변마다 정신력 +1(10회) +4) / Blue +5 (이동 속도 증가(답변 5번) +3, 응급 붕대 1 +2)"
 	},
 	{
 		"Name": "Q_BN_012",
@@ -300,7 +300,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "실험체 복지 차원의 지급입니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -384,7 +384,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "협조에 감사드립니다. 작은 성의입니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -394,10 +394,10 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Jump" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_Jump" } ] }
 			]
 		},
-		"BalanceNote": "Red +2 (응급 붕대 1 +2) / Blue +2 (점프력 증가 +2)"
+		"BalanceNote": "Red +2 (응급 붕대 1 +2) / Blue +2 (점프력 증가(답변 5번) +2)"
 	},
 	{
 		"Name": "Q_BN_017",
@@ -447,7 +447,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "가끔은 저도 너그러워집니다. 고르시죠.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -468,7 +468,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "기록상 오늘은 당신이 운 좋은 날입니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -489,11 +489,11 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "둘 다 드릴 수는 없습니다. 규정이라서요.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_AttackSpeed" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_AttackSpeed" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -502,7 +502,7 @@
 				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Pistol" } ] }
 			]
 		},
-		"BalanceNote": "Red +3 (공격 속도 증가 +3) / Blue +4 (권총 탄약 2 +4)"
+		"BalanceNote": "Red +3 (공격 속도 증가(답변 5번) +3) / Blue +4 (권총 탄약 2 +4)"
 	},
 	{
 		"Name": "Q_BN_022",
@@ -658,7 +658,7 @@
 		"QuestionType": "Penalty",
 		"QuestionText": "공평하게, 나쁜 것 두 개를 준비했습니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -764,7 +764,7 @@
 		"QuestionType": "Penalty",
 		"QuestionText": "아픈 건 잠깐입니다. 아마도요.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -774,10 +774,10 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Slow" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 3, "Param": "Buff_Slow" } ] }
 			]
 		},
-		"BalanceNote": "Red -3 (골렘 N 1 -3) / Blue -3 (이동 속도 감소 -3)"
+		"BalanceNote": "Red -3 (골렘 N 1 -3) / Blue -3 (이동 속도 감소(답변 3번) -3)"
 	},
 	{
 		"Name": "Q_PN_011",
@@ -870,11 +870,11 @@
 		"QuestionType": "Penalty",
 		"QuestionText": "이것도 실험의 일부입니다. 고르십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Slow" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 3, "Param": "Buff_Slow" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -883,7 +883,7 @@
 				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerSanity" }, "Value": -1, "Param": "10" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
 			]
 		},
-		"BalanceNote": "Red -6 (이동 속도 감소 -3, 골렘 N 1 -3) / Blue -6 (답변마다 정신력 -1(10회) -4, 정신력 -5 -2)"
+		"BalanceNote": "Red -6 (이동 속도 감소(답변 3번) -3, 골렘 N 1 -3) / Blue -6 (답변마다 정신력 -1(10회) -4, 정신력 -5 -2)"
 	},
 	{
 		"Name": "Q_PN_016",
@@ -891,7 +891,7 @@
 		"QuestionType": "Penalty",
 		"QuestionText": "둘 다 싫으시겠지만, 하나는 고르셔야 합니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1430,7 +1430,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "공짜는 없습니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1495,7 +1495,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "값은 이미 매겨 두었습니다. 고르기만 하십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1622,7 +1622,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "손해 없는 선택을 찾으십니까? 없습니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1748,20 +1748,20 @@
 		"QuestionType": "Balance",
 		"QuestionText": "값은 이미 매겨 두었습니다. 고르기만 하십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_AttackSpeed" }, { "EffectTag": { "TagName": "Effect.Passive.AnswerSanity" }, "Value": -1, "Param": "10" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_AttackSpeed" }, { "EffectTag": { "TagName": "Effect.Passive.AnswerSanity" }, "Value": -1, "Param": "10" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
 			]
 		},
-		"BalanceNote": "Red -1 (공격 속도 증가 +3, 답변마다 정신력 -1(10회) -4) / Blue -2 (이동 속도 증가 +3, 골렘 R 1 -5)"
+		"BalanceNote": "Red -1 (공격 속도 증가(답변 5번) +3, 답변마다 정신력 -1(10회) -4) / Blue -2 (이동 속도 증가(답변 5번) +3, 골렘 R 1 -5)"
 	},
 	{
 		"Name": "Q_TR_029",
@@ -1790,7 +1790,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "무언가를 얻으려면 무언가를 내놓아야죠.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1800,10 +1800,10 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_AttackSpeed" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_N" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_AttackSpeed" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_N" } ] }
 			]
 		},
-		"BalanceNote": "Red 0 (권총 R 1 +6, 답변마다 체력 -2(10회) -6) / Blue -3 (공격 속도 증가 +3, 골렘 N 2 -6)"
+		"BalanceNote": "Red 0 (권총 R 1 +6, 답변마다 체력 -2(10회) -6) / Blue -3 (공격 속도 증가(답변 5번) +3, 골렘 N 2 -6)"
 	},
 	{
 		"Name": "Q_TR_031",
@@ -1832,7 +1832,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "저울은 제가 맞춰 두었습니다. 믿으시죠?",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1842,10 +1842,10 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Jump" }, { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Runner" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_Jump" }, { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Runner" } ] }
 			]
 		},
-		"BalanceNote": "Red +1 (답변마다 체력 +2(10회) +4, 어두워짐 -3) / Blue +2 (점프력 증가 +2, 이동 속도 증가 +3, 달리는 좀비 1 -3)"
+		"BalanceNote": "Red +1 (답변마다 체력 +2(10회) +4, 어두워짐 -3) / Blue +2 (점프력 증가(답변 5번) +2, 이동 속도 증가(답변 5번) +3, 달리는 좀비 1 -3)"
 	},
 	{
 		"Name": "Q_GB_001",
@@ -1933,7 +1933,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "도박을 좋아하십니까? 저는 구경을 좋아합니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"Outcomes": []
@@ -1993,7 +1993,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "운이 따를지도 모릅니다. 아닐 수도 있고요.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -2053,7 +2053,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "확률은 거짓말을 하지 않습니다. 저와 달리.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"Outcomes": []
@@ -2061,11 +2061,11 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Haste" } ] },
-				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Slow" } ] }
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_Haste" } ] },
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 3, "Param": "Buff_Slow" } ] }
 			]
 		},
-		"BalanceNote": "Red 0 (효과 없음) / Blue +0.6 (60%×(이동 속도 증가 +3) + 40%×(이동 속도 감소 -3))"
+		"BalanceNote": "Red 0 (효과 없음) / Blue +0.6 (60%×(이동 속도 증가(답변 5번) +3) + 40%×(이동 속도 감소(답변 3번) -3))"
 	},
 	{
 		"Name": "Q_GB_012",
@@ -2267,7 +2267,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "주사위는 제가 굴리겠습니다. 고르십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [

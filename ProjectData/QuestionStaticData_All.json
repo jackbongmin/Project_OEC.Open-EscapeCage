@@ -318,7 +318,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -344,7 +344,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -356,10 +356,10 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_S" } ] }
 			]
 		},
-		"BalanceNote": "Red +4 (답변마다 정신력 +1(10회) +4) / Blue +5 (이동 속도 증가 +3, 응급 붕대 1 +2)"
+		"BalanceNote": "Red +4 (답변마다 정신력 +1(10회) +4) / Blue +5 (이동 속도 증가(답변 5번) +3, 응급 붕대 1 +2)"
 	},
 	{
 		"Name": "Q_BN_012",
@@ -370,7 +370,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -474,7 +474,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -486,10 +486,10 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Jump" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_Jump" } ] }
 			]
 		},
-		"BalanceNote": "Red +2 (응급 붕대 1 +2) / Blue +2 (점프력 증가 +2)"
+		"BalanceNote": "Red +2 (응급 붕대 1 +2) / Blue +2 (점프력 증가(답변 5번) +2)"
 	},
 	{
 		"Name": "Q_BN_017",
@@ -552,7 +552,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -578,7 +578,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -604,12 +604,12 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_AttackSpeed" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_AttackSpeed" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -619,7 +619,7 @@
 				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 2, "Param": "Ammo_Pistol" } ] }
 			]
 		},
-		"BalanceNote": "Red +3 (공격 속도 증가 +3) / Blue +4 (권총 탄약 2 +4)"
+		"BalanceNote": "Red +3 (공격 속도 증가(답변 5번) +3) / Blue +4 (권총 탄약 2 +4)"
 	},
 	{
 		"Name": "Q_BN_022",
@@ -813,7 +813,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -944,7 +944,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -956,10 +956,10 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Slow" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 3, "Param": "Buff_Slow" } ] }
 			]
 		},
-		"BalanceNote": "Red -3 (골렘 N 1 -3) / Blue -3 (이동 속도 감소 -3)"
+		"BalanceNote": "Red -3 (골렘 N 1 -3) / Blue -3 (이동 속도 감소(답변 3번) -3)"
 	},
 	{
 		"Name": "Q_PN_011",
@@ -1075,12 +1075,12 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Slow" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 3, "Param": "Buff_Slow" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_N" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -1090,7 +1090,7 @@
 				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Passive.AnswerSanity" }, "Value": -1, "Param": "10" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
 			]
 		},
-		"BalanceNote": "Red -6 (이동 속도 감소 -3, 골렘 N 1 -3) / Blue -6 (답변마다 정신력 -1(10회) -4, 정신력 -5 -2)"
+		"BalanceNote": "Red -6 (이동 속도 감소(답변 3번) -3, 골렘 N 1 -3) / Blue -6 (답변마다 정신력 -1(10회) -4, 정신력 -5 -2)"
 	},
 	{
 		"Name": "Q_PN_016",
@@ -1101,7 +1101,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -1765,7 +1765,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -1845,7 +1845,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2002,7 +2002,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2158,22 +2158,22 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_AttackSpeed" }, { "EffectTag": { "TagName": "Effect.Passive.AnswerSanity" }, "Value": -1, "Param": "10" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_AttackSpeed" }, { "EffectTag": { "TagName": "Effect.Passive.AnswerSanity" }, "Value": -1, "Param": "10" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
 			]
 		},
-		"BalanceNote": "Red -1 (공격 속도 증가 +3, 답변마다 정신력 -1(10회) -4) / Blue -2 (이동 속도 증가 +3, 골렘 R 1 -5)"
+		"BalanceNote": "Red -1 (공격 속도 증가(답변 5번) +3, 답변마다 정신력 -1(10회) -4) / Blue -2 (이동 속도 증가(답변 5번) +3, 골렘 R 1 -5)"
 	},
 	{
 		"Name": "Q_TR_029",
@@ -2210,7 +2210,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2222,10 +2222,10 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_AttackSpeed" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_N" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_AttackSpeed" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Golem_N" } ] }
 			]
 		},
-		"BalanceNote": "Red 0 (권총 R 1 +6, 답변마다 체력 -2(10회) -6) / Blue -3 (공격 속도 증가 +3, 골렘 N 2 -6)"
+		"BalanceNote": "Red 0 (권총 R 1 +6, 답변마다 체력 -2(10회) -6) / Blue -3 (공격 속도 증가(답변 5번) +3, 골렘 N 2 -6)"
 	},
 	{
 		"Name": "Q_TR_031",
@@ -2262,7 +2262,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2274,10 +2274,10 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Jump" }, { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Runner" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_Jump" }, { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_Haste" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Runner" } ] }
 			]
 		},
-		"BalanceNote": "Red +1 (답변마다 체력 +2(10회) +4, 어두워짐 -3) / Blue +2 (점프력 증가 +2, 이동 속도 증가 +3, 달리는 좀비 1 -3)"
+		"BalanceNote": "Red +1 (답변마다 체력 +2(10회) +4, 어두워짐 -3) / Blue +2 (점프력 증가(답변 5번) +2, 이동 속도 증가(답변 5번) +3, 달리는 좀비 1 -3)"
 	},
 	{
 		"Name": "Q_GB_001",
@@ -2388,7 +2388,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"StoryTag": "None",
@@ -2463,7 +2463,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2538,7 +2538,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"StoryTag": "None",
@@ -2548,11 +2548,11 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Haste" } ] },
-				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 1, "Param": "Buff_Slow" } ] }
+				{ "Weight": 60, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 5, "Param": "Buff_Haste" } ] },
+				{ "Weight": 40, "Effects": [ { "EffectTag": { "TagName": "Effect.Buff" }, "Value": 3, "Param": "Buff_Slow" } ] }
 			]
 		},
-		"BalanceNote": "Red 0 (효과 없음) / Blue +0.6 (60%×(이동 속도 증가 +3) + 40%×(이동 속도 감소 -3))"
+		"BalanceNote": "Red 0 (효과 없음) / Blue +0.6 (60%×(이동 속도 증가(답변 5번) +3) + 40%×(이동 속도 감소(답변 3번) -3))"
 	},
 	{
 		"Name": "Q_GB_012",
@@ -2802,7 +2802,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3117,12 +3117,12 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_BouncingOrbs" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -3143,19 +3143,19 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_FallingDebris" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_FallingDebris" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_BouncingOrbs" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" } ] }
 			]
 		},
 		"BalanceNote": "Red -2 (낙하 잔해 -2) / Blue -4.5 (튀는 구체 -4.5)"
@@ -3169,12 +3169,12 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 3, "Param": "Zombie_Walker" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_RisingPillar" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 3, "Param": "Zombie_Walker" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_RisingPillar" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -3195,7 +3195,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3207,7 +3207,7 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_CoverWalls" } ] }
 			]
 		},
 		"BalanceNote": "Red -4 (정신력 -10 -4) / Blue -3 (골렘 R 1 -5, 엄폐 벽 +2)"
@@ -3221,12 +3221,12 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_BouncingOrbs" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Blackout" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -3248,7 +3248,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3260,7 +3260,7 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_GasZone" } ] }
 			]
 		},
 		"BalanceNote": "Red -3 (골렘 N 1 -3) / Blue -2 (독가스 구역 -2)"
@@ -3274,12 +3274,12 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_FallingDebris" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_FallingDebris" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -3300,19 +3300,19 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_GasZone" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Blackout" } ] }
 			]
 		},
 		"BalanceNote": "Red -2 (독가스 구역 -2) / Blue -3 (정전 -3)"
@@ -3326,12 +3326,12 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_LowGravity" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_LowGravity" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -3350,7 +3350,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3362,7 +3362,7 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs_Reward" } ] }
 			]
 		},
 		"BalanceNote": "Red +5 (회복 주사 1 +5) / Blue +3 (튀는 구체(보상형) +3)"
@@ -3376,12 +3376,12 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs_Reward" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Blackout" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -3400,7 +3400,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3412,7 +3412,7 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_FallingDebris" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_FallingDebris" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_GasZone" } ] }
 			]
 		},
 		"BalanceNote": "Red +6 (의료 키트 1 +9, 골렘 N 1 -3) / Blue +6 (스택 +10, 낙하 잔해 -2, 독가스 구역 -2)"
@@ -3426,19 +3426,19 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_BouncingOrbs" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Blackout" } ] }
 			]
 		},
 		"BalanceNote": "Red +5.5 (스택 +10, 튀는 구체 -4.5) / Blue +4 (라이플 R 1 +7, 정전 -3)"
@@ -3452,7 +3452,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3464,7 +3464,7 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Brute" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_RisingPillar" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Brute" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_RisingPillar" } ] }
 			]
 		},
 		"BalanceNote": "Red -7.5 (체력 -25 -7.5) / Blue -7 (거대 좀비 2 -10, 피난 기둥 +3)"
@@ -3478,12 +3478,12 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Rifle" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_CoverWalls" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Rifle" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -3504,19 +3504,19 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_FallingDebris" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_GasZone" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_FallingDebris" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Runner" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_LowGravity" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Runner" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_LowGravity" } ] }
 			]
 		},
 		"BalanceNote": "Red -4 (독가스 구역 -2, 낙하 잔해 -2) / Blue -6 (달리는 좀비 2 -6, 중력 이상 0)"
@@ -3535,7 +3535,7 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_SupplyDefense" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_SupplyDefense" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -3568,7 +3568,7 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_LaserSweep" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_LaserSweep" } ] }
 			]
 		},
 		"BalanceNote": "Red +2 (권총 탄약 1 +2) / Blue +2 (레이저 스윕 +2)"
@@ -3587,14 +3587,14 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_ElectricFloor" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_ElectricFloor" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Turret" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Turret" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_CoverWalls" } ] }
 			]
 		},
 		"BalanceNote": "Red -1 (전기 바닥 -1) / Blue +1 (천장 터렛 -1, 엄폐 벽 +2)"
@@ -3620,7 +3620,7 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_PressurePlates" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_PressurePlates" } ] }
 			]
 		},
 		"BalanceNote": "Red +6 (권총 R 1 +6) / Blue +4 (압력판 퍼즐 +4)"
@@ -3639,7 +3639,7 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_PressurePlates" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_PressurePlates" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Blackout" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -3672,7 +3672,7 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_SupplyDefense" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_RisingPillar" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_SupplyDefense" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_RisingPillar" } ] }
 			]
 		},
 		"BalanceNote": "Red +7 (라이플 R 1 +7) / Blue +6 (보급 상자 방어 +3, 피난 기둥 +3)"
@@ -3691,14 +3691,14 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Turret" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Turret" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_CoverWalls" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_ElectricFloor" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_ElectricFloor" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_GasZone" } ] }
 			]
 		},
 		"BalanceNote": "Red -4 (천장 터렛 -1, 엄폐 벽 +2, 골렘 R 1 -5) / Blue -3 (전기 바닥 -1, 독가스 구역 -2)"
@@ -3717,14 +3717,14 @@
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_ElectricFloor" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_ElectricFloor" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Robot_Rogue" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Robot_Rogue" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_CoverWalls" } ] }
 			]
 		},
 		"BalanceNote": "Red -3 (전기 바닥 -1, 정신력 -5 -2) / Blue -4 (괴물 로봇 1 -6, 엄폐 벽 +2)"

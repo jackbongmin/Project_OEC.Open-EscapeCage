@@ -5,11 +5,11 @@
 		"QuestionType": "Event",
 		"QuestionText": "방을 조금 꾸며 봤습니다. 마음에 드십니까?",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_BouncingOrbs" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -26,17 +26,17 @@
 		"QuestionType": "Event",
 		"QuestionText": "천장을 조심하십시오. 바닥도요.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_FallingDebris" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_FallingDebris" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_BouncingOrbs" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" } ] }
 			]
 		},
 		"BalanceNote": "Red -2 (낙하 잔해 -2) / Blue -4.5 (튀는 구체 -4.5)"
@@ -47,11 +47,11 @@
 		"QuestionType": "Event",
 		"QuestionText": "잠시 소란스러울 겁니다. 고르십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 3, "Param": "Zombie_Walker" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_RisingPillar" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 3, "Param": "Zombie_Walker" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_RisingPillar" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -68,7 +68,7 @@
 		"QuestionType": "Event",
 		"QuestionText": "이번엔 방이 당신에게 질문할 차례입니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -78,7 +78,7 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_CoverWalls" } ] }
 			]
 		},
 		"BalanceNote": "Red -4 (정신력 -10 -4) / Blue -3 (골렘 R 1 -5, 엄폐 벽 +2)"
@@ -89,11 +89,11 @@
 		"QuestionType": "Event",
 		"QuestionText": "실력을 보여 주십시오. 기록해 두겠습니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_BouncingOrbs" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Blackout" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -111,7 +111,7 @@
 		"QuestionType": "Event",
 		"QuestionText": "가만히 서 있기 지루하시죠. 움직여 보십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -121,7 +121,7 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_GasZone" } ] }
 			]
 		},
 		"BalanceNote": "Red -3 (골렘 N 1 -3) / Blue -2 (독가스 구역 -2)"
@@ -132,11 +132,11 @@
 		"QuestionType": "Event",
 		"QuestionText": "운동은 건강에 좋습니다. 살아남는다면요.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_FallingDebris" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_FallingDebris" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -153,17 +153,17 @@
 		"QuestionType": "Event",
 		"QuestionText": "방이 변합니다. 어느 쪽 변화를 원하십니까?",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_GasZone" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Blackout" } ] }
 			]
 		},
 		"BalanceNote": "Red -2 (독가스 구역 -2) / Blue -3 (정전 -3)"
@@ -174,11 +174,11 @@
 		"QuestionType": "Event",
 		"QuestionText": "몸으로 답하는 문제도 준비했습니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_LowGravity" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_LowGravity" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -193,7 +193,7 @@
 		"QuestionType": "Event",
 		"QuestionText": "어떤 환경에서 더 오래 버티는지 궁금하군요.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -203,7 +203,7 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs_Reward" } ] }
 			]
 		},
 		"BalanceNote": "Red +5 (회복 주사 1 +5) / Blue +3 (튀는 구체(보상형) +3)"
@@ -214,11 +214,11 @@
 		"QuestionType": "Event",
 		"QuestionText": "시설 점검 시간입니다. 협조 부탁드립니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs_Reward" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Blackout" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -233,7 +233,7 @@
 		"QuestionType": "Event",
 		"QuestionText": "이 방에는 아직 안 보여 드린 기능이 많습니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -243,7 +243,7 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_FallingDebris" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_FallingDebris" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_GasZone" } ] }
 			]
 		},
 		"BalanceNote": "Red +6 (의료 키트 1 +9, 골렘 N 1 -3) / Blue +6 (스택 +10, 낙하 잔해 -2, 독가스 구역 -2)"
@@ -254,17 +254,17 @@
 		"QuestionType": "Event",
 		"QuestionText": "방을 조금 꾸며 봤습니다. 마음에 드십니까?",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_BouncingOrbs" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_BouncingOrbs" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Rifle_R" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Blackout" } ] }
 			]
 		},
 		"BalanceNote": "Red +5.5 (스택 +10, 튀는 구체 -4.5) / Blue +4 (라이플 R 1 +7, 정전 -3)"
@@ -275,7 +275,7 @@
 		"QuestionType": "Event",
 		"QuestionText": "천장을 조심하십시오. 바닥도요.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -285,7 +285,7 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Brute" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_RisingPillar" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Brute" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_RisingPillar" } ] }
 			]
 		},
 		"BalanceNote": "Red -7.5 (체력 -25 -7.5) / Blue -7 (거대 좀비 2 -10, 피난 기둥 +3)"
@@ -296,11 +296,11 @@
 		"QuestionType": "Event",
 		"QuestionText": "잠시 소란스러울 겁니다. 고르십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Rifle" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_CoverWalls" }, { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Ammo_Rifle" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -317,17 +317,17 @@
 		"QuestionType": "Event",
 		"QuestionText": "이번엔 방이 당신에게 질문할 차례입니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_FallingDebris" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_GasZone" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_FallingDebris" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Runner" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_LowGravity" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 2, "Param": "Zombie_Runner" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_LowGravity" } ] }
 			]
 		},
 		"BalanceNote": "Red -4 (독가스 구역 -2, 낙하 잔해 -2) / Blue -6 (달리는 좀비 2 -6, 중력 이상 0)"
@@ -342,7 +342,7 @@
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_SupplyDefense" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_SupplyDefense" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -369,7 +369,7 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_LaserSweep" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_LaserSweep" } ] }
 			]
 		},
 		"BalanceNote": "Red +2 (권총 탄약 1 +2) / Blue +2 (레이저 스윕 +2)"
@@ -384,13 +384,13 @@
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_ElectricFloor" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_ElectricFloor" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Turret" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Turret" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_CoverWalls" } ] }
 			]
 		},
 		"BalanceNote": "Red -1 (전기 바닥 -1) / Blue +1 (천장 터렛 -1, 엄폐 벽 +2)"
@@ -411,7 +411,7 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_PressurePlates" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_PressurePlates" } ] }
 			]
 		},
 		"BalanceNote": "Red +6 (권총 R 1 +6) / Blue +4 (압력판 퍼즐 +4)"
@@ -426,7 +426,7 @@
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_PressurePlates" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Blackout" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_PressurePlates" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Blackout" } ] }
 			]
 		},
 		"BlueChoice": {
@@ -453,7 +453,7 @@
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_SupplyDefense" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_RisingPillar" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_SupplyDefense" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_RisingPillar" } ] }
 			]
 		},
 		"BalanceNote": "Red +7 (라이플 R 1 +7) / Blue +6 (보급 상자 방어 +3, 피난 기둥 +3)"
@@ -468,13 +468,13 @@
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_Turret" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_Turret" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_CoverWalls" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Golem_R" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_ElectricFloor" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_GasZone" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_ElectricFloor" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_GasZone" } ] }
 			]
 		},
 		"BalanceNote": "Red -4 (천장 터렛 -1, 엄폐 벽 +2, 골렘 R 1 -5) / Blue -3 (전기 바닥 -1, 독가스 구역 -2)"
@@ -489,13 +489,13 @@
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_ElectricFloor" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_ElectricFloor" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] }
 			]
 		},
 		"BlueChoice": {
 			"DisplayText": "",
 			"Outcomes": [
-				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Robot_Rogue" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 0, "Param": "Event_CoverWalls" } ] }
+				{ "Weight": 100, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Robot_Rogue" }, { "EffectTag": { "TagName": "Effect.Event.Start" }, "Value": 1, "Param": "Event_CoverWalls" } ] }
 			]
 		},
 		"BalanceNote": "Red -3 (전기 바닥 -1, 정신력 -5 -2) / Blue -4 (괴물 로봇 1 -6, 엄폐 벽 +2)"
