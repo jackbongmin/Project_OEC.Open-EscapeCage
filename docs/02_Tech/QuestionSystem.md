@@ -16,7 +16,7 @@ AOecTerminalBase ──(테이블 + 현재 페이즈의 타입 가중치)──>
 
 UOecChoiceSubsystem.OnChoiceResolved ─┐
 UOecStageManagerSubsystem.OnStackChanged ─┼─(구독)─> UOecQuestionSubsystem (회차 기록, 스택 보정 카운트)
-UOecEventSubsystem.OnKeyStacksChanged ─┘
+UOecStageManagerSubsystem.OnKeyRewarded ─┘ (페이즈 2 스택 보상 = 열쇠 지급)
 ```
 
 - 단말기는 "무엇을 낼지" 모른다. 테이블과 가중치를 넘기고 받은 질문을 화면에 띄우기만 한다.

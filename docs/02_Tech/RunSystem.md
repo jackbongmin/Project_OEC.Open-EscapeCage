@@ -35,8 +35,8 @@
 | 시스템 | 초기화 | 유지 |
 |---|---|---|
 | `UOecStageManagerSubsystem` | 페이즈 1, 전구 0 | - |
-| `UOecEventSubsystem` | 열쇠 스택 = 설정 `InitialKeyStacks` | 질문 풀 사용 기록 |
-| `UOecInventorySubsystem` | 빈 인벤토리 | - |
+| `UOecEventSubsystem` | - | 질문 풀 사용 기록 |
+| `UOecInventorySubsystem` | 빈 인벤토리 (열쇠 포함) | - |
 | `UOecQuickSlotSubsystem` | 빈 퀵슬롯 | - |
 | `UOecChoiceSubsystem` | 지속 효과(답변마다 스택 확률, 방 어두워짐 등) | 전체 선택 기록 |
 | `UOecQuestionSubsystem` | 회차 답변 기록, 스택 보정 카운트, 스토리 성향 횟수 | - |
@@ -46,7 +46,6 @@
 
 | 항목 | 기본값 | 뜻 |
 |---|---|---|
-| Stage › Initial Key Stacks | 3 | 회차 시작 시 열쇠 스택 (GDD "논의 필요" 항목, 기존 테스트값 유지) |
 | Stage › Run Auto Restart Delay | 0 | 0 = "다시 시작" 버튼을 누를 때까지 대기. 0보다 크면 그 시간 뒤 자동으로 다음 회차 |
 | Question › Sanity Change Per Answer | -1 | 답변할 때마다 정신력 변화 (GDD 3.2. 이번에 처음 코드로 들어감) |
 
@@ -68,7 +67,7 @@
 1. 플레이 → 아이템을 몇 개 줍고 전구를 1개 이상 켠다.
 2. 콘솔 `OecSetHealth 0` → "사망" 화면, 마우스 커서 표시, 이동 불가 확인.
 3. "다시 시작" → 메인 방에서 다시 시작, 튜토리얼 1번 질문, 인벤토리·퀵슬롯·전구가 비어 있는지 확인.
-4. `OecShowState` → 2회차, 열쇠 3, 정신력 80 확인.
+4. `OecShowState` → 2회차, 열쇠 0개, 정신력 80 확인.
 5. 질문에 답할 때마다 정신력이 1씩 줄어드는지 확인.
 
 ## 8. 알려진 한계

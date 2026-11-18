@@ -44,7 +44,7 @@ AOecTerminalBase ──(질문 선택)──> AOecQuestionButton.SetChoiceData()
 | 태그 | 실행기 | Value | Param | 문구 예 |
 |---|---|---|---|---|
 | `Effect.None` | `_None` | - | - | 아무 일도 일어나지 않음 |
-| `Effect.Stack` | `_Stack` | 증감량 | - | 스택 +1 |
+| `Effect.Stack` | `_Stack` | 증감량 | - | 페이즈 1: 스택 +1 (전구) / 페이즈 2: 열쇠 1개 획득 (열쇠 아이템 투하) |
 | `Effect.Stat.Health` | `_Health` | 증감량 | - | 체력 10 회복 |
 | `Effect.Stat.Sanity` | `_Sanity` | 증감량 | - | 정신력 10 감소 |
 | `Effect.Death` | `_Death` | - | - | 즉시 사망 |
@@ -153,7 +153,7 @@ AOecTerminalBase ──(질문 선택)──> AOecQuestionButton.SetChoiceData()
 
 ### 6.7 동작 확인
 1. 플레이 → 단말기 버튼 문구가 자동 생성되는지 확인 (예: "골렘 2마리 소환").
-2. 콘솔 `OecAddStack 5` → 메인 문이 열리는지 확인.
+2. 콘솔 `OecAddStack 5` → 페이즈 2 전환과 함께 열쇠가 떨어지는지 확인 (메인 문은 열쇠로 직접 연다, 9장).
 3. 콘솔 `OecRunEffect Effect.Env.Darken 2` → 조명 변화 확인 → 버튼 2번 누르면 원래대로.
 4. `OecShowState`로 상태 확인.
 
@@ -260,3 +260,34 @@ AOecTerminalBase ──(질문 선택)──> AOecQuestionButton.SetChoiceData()
 1. 콘솔 `OecRunEffect Effect.Buff 3 Buff_Haste` → 걷기·달리기가 빨라지는지, 질문에 3번 답한 뒤 돌아오는지 (기다리기만 해서는 풀리지 않음).
 2. `OecRunEffect Effect.Buff 3 Buff_AttackSpeed` → 라이플 연사, 도끼 휘두르기, 재장전이 빨라지는지. `OecShowState`에 남은 답변 수가 표시되는지.
 3. `OecRunEffect Effect.Passive.AnswerHealth 2 10` → 질문에 답할 때마다 체력 +2, `OecShowState`에 지속 효과 표시, 10번 뒤 사라지는지.
+
+---
+
+## 9. 열쇠와 문, 아이템 낙하 (2026-11-18)
+
+### 9.1 바뀐 규칙
+| 이전 | 지금 |
+|---|---|
+| 페이즈 2 스택 = 열쇠 **스택** (숫자, 시작 3개) | 페이즈 2 "스택" 보상 = **열쇠 아이템**(`Key_Door`)이 투하구에서 떨어짐. 버튼 문구 "열쇠 1개 획득" |
+| 전구 5개 → 메인 문 자동 개방 | 전구 5개 → 페이즈 2 전환 + **열쇠 1개 투하**. 메인 문은 열쇠를 들고 가서 직접 연다 |
+| 랜덤 방 문: 열쇠 스택 소모 | 모든 문: 인벤토리의 열쇠 `RequiredKeyCount`개(기본 1) 소모 |
+| 투하된 아이템이 바닥에 바로 놓임 | 투하구에서 **떨어져서** 바닥에 닿으면 착지 소리 |
+
+- 판단은 한 곳(`UOecStageManagerSubsystem::AddStack`)에서 한다: 페이즈 1이면 전구, 페이즈 2면 `GrantKeys` → 아이템 지급 효과. 스택 효과·이벤트 보상·"답변마다 스택 확률" 패시브가 모두 이 경로를 쓰므로 따로 고칠 곳이 없다.
+- 스택 보정(천장)은 페이즈 2에서 열쇠 지급(`OnKeyRewarded`)을 스택 획득으로 센다.
+- 열쇠 스택(`UOecEventSubsystem::ModifyStacks` 등)은 삭제했다. 블루프린트에서 쓰던 곳은 없었다.
+- 낙하: 물리 없이 중력 가속(기본 1800cm/s², 픽업 디테일 › Drop Gravity)으로 떨어지고, 움직이는 동안만 Tick. 착지 연출은 `BP_OnLanded`.
+
+### 9.2 에디터 작업 (사용자)
+1. **`DT_ItemStaticData`에 열쇠 행 추가**: 행 이름 `Key_Door`, Item Name "열쇠", Item Type **퀘스트아이템 (KeyItem)**, 픽업 액터 클래스 (Pickup Actor Class)는 열쇠 모양 픽업 (없으면 비워 두기 = 기본 픽업).
+   - 다른 코드를 쓰고 싶으면 프로젝트 설정 › Stage › **Key Item Code**를 바꾼다.
+2. **착지 소리**: 아이템 행마다 새 칸 **Drop Sound**에 사운드를 지정한다. 비워 두면 프로젝트 설정 › Choice › **Default Item Drop Sound**를 쓴다 (공통 소리 하나만 넣어도 됨).
+3. **문**: 문 블루프린트(메인 문, `BP_PhaseDoor1/2`, 랜덤 방 문)의 디테일 › OEC | Door에서
+   - 예전 칸 `Required Stacks`, `Should Consume Stack`은 없어졌다. 새 칸 **Required Key Count** (기본 1)를 확인한다.
+   - 열쇠가 없을 때의 거절 소리·흔들림은 이벤트 그래프의 `BP_OnOpenDenied`에 연결한다.
+4. 페이즈 1 완료 열쇠 수는 프로젝트 설정 › Stage › **Phase1 Complete Key Count** (기본 1).
+
+### 9.3 동작 확인
+1. `OecAddStack 5` → 열쇠가 투하구에서 떨어지며 착지 소리 → 줍기 → 메인 문 앞 E → 열림.
+2. 열쇠 없이 메인 문 E → 열리지 않고 로그 "열쇠 부족 (필요 1, 보유 0)".
+3. 페이즈 2에서 `OecAddStack 1` → 열쇠가 하나 더 떨어짐 → 복도 방 문을 열쇠로 연다. `OecShowState`에 "열쇠 N개".
