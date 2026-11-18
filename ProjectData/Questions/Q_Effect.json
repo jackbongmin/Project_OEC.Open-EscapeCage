@@ -46,7 +46,7 @@
 		"QuestionText": "그 무기, 써보고 싶지 않습니까?",
 		"AllowedPhases": [1],
 		"FixedOrder": 3,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -67,7 +67,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "오늘은 기분이 좋군요. 고르십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -109,7 +109,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "감사 인사는 생략하셔도 됩니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -193,7 +193,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "가끔은 저도 너그러워집니다. 고르시죠.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -214,7 +214,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "기록상 오늘은 당신이 운 좋은 날입니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -321,7 +321,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "오늘은 기분이 좋군요. 고르십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -426,7 +426,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "착한 피험자에게 주는 선물입니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -510,7 +510,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "축하합니다. 아직 살아 계시니 드립니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -531,7 +531,7 @@
 		"QuestionType": "Bonus",
 		"QuestionText": "보상 시간입니다. 하나만 가져가십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -722,7 +722,7 @@
 		"QuestionType": "Penalty",
 		"QuestionText": "잃는 것에도 취향이 있더군요.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -743,7 +743,7 @@
 		"QuestionType": "Penalty",
 		"QuestionText": "저는 어느 쪽이든 즐겁게 지켜보겠습니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -955,7 +955,7 @@
 		"QuestionType": "Penalty",
 		"QuestionText": "무엇을 내놓으시겠습니까?",
 		"AllowedPhases": [2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1105,7 +1105,7 @@
 		"QuestionType": "Penalty",
 		"QuestionText": "거절은 선택지에 없습니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1171,7 +1171,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "공짜는 없습니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1213,7 +1213,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "필요한 만큼 가져가고, 그만큼 내십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1255,7 +1255,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "두 가지 거래가 있습니다. 환불은 없습니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1277,7 +1277,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "무언가를 얻으려면 무언가를 내놓아야죠.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1364,7 +1364,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "손해 없는 선택을 찾으십니까? 없습니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1473,7 +1473,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "필요한 만큼 가져가고, 그만큼 내십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1506,10 +1506,10 @@
 			"DisplayText": "",
 			"Outcomes": [
 				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] },
-				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Crawler" } ] }
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Runner" } ] }
 			]
 		},
-		"BalanceNote": "Red +1 (보험 증서 1 +4, 체력 -10 -3) / Blue +1.5 (50%×(스택 +10, 정신력 -5 -2) + 50%×(정신력 -5 -2, 기어오는 좀비 1 -3))"
+		"BalanceNote": "Red +1 (보험 증서 1 +4, 체력 -10 -3) / Blue +1.5 (50%×(스택 +10, 정신력 -5 -2) + 50%×(정신력 -5 -2, 달리는 좀비 1 -3))"
 	},
 	{
 		"Name": "Q_TR_017",
@@ -1517,7 +1517,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "두 가지 거래가 있습니다. 환불은 없습니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1559,7 +1559,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "저는 공정한 거래를 좋아합니다. 대체로는요.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1643,7 +1643,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "거래를 제안합니다. 조건은 적힌 그대로입니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1706,7 +1706,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "어느 쪽 계산서가 마음에 드십니까?",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1727,7 +1727,7 @@
 		"QuestionType": "Balance",
 		"QuestionText": "필요한 만큼 가져가고, 그만큼 내십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -1853,7 +1853,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "운을 시험해 보죠.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"Outcomes": []
@@ -1973,7 +1973,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "숫자를 잘 읽으십시오. 후회는 당신 몫입니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"Outcomes": []
@@ -2013,7 +2013,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "주사위는 제가 굴리겠습니다. 고르십시오.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"Outcomes": []
@@ -2022,10 +2022,10 @@
 			"DisplayText": "",
 			"Outcomes": [
 				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" } ] },
-				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Crawler" } ] }
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Runner" } ] }
 			]
 		},
-		"BalanceNote": "Red 0 (효과 없음) / Blue +1 (50%×(회복 주사 1 +5) + 50%×(기어오는 좀비 1 -3))"
+		"BalanceNote": "Red 0 (효과 없음) / Blue +1 (50%×(회복 주사 1 +5) + 50%×(달리는 좀비 1 -3))"
 	},
 	{
 		"Name": "Q_GB_010",
@@ -2073,7 +2073,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "지난번엔 어느 쪽을 골랐는지 기억하십니까?",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -2093,7 +2093,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "운을 시험해 보죠.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"Outcomes": []
@@ -2113,7 +2113,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "겁이 나면 그냥 지나가셔도 됩니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -2157,7 +2157,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "안전하게 가시겠습니까, 걸어 보시겠습니까?",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -2245,7 +2245,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "운이 따를지도 모릅니다. 아닐 수도 있고요.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -2331,7 +2331,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "지난번엔 어느 쪽을 골랐는지 기억하십니까?",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -2373,7 +2373,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "겁이 나면 그냥 지나가셔도 됩니다.",
 		"AllowedPhases": [1, 2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"Outcomes": [
@@ -2480,7 +2480,7 @@
 		"QuestionType": "Gamble",
 		"QuestionText": "살아남으면 선물입니다. 살아남으면요.",
 		"AllowedPhases": [2],
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"Outcomes": []

@@ -56,7 +56,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 3,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -82,7 +82,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -134,7 +134,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -238,7 +238,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -264,7 +264,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -396,7 +396,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -526,7 +526,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -630,7 +630,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -656,7 +656,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -892,7 +892,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -918,7 +918,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -1180,7 +1180,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -1365,7 +1365,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -1446,7 +1446,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -1498,7 +1498,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -1550,7 +1550,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -1577,7 +1577,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -1684,7 +1684,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -1818,7 +1818,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -1858,10 +1858,10 @@
 			"StoryTag": "None",
 			"Outcomes": [
 				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stack" }, "Value": 1, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" } ] },
-				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Crawler" } ] }
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Stat.Sanity" }, "Value": -5, "Param": "None" }, { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Runner" } ] }
 			]
 		},
-		"BalanceNote": "Red +1 (보험 증서 1 +4, 체력 -10 -3) / Blue +1.5 (50%×(스택 +10, 정신력 -5 -2) + 50%×(정신력 -5 -2, 기어오는 좀비 1 -3))"
+		"BalanceNote": "Red +1 (보험 증서 1 +4, 체력 -10 -3) / Blue +1.5 (50%×(스택 +10, 정신력 -5 -2) + 50%×(정신력 -5 -2, 달리는 좀비 1 -3))"
 	},
 	{
 		"Name": "Q_TR_017",
@@ -1872,7 +1872,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -1924,7 +1924,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2028,7 +2028,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2106,7 +2106,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2132,7 +2132,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2288,7 +2288,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"StoryTag": "None",
@@ -2438,7 +2438,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"StoryTag": "None",
@@ -2488,7 +2488,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"StoryTag": "None",
@@ -2499,10 +2499,10 @@
 			"StoryTag": "None",
 			"Outcomes": [
 				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Give.Item" }, "Value": 1, "Param": "Heal_M" } ] },
-				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Crawler" } ] }
+				{ "Weight": 50, "Effects": [ { "EffectTag": { "TagName": "Effect.Spawn.Monster" }, "Value": 1, "Param": "Zombie_Runner" } ] }
 			]
 		},
-		"BalanceNote": "Red 0 (효과 없음) / Blue +1 (50%×(회복 주사 1 +5) + 50%×(기어오는 좀비 1 -3))"
+		"BalanceNote": "Red 0 (효과 없음) / Blue +1 (50%×(회복 주사 1 +5) + 50%×(달리는 좀비 1 -3))"
 	},
 	{
 		"Name": "Q_GB_010",
@@ -2563,7 +2563,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2588,7 +2588,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"StoryTag": "None",
@@ -2613,7 +2613,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2667,7 +2667,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2775,7 +2775,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2881,7 +2881,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -2933,7 +2933,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "",
 			"StoryTag": "None",
@@ -3065,7 +3065,7 @@
 		"RequiredChoices": [],
 		"MinRunCount": 0,
 		"FixedOrder": 0,
-		"bEnabled": false,
+		"bEnabled": true,
 		"RedChoice": {
 			"DisplayText": "아무것도 하지 않는다",
 			"StoryTag": "None",
